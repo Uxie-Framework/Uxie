@@ -1,0 +1,58 @@
+//colors
+$my_green: #3adda2;
+$white: white;
+$deep_blue : rgb(31, 35, 45);
+$red_pink: rgb(245, 11, 76);
+$my_gray: rgb(236, 231, 231);
+
+@font-face {
+	font-family: slim1;
+	src: url(files/Neou-Thin.ttf);
+}
+@font-face {
+	font-family: slim2;
+	src: url(files/Roboto-Thin.ttf);
+}
+@font-face {
+	font-family: slim3;
+	src: url(files/Champagne & Limousines.ttf);
+}
+@font-face {
+	font-family: hang;
+	src: url(files/HangedLetters.ttf);
+}
+@font-face {
+	font-family: opi;
+	src: url(files/Opificio.ttf);
+}
+@font-face {
+	font-family: magic;
+	src: url(files/LittleSnorlax.ttf);
+}
+@font-face {
+	font-family: hand;
+	src: url(files/EverythingHoliday.otf);
+}
+.notification {
+	font-family: slim3, sans-serif;
+	position: absolute;
+	top: 5vh;
+	text-align: center;
+	right: 5vw;
+	font-size: 120%;
+	min-width: 17vw;
+	max-width: 30vw;
+	max-height: 20vh;
+	padding: 10px;
+	color: white;
+	border-radius: 5px;
+	display: none;
+}
+html {
+	margin: 0;
+	padding: 0;
+}
+body {
+	margin: 0;
+	padding: 0;
+}

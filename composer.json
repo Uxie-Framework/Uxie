@@ -1,0 +1,30 @@
+{
+    "name": "uxie/uxie",
+    "description": "Uxie a Php light mvc framework",
+    "keywords": ["framework", "uxie"],
+    "type": "project",
+    "license": "MIT",
+    
+    "require": {
+        "php": ">=7.0.0"
+    }
+
+    "authors": [
+        {
+            "name": "Mohamed Amine",
+            "email": "MohamedAmine1c@gmail.com",
+            "homepage": "https://github.com/MohamedAmine-C",
+            "role": "Developer"
+        }
+    ]
+
+    "autoload": {
+    "psr-4": {
+      "App\\":"App/",
+      "Controllers\\":"Controllers/",
+      "Models\\":"Models/",
+      "Router\\":"Router/",
+      "config\\":"config/"
+    }
+  }
+}
