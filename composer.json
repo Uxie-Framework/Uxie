@@ -4,10 +4,10 @@
     "keywords": ["framework", "uxie"],
     "type": "project",
     "license": "MIT",
-    
+
     "require": {
-        "php": ">=7.0.0"
-    }
+        "php": ">=7.0"
+    },
 
     "authors": [
         {
@@ -16,7 +16,7 @@
             "homepage": "https://github.com/MohamedAmine-C",
             "role": "Developer"
         }
-    ]
+    ],
 
     "autoload": {
     "psr-4": {
