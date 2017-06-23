@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class functions
+class Functions
 {
     public static function getExtension($name)
     {

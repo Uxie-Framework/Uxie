@@ -3,7 +3,7 @@ namespace App;
 
 use Router\Router;
 
-class throwError
+class ThrowError
 {
     public function __construct($msg, $code)
     {

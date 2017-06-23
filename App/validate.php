@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class validate
+class Validate
 {
     public static function length($name, $min, $max)
     {

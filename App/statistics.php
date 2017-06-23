@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class statistics
+class Statistics
 {
     private $statisticsHits;
     private $id;

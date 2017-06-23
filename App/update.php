@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-class update
+class Update
 {
     private $Root;
     private $updateFiles;

@@ -1,9 +1,9 @@
 <?php
 namespace App;
 
-class crypt
+class Crypt
 {
-    public static function a($source)
+    public static function basicCrypt($source)
     {
         $name = str_split($source);
         for ($i = 0; $i < count($name)-1; $i++) {
@@ -17,7 +17,7 @@ class crypt
         return $source;
     }
 
-    public static function a_reverse($source)
+    public static function reverseBasicCrypt($source)
     {
         $name = str_split($source);
         for ($i = 0; $i < count($name)-1; $i++) {
@@ -31,7 +31,7 @@ class crypt
         return $source;
     }
 
-    public static function b($source)
+    public static function advacedCrypt($source)
     {
         $array_name1 = str_split($source);
         $array_name2 = array();
