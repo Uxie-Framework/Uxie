@@ -1,8 +1,9 @@
 <?php
+
 namespace config;
 
 // database configuration :
-class Db
+class db
 {
     public static $host = 'localhost';
     public static $name = 'root';

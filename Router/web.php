@@ -1,11 +1,19 @@
 <?php
+
 namespace Router;
 
 class web
 {
     protected $routes = [
-        '' => 'index',
-        'index' => 'index',
+        ''      => 'index',
         'error' => 'error',
+    ];
+
+    protected $priorMiddleware = [
+        '' => 'MainMiddleware',
+    ];
+
+    protected $lateMiddleware = [
+
     ];
 }
