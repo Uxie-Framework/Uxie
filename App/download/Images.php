@@ -1,10 +1,11 @@
 <?php
+
 namespace App\download;
 
 class Images extends Download
 {
-    private $Files = array();
-    private $Links = array();
+    private $Files = [];
+    private $Links = [];
     private $Link;
 
     public function __construct($Link, $Target)

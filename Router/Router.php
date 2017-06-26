@@ -1,12 +1,12 @@
 <?php
+
 namespace Router;
 
-use App\ThrowError;
 use Exception;
 
 class Router extends web
 {
-    public $data = array();
+    public $data = [];
     public $file;
     private $url;
 
@@ -60,7 +60,7 @@ class Router extends web
 
     public static function route($url)
     {
-        $host = "http" . (($_SERVER['SERVER_PORT'] == 443) ? "s://" : "://") . $_SERVER['HTTP_HOST'].'/';
+        $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
         header('Location: '.$host.$url);
     }
 }

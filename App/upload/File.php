@@ -8,7 +8,7 @@ class File extends Validate
     {
         if (!$File) {
             $File = [
-                'name' => $_FILES[$key]['name'],
+                'name'     => $_FILES[$key]['name'],
                 'tmp_name' => $_FILES[$key]['tmp_name'],
             ];
         }
@@ -23,14 +23,16 @@ class File extends Validate
     {
         if (is_dir($newPath) && is_writable($newPath)) {
             if (empty($this->Errors)) {
-                $Path = $newPath . DIRECTORY_SEPARATOR . $this->getName() . '.' . $this->getExtension();
+                $Path = $newPath.DIRECTORY_SEPARATOR.$this->getName().'.'.$this->getExtension();
                 move_uploaded_file($this->getTmpName(), $Path);
-                return ['name' => $this->getName() . '.' . $this->getExtension(), 'dir' => $Path];
+
+                return ['name' => $this->getName().'.'.$this->getExtension(), 'dir' => $Path];
             } else {
                 return false;
             }
         } else {
             $this->Errors[] = "No access to this directory $newPath";
+
             return false;
         }
     }

@@ -2,7 +2,7 @@
 include '../vendor/autoload.php';
 $true = 0;
 $false = 0;
-$content = new App\update($_SERVER["DOCUMENT_ROOT"].'/update');
+$content = new App\update($_SERVER['DOCUMENT_ROOT'].'/update');
 
 foreach ($content->Success as $key) {
     if ($key === false) {
@@ -32,9 +32,9 @@ foreach ($content->Success as $key) {
     </head>
     <body>
         <?php
-        echo "<h1>files updated : ".count($content->Success)."</h1><br><br />";
-        echo "<h3>files Successfuly updated : ".$true."</h3><br />";
-        echo "<h3>files faild to update : ".$false."</h3><br />";
+        echo '<h1>files updated : '.count($content->Success).'</h1><br><br />';
+        echo '<h3>files Successfuly updated : '.$true.'</h3><br />';
+        echo '<h3>files faild to update : '.$false.'</h3><br />';
         if (empty($false)) {
             echo '<script>swal("Great!", "All files are updated", "success");</script>';
         }
