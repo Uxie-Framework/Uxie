@@ -1,15 +1,12 @@
 <?php
+
 namespace Models;
 
-use PDO;
-use config;
-use App\ThrowError;
 use App\log;
+use config;
 use Exception;
+use PDO;
 
-/**
- *
- */
 abstract class Model
 {
     protected $table = '';
@@ -20,7 +17,7 @@ abstract class Model
         try {
             $this->pdo = new PDO('mysql:host='.config\db::$host.';dbname='.config\db::$database, config\db::$name, config\db::$pass);
         } catch (PDOException $e) {
-            throw new Exception("cant connect to database ".$e->getMessage(), $e->getCode());
+            throw new Exception('cant connect to database '.$e->getMessage(), $e->getCode());
         }
     }
 
@@ -37,6 +34,7 @@ abstract class Model
             log::queryError(implode(' ', $stm->errorInfo()), $stm->errorCode());
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
+
         return $stm;
     }
 
@@ -44,6 +42,7 @@ abstract class Model
     {
         try {
             $result = $this->pdo->query($query);
+
             return $result;
         } catch (PDOException $e) {
             throw new Exception($e->getMessage(), $e->getCode());
@@ -53,7 +52,7 @@ abstract class Model
     public function get(array $columns, array $conditions = null)
     {
         $query = 'select '.implode($columns, ',')." from $this->table";
-        $inputs = array();
+        $inputs = [];
         if (!is_null($conditions)) {
             $query .= ' where ';
             foreach ($conditions as $key) {
@@ -63,6 +62,7 @@ abstract class Model
         }
         $stm = $this->execute($query, $inputs);
         $data = $stm->fetchAll(PDO::FETCH_OBJ);
+
         return $data;
     }
 

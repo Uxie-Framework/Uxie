@@ -1,10 +1,11 @@
 <?php
+
 namespace Router;
 
 class web
 {
     protected $routes = [
-        '' => 'index',
+        ''      => 'index',
         'error' => 'error',
     ];
 

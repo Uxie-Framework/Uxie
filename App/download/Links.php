@@ -1,10 +1,11 @@
 <?php
+
 namespace App\download;
 
 class Links extends Download
 {
-    private $Files = array();
-    private $Links = array();
+    private $Files = [];
+    private $Links = [];
     private $Link;
 
     public function __construct($Link, $Target)
@@ -27,7 +28,7 @@ class Links extends Download
     private function isDirectory($link)
     {
         $array = str_split($link);
-        if (end($array) == "/") {
+        if (end($array) == '/') {
             return true;
         } else {
             return false;
