@@ -29,7 +29,7 @@ abstract class Model
         return $this->pdo;
     }
 
-    private function execute($query, $inputs)
+    private function execute(string $query, array $inputs)
     {
         $stm = $this->pdo->prepare($query);
         $sth = $stm->execute($inputs);

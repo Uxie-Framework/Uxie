@@ -3,9 +3,9 @@ namespace App;
 
 class Crypt
 {
-    public static function basicCrypt($source)
+    public static function basicCrypt(string $string)
     {
-        $name = str_split($source);
+        $name = str_split($string);
         for ($i = 0; $i < count($name)-1; $i++) {
             $x = $name[$i];
             $name[$i] = $name[$i+1];
@@ -13,13 +13,13 @@ class Crypt
             $i++;
         }
         $name = implode("", $name);
-        $source = $name;
-        return $source;
+        $string = $name;
+        return $string;
     }
 
-    public static function reverseBasicCrypt($source)
+    public static function reverseBasicCrypt(string $string)
     {
-        $name = str_split($source);
+        $name = str_split($string);
         for ($i = 0; $i < count($name)-1; $i++) {
             $x = $name[$i + 1];
             $name[$i+1] = $name[$i];
@@ -27,20 +27,20 @@ class Crypt
             $i++;
         }
         $name = implode("", $name);
-        $source = $name;
-        return $source;
+        $string = $name;
+        return $string;
     }
 
-    public static function advacedCrypt($source)
+    public static function advacedCrypt(string $string)
     {
-        $array_name1 = str_split($source);
+        $array_name1 = str_split($string);
         $array_name2 = array();
         for ($i=0; $i < count($array_name1); $i++) {
             $array_name2[] = $array_name1[$i];
             $i++;
         }
         $salt = implode("", $array_name2);
-        $source = crypt(md5($name), $salt);
-        return $source;
+        $string = crypt(md5($name), $salt);
+        return $string;
     }
 }
