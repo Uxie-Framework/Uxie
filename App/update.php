@@ -14,6 +14,7 @@ class update
         $this->getDirectorys($this->updateFiles);
         $this->updateFiles();
     }
+
     // collecting files directorys
     private function getDirectorys($updateFiles)
     {
@@ -31,6 +32,7 @@ class update
             }
         }
     }
+
     // updating old files with new ones
     private function updateFiles()
     {
@@ -38,6 +40,7 @@ class update
             $this->success[] = file_put_contents('../'.$this->getRealDirectory($File), file_get_contents($File));
         }
     }
+
     // transforming directorys from inside to update file to main directory
     private function getRealDirectory($File)
     {
@@ -45,6 +48,7 @@ class update
         $updateFiles = explode('/', $this->updateFiles);
         $realDirectory = array_slice($File, count($updateFiles));
         $realDirectory = implode('/', $realDirectory);
+
         return $realDirectory;
     }
 }
