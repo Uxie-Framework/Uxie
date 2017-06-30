@@ -4,50 +4,47 @@ namespace App;
 
 class update
 {
-    private $Root;
     private $updateFiles;
-    private $Files = [];
-    public $Success = [];
+    private $files = [];
+    public $success = [];
 
-    public function __construct($updateFiles)
+    public function __construct()
     {
-        $this->Root = $_SERVER['DOCUMENT_ROOT'];
-        $this->updateFiles = $updateFiles;
+        $this->updateFiles = '../update';
         $this->getDirectorys($this->updateFiles);
         $this->updateFiles();
     }
-
-    private function getDirectorys($target)
+    // collecting files directorys
+    private function getDirectorys($updateFiles)
     {
-        $content = scandir($target);
+        $content = scandir($updateFiles);
         for ($i = 2; $i < count($content); $i++) {
             $string = str_split($content[$i]);
-            if (is_file($target.'/'.$content[$i])) {
+            if (is_file($updateFiles.'/'.$content[$i])) {
                 if ($string[0] != '.') {
-                    $this->Files[] = $target.'/'.$content[$i];
+                    $this->files[] = $updateFiles.'/'.$content[$i];
                 }
-            } elseif (is_dir($target.'/'.$content[$i])) {
+            } elseif (is_dir($updateFiles.'/'.$content[$i]) && $updateFiles.'/'.$content[$i] != $this->updateFiles.'/public') {
                 if ($string[0] != '.' && !strstr($content[$i], 'config')) {
-                    $this->getDirectorys($target.'/'.$content[$i]);
+                    $this->getDirectorys($updateFiles.'/'.$content[$i]);
                 }
             }
         }
     }
-
+    // updating old files with new ones
     private function updateFiles()
     {
-        foreach ($this->Files as $File) {
-            $this->Success[] = file_put_contents($this->Root.'/'.$this->getRealDirectory($File), file_get_contents($File));
+        foreach ($this->files as $File) {
+            $this->success[] = file_put_contents('../'.$this->getRealDirectory($File), file_get_contents($File));
         }
     }
-
+    // transforming directorys from inside to update file to main directory
     private function getRealDirectory($File)
     {
         $File = explode('/', $File);
         $updateFiles = explode('/', $this->updateFiles);
         $realDirectory = array_slice($File, count($updateFiles));
         $realDirectory = implode('/', $realDirectory);
-
         return $realDirectory;
     }
 }

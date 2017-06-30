@@ -70,6 +70,7 @@ abstract class Model
     {
         $in = implode(str_split(str_repeat('?', count($inputs))), ',');
         $query = "insert into $this->table(".implode($columns, ',').") values($in)";
+        $inputs = array_map('strip_tags', $inputs);
         $stm = $this->execute($query, $inputs);
     }
 

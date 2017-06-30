@@ -7,10 +7,11 @@ class web
     protected $routes = [
         ''      => 'index',
         'error' => 'error',
+        'update' => 'update',
     ];
 
     protected $priorMiddleware = [
-        '' => 'MainMiddleware',
+        'update' => 'updateMiddleware',
     ];
 
     protected $lateMiddleware = [
