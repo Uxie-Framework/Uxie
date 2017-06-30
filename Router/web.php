@@ -5,8 +5,8 @@ namespace Router;
 class web
 {
     protected $routes = [
-        ''      => 'index',
-        'error' => 'error',
+        ''       => 'index',
+        'error'  => 'error',
         'update' => 'update',
     ];
 
