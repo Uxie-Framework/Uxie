@@ -21,12 +21,16 @@ class File extends Validate
 
     public function Upload($newPath)
     {
+        $newPath = "Storage/$newPath";
+        if (!is_dir($newPath)) {
+            mkdir($newPath);
+        }
         if (is_dir($newPath) && is_writable($newPath)) {
             if (empty($this->Errors)) {
-                $Path = $newPath.DIRECTORY_SEPARATOR.$this->getName().'.'.$this->getExtension();
-                move_uploaded_file($this->getTmpName(), $Path);
+                $path = $newPath.DIRECTORY_SEPARATOR.$this->getName().'.'.$this->getExtension();
+                move_uploaded_file($this->getTmpName(), $path);
 
-                return ['name' => $this->getName().'.'.$this->getExtension(), 'dir' => $Path];
+                return ['name' => $this->getName().'.'.$this->getExtension(), 'dir' => $path];
             } else {
                 return false;
             }
