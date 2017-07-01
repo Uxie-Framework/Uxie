@@ -15,6 +15,6 @@
     <h1 style="font-size: 100px;color: rgb(236, 18, 103)">Error</h1>
     <h2><?php echo $router->data[0] ?></h2><br>
     <h2>Error Code : <?php echo $router->data[1]; ?></h2>
-    <h4>Please contact admin : <?php echo config\admin::$email ?></h4>
+    <h4>Please contact admin : <?php echo getenv('ADMIN_EMAIL') ?></h4>
   </body>
 </html>

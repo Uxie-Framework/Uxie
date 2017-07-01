@@ -1,6 +1,6 @@
 {
     "name": "uxie/uxie",
-    "description": "Uxie a Php light mvc framework",
+    "description": "Uxie a light mvc Micro-Framework",
     "keywords": ["framework", "uxie"],
     "type": "project",
     "license": "MIT",
@@ -24,8 +24,7 @@
       "App\\":"App/",
       "Controllers\\":"Controllers/",
       "Models\\":"Models/",
-      "Router\\":"Router/",
-      "config\\":"config/"
+      "Router\\":"Router/"
     }
   }
 }

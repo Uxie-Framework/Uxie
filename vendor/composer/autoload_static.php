@@ -7,10 +7,6 @@ namespace Composer\Autoload;
 class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
 {
     public static $prefixLengthsPsr4 = array (
-        'c' => 
-        array (
-            'config\\' => 7,
-        ),
         'R' => 
         array (
             'Router\\' => 7,
@@ -18,6 +14,10 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
         'M' => 
         array (
             'Models\\' => 7,
+        ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
         ),
         'C' => 
         array (
@@ -30,10 +30,6 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
     );
 
     public static $prefixDirsPsr4 = array (
-        'config\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/config',
-        ),
         'Router\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Router',
@@ -41,6 +37,10 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Models',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Controllers\\' => 
         array (

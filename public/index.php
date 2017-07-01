@@ -1,5 +1,4 @@
 <?php
-
 // import composer autoloader
 require_once '../vendor/autoload.php';
 //import default settings
@@ -9,6 +8,7 @@ use Dotenv\Dotenv; // use phpdotenv namespace in the vendor folder
 use Router\Router;
 
 $router = new Router();
+
 $dotenv = new Dotenv('../'); // specify the filename to use (.env in the root folder)
 $dotenv->load(); // load the .env file
 

@@ -63,4 +63,10 @@ class Router extends web
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
         header('Location: '.$host.$url);
     }
+
+    public function url($url)
+    {
+        $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
+        return $host.$url;
+    }
 }
