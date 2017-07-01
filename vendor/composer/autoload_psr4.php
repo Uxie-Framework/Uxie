@@ -9,6 +9,7 @@ return array(
     'config\\' => array($baseDir . '/config'),
     'Router\\' => array($baseDir . '/Router'),
     'Models\\' => array($baseDir . '/Models'),
+    'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Controllers\\' => array($baseDir . '/Controllers'),
     'App\\' => array($baseDir . '/App'),
 );

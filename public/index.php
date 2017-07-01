@@ -6,8 +6,11 @@ require_once '../vendor/autoload.php';
 require_once '../defaults.php';
 
 use Router\Router;
+use Dotenv\Dotenv; // use phpdotenv namespace in the vendor folder
 
 $router = new Router();
+$dotenv = new Dotenv('../'); // specify the filename to use (.env in the root folder)
+$dotenv->load(); // load the .env file
 
 // middleware to be executed before everything else.
 $router->priorMiddleware();
