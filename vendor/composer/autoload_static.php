@@ -19,6 +19,10 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
         array (
             'Models\\' => 7,
         ),
+        'D' => 
+        array (
+            'Dotenv\\' => 7,
+        ),
         'C' => 
         array (
             'Controllers\\' => 12,
@@ -41,6 +45,10 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Models',
+        ),
+        'Dotenv\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
         'Controllers\\' => 
         array (

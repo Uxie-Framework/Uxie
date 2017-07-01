@@ -6,14 +6,15 @@
     "license": "MIT",
 
     "require": {
-        "php": ">=7.0"
+        "php": ">=7.0",
+        "vlucas/phpdotenv": "^2.4"
     },
 
     "authors": [
         {
             "name": "Mohamed Amine",
             "email": "MohamedAmine1c@gmail.com",
-            "homepage": "https://github.com/MohamedAmine-C",
+            "homepage": "https://github.com/MohamedAmine-C/Uxie",
             "role": "Developer"
         }
     ],
