@@ -38,7 +38,7 @@ class Router extends web
     {
         return $this->file;
     }
-
+    //return data stored in url.
     public function getData()
     {
         return $this->data;
@@ -57,13 +57,13 @@ class Router extends web
             require_once '../Middlewares/'.$this->lateMiddleware[$this->url].'.php';
         }
     }
-
+    // redirect to a specific url
     public static function route($url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
         header('Location: '.$host.$url);
     }
-
+    // return full url
     public function url($url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
