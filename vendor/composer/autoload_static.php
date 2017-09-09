@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
 {
     public static $prefixLengthsPsr4 = array (
+        'U' => 
+        array (
+            'Upload\\' => 7,
+        ),
         'R' => 
         array (
             'Router\\' => 7,
@@ -30,6 +34,10 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
     );
 
     public static $prefixDirsPsr4 = array (
+        'Upload\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mohamed-amine/file-uploader/upload',
+        ),
         'Router\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Router',

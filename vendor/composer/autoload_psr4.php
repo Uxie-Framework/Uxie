@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Upload\\' => array($vendorDir . '/mohamed-amine/file-uploader/upload'),
     'Router\\' => array($baseDir . '/Router'),
     'Models\\' => array($baseDir . '/Models'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),

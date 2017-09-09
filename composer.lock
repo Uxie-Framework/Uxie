@@ -4,8 +4,51 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d9367cd9b3663ec23f29cb19a423e746",
+    "content-hash": "a3f92d338cb13d95a50ecd074a18b255",
     "packages": [
+        {
+            "name": "mohamed-amine/file-uploader",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedAmine-C/File-Uploader.git",
+                "reference": "711c31c78446a89cc01538598473048b1418333e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedAmine-C/File-Uploader/zipball/711c31c78446a89cc01538598473048b1418333e",
+                "reference": "711c31c78446a89cc01538598473048b1418333e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Upload\\": "upload/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine-C/File-Uploader",
+                    "role": "Developer"
+                }
+            ],
+            "description": "a light PHP script that upload your files/images with easy steps",
+            "keywords": [
+                "file",
+                "image",
+                "upload"
+            ],
+            "time": "2017-09-08 18:41:28"
+        },
         {
             "name": "vlucas/phpdotenv",
             "version": "v2.4.0",
@@ -60,7 +103,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "mohamed-amine/file-uploader": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

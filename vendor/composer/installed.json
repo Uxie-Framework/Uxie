@@ -50,5 +50,50 @@
             "env",
             "environment"
         ]
+    },
+    {
+        "name": "mohamed-amine/file-uploader",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/MohamedAmine-C/File-Uploader.git",
+            "reference": "711c31c78446a89cc01538598473048b1418333e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/MohamedAmine-C/File-Uploader/zipball/711c31c78446a89cc01538598473048b1418333e",
+            "reference": "711c31c78446a89cc01538598473048b1418333e",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.0"
+        },
+        "time": "2017-09-08T18:41:28+00:00",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "Upload\\": "upload/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Mohamed Amine",
+                "email": "MohamedAmine1c@gmail.com",
+                "homepage": "https://github.com/MohamedAmine-C/File-Uploader",
+                "role": "Developer"
+            }
+        ],
+        "description": "a light PHP script that upload your files/images with easy steps",
+        "keywords": [
+            "file",
+            "image",
+            "upload"
+        ]
     }
 ]

@@ -2,12 +2,13 @@
     "name": "uxie/uxie",
     "description": "Uxie a light mvc Micro-Framework",
     "keywords": ["framework", "uxie"],
-    "type": "project",
+    "type": "framework",
     "license": "MIT",
 
     "require": {
         "php": ">=7.0",
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "mohamed-amine/file-uploader": "dev-master"
     },
 
     "authors": [
