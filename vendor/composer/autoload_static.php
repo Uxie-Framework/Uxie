@@ -6,6 +6,10 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
 {
+    public static $files = array (
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+    );
+
     public static $prefixLengthsPsr4 = array (
         'U' => 
         array (
@@ -15,9 +19,21 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
         array (
             'Router\\' => 7,
         ),
+        'P' => 
+        array (
+            'Psr\\Http\\Message\\' => 17,
+        ),
         'M' => 
         array (
             'Models\\' => 7,
+        ),
+        'I' => 
+        array (
+            'Intervention\\Image\\' => 19,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'D' => 
         array (
@@ -42,9 +58,21 @@ class ComposerStaticInit23088874fbcf14c7e3c26102bb30d248
         array (
             0 => __DIR__ . '/../..' . '/Router',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Models',
+        ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Dotenv\\' => 
         array (

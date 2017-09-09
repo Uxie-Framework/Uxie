@@ -8,7 +8,10 @@ $baseDir = dirname($vendorDir);
 return array(
     'Upload\\' => array($vendorDir . '/mohamed-amine/file-uploader/upload'),
     'Router\\' => array($baseDir . '/Router'),
+    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
     'Models\\' => array($baseDir . '/Models'),
+    'Intervention\\Image\\' => array($vendorDir . '/intervention/image/src/Intervention/Image'),
+    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'Dotenv\\' => array($vendorDir . '/vlucas/phpdotenv/src'),
     'Controllers\\' => array($baseDir . '/Controllers'),
     'App\\' => array($baseDir . '/App'),
