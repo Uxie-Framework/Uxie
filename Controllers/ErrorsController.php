@@ -1,4 +1,5 @@
 <?php
+
 namespace Controllers;
 
 use Router\Router as Router;

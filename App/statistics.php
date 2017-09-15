@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Statistics
+class statistics
 {
     private $statisticsHits;
     private $id;

@@ -1,8 +1,7 @@
 <?php
 /**
- * Uxie - A PHP Micro-Framework
+ * Uxie - A PHP Micro-Framework.
  *
- * @package  Uxie
  * @author   Cheribet Mohamed Amine <MohamedAmine1c@gmail.com>
  */
 
