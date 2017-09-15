@@ -2,7 +2,7 @@
 
 namespace App;
 
-class update
+class Update
 {
     private $updateFiles;
     private $files = [];
