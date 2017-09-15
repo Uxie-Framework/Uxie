@@ -7,7 +7,7 @@ use Exception;
 class Router extends web
 {
     public $data = [];
-    public $file;
+    public $controller;
     private $url;
 
     public function __construct()
@@ -15,13 +15,13 @@ class Router extends web
         $url = urldecode(ltrim($_SERVER['REQUEST_URI'], '/'));
         if (array_key_exists($url, $this->routes)) {
             $this->url = $url;
-            $this->file = '../Views/'.$this->routes[$url].'.php';
+            $this->controller = $this->routes[$url];
         } else {
             $url = explode('/', $url);
             while (!empty($url)) {
                 $this->data[] = str_replace('+', ' ', array_pop($url));
                 if (array_key_exists(implode('/', $url), $this->routes) && !empty($url)) {
-                    $this->file = '../views/'.$this->routes[implode('/', $url)].'.php';
+                    $this->controller = $this->routes[implode('/', $url)];
                     $this->url = implode('/', $url);
                     break;
                 }
@@ -29,14 +29,23 @@ class Router extends web
         }
         $this->data = array_reverse($this->data);
 
-        if (!file_exists($this->file)) {
+        if (empty($this->controller)) {
             throw new Exception('Sorry this link does not exist', '404');
         }
     }
-
-    public function getView()
+    // this method fetch class and method names and then calls them.
+    public function execute()
     {
-        return $this->file;
+        $parameters = explode('@', $this->controller);
+        $class = '\Controllers\\'.$parameters[0];
+        $method = $parameters[1];
+        $controller = new $class();
+        call_user_func_array(array($controller, $method), $this->data);
+    }
+
+    public static function getView(string $view, array $data = null)
+    {
+        require_once '../Views/'.$view.'.php';
     }
     //return data stored in url.
     public function getData()
@@ -47,7 +56,13 @@ class Router extends web
     public function priorMiddleware()
     {
         if (array_key_exists($this->url, $this->priorMiddleware)) {
-            require_once '../Middlewares/'.$this->priorMiddleware[$this->url].'.php';
+            if (!is_array($this->priorMiddleware[$this->url])) {
+                require_once '../Middlewares/'.$this->priorMiddleware[$this->url].'.php';
+            } else {
+                foreach ($this->priorMiddleware[$this->url] as $key) {
+                    require_once '../Middlewares/'.$key.'.php';
+                }
+            }
         }
     }
 
@@ -57,16 +72,21 @@ class Router extends web
             require_once '../Middlewares/'.$this->lateMiddleware[$this->url].'.php';
         }
     }
-    // redirect to a specific url
-    public static function route($url)
+    // redirect to a specific url (only inside application);
+    public static function route(string $url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
         header('Location: '.$host.$url);
     }
-    // return full url
-    public function url($url)
+    // return full url (only inside application)
+    public function url(string $url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
         return $host.$url;
+    }
+    // reidrect to an external url
+    public static function redirect(string $url)
+    {
+        header('Location: '.$url);
     }
 }

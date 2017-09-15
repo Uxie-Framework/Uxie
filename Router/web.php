@@ -6,15 +6,18 @@ abstract class web
 {
     // key for url, value for view
     protected $routes = [
-        ''       => 'index',
-        'error'  => 'error',
-        'update' => 'update',
+        ''       => 'IndexController@index',
+        'error'  => 'ErrorsController@displayError',
     ];
 
     // Middlewares to be executed before the script
-    // Route for first value ,Middleware for second value
+    // Route for first value ,Middleware name for second value
     protected $priorMiddleware = [
-        //'update' => 'updateMiddleware', to update this framework
+        // 'exampleRoute' => 'exampleMiddlewareFile',
+        // how to Assign Multi Middlewares
+        // 'exampleRoute' => ['exampleMiddlewareFile',
+        //                    'example2MiddlewareFile',
+        //                ],
     ];
 
     // Middlewares to be executed after the script

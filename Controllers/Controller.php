@@ -1,9 +1,10 @@
 <?php
+namespace Controllers;
 
-class Controller
+abstract class Controller
 {
     public function __construct()
     {
-        # code...
+        //
     }
 }

@@ -1,5 +1,5 @@
 .DS_Store
 vendor/
-log/*.log
+log/
 composer.phar
 .env

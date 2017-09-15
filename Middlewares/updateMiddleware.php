@@ -1,4 +1,4 @@
 <?php
 // This Middleware is responsible for updating the framework
-die('Please add conditions to your update Middleware');
+die('Please add some protection to this middleware');
 $update = new App\Update();

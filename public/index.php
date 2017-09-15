@@ -1,4 +1,11 @@
 <?php
+/**
+ * Uxie - A PHP Micro-Framework
+ *
+ * @package  Uxie
+ * @author   Cheribet Mohamed Amine <MohamedAmine1c@gmail.com>
+ */
+
 // import composer autoloader
 require_once '../vendor/autoload.php';
 //import default settings
@@ -14,7 +21,7 @@ $dotenv->load(); // load the .env file
 
 // middleware to be executed before everything else.
 $router->priorMiddleware();
-// requiring view related route
-require_once $router->getView();
+// executed controller method realted to route
+$router->execute();
 // middleware to be executed after everything else.
 $router->lateMiddleware();

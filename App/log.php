@@ -2,7 +2,7 @@
 
 namespace App;
 
-class log
+class Log
 {
     public static function queryError($error, $position)
     {
