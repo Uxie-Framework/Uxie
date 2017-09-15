@@ -31,6 +31,7 @@ abstract class Model
         $sth = $stm->execute($inputs);
         if (!$sth) {
             log::queryError(implode(' ', $stm->errorInfo()), $stm->errorCode());
+
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
 

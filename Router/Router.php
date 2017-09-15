@@ -33,6 +33,7 @@ class Router extends web
             throw new Exception('Sorry this link does not exist', '404');
         }
     }
+
     // this method fetch class and method names and then calls them.
     public function execute()
     {
@@ -40,13 +41,14 @@ class Router extends web
         $class = '\Controllers\\'.$parameters[0];
         $method = $parameters[1];
         $controller = new $class();
-        call_user_func_array(array($controller, $method), $this->data);
+        call_user_func_array([$controller, $method], $this->data);
     }
 
     public static function getView(string $view, array $data = null)
     {
         require_once '../Views/'.$view.'.php';
     }
+
     //return data stored in url.
     public function getData()
     {
@@ -72,18 +74,22 @@ class Router extends web
             require_once '../Middlewares/'.$this->lateMiddleware[$this->url].'.php';
         }
     }
+
     // redirect to a specific url (only inside application);
     public static function route(string $url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
         header('Location: '.$host.$url);
     }
+
     // return full url (only inside application)
     public function url(string $url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
+
         return $host.$url;
     }
+
     // reidrect to an external url
     public static function redirect(string $url)
     {
