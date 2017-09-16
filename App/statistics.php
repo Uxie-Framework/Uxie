@@ -10,7 +10,6 @@ class statistics
     private $browser;
     private $target;
     private $track;
-    private $hits;
     private $date;
 
     public function __construct()

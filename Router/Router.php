@@ -71,7 +71,13 @@ class Router extends web
     public function lateMiddleware()
     {
         if (array_key_exists($this->url, $this->lateMiddleware)) {
-            require_once '../Middlewares/'.$this->lateMiddleware[$this->url].'.php';
+            if (!is_array($this->lateMiddleware[$this->url])) {
+                require_once '../Middlewares/'.$this->lateMiddleware[$this->url].'.php';
+            } else {
+                foreach ($this->lateMiddleware[$this->url] as $key) {
+                    require_once '../Middlewares/'.$key.'.php';
+                }
+            }
         }
     }
 

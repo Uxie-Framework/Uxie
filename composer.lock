@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "69471437802bcc0f8dedd5754629f551",
+    "content-hash": "7c59ffa3d8ae1003304cf8ba2f976b37",
     "packages": [
         {
             "name": "guzzlehttp/psr7",
@@ -143,7 +143,7 @@
         },
         {
             "name": "mohamed-amine/file-uploader",
-            "version": "dev-master",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedAmine-C/File-Uploader.git",
@@ -182,7 +182,7 @@
                 "image",
                 "upload"
             ],
-            "time": "2017-09-08 18:41:28"
+            "time": "2017-09-08T18:41:28+00:00"
         },
         {
             "name": "psr/http-message",
@@ -288,9 +288,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "mohamed-amine/file-uploader": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

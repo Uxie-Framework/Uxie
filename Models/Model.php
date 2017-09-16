@@ -71,7 +71,7 @@ abstract class Model
         $in = implode(str_split(str_repeat('?', count($inputs))), ',');
         $query = "insert into $this->table(".implode($columns, ',').") values($in)";
         $inputs = array_map('strip_tags', $inputs);
-        $stm = $this->execute($query, $inputs);
+        $this->execute($query, $inputs);
     }
 
     public function update(array $columns, array $inputs, array $conditions = null)
@@ -88,7 +88,7 @@ abstract class Model
                 $inputs[] = $key[3];
             }
         }
-        $stm = $this->execute($query, $inputs);
+        $this->execute($query, $inputs);
     }
 
     public function delete(array $conditions)
@@ -98,6 +98,6 @@ abstract class Model
             $query .= " $key[0] $key[1] $key[2] ?";
             $inputs[] = $key[3];
         }
-        $stm = $this->execute($query, $inputs);
+        $this->execute($query, $inputs);
     }
 }
