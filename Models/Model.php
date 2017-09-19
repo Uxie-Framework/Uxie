@@ -8,8 +8,11 @@ use PDO;
 
 abstract class Model
 {
-    protected $table = '';
-    private $pdo;
+    protected static $table = '';
+    protected $pdo;
+    protected static $query;
+    protected static $inputs;
+    protected static $whereFlag = 'where'; // this variable is to know if where method already called
 
     public function __construct()
     {
@@ -25,19 +28,6 @@ abstract class Model
         return $this->pdo;
     }
 
-    private function execute(string $query, array $inputs)
-    {
-        $stm = $this->pdo->prepare($query);
-        $sth = $stm->execute($inputs);
-        if (!$sth) {
-            log::queryError(implode(' ', $stm->errorInfo()), $stm->errorCode());
-
-            throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
-        }
-
-        return $stm;
-    }
-
     public function query($query)
     {
         try {
@@ -49,55 +39,91 @@ abstract class Model
         }
     }
 
-    public function get(array $columns, array $conditions = null)
+    public function get()
     {
-        $query = 'select '.implode($columns, ',')." from $this->table";
-        $inputs = [];
-        if (!is_null($conditions)) {
-            $query .= ' where ';
-            foreach ($conditions as $key) {
-                $query .= " $key[0] $key[1] $key[2] ?";
-                $inputs[] = $key[3];
-            }
+        $statment = $this->pdo->prepare(static::$query);
+        $verfierStatment = $statment->execute($this->inputs);
+        if (!$verfierStatment) {
+            log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
+            throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
-        $stm = $this->execute($query, $inputs);
-        $data = $stm->fetchAll(PDO::FETCH_OBJ);
-
+        $data = $statment->fetchAll(PDO::FETCH_OBJ);
         return $data;
     }
 
-    public function insert(array $columns, array $inputs)
+    public function execute()
     {
-        $in = implode(str_split(str_repeat('?', count($inputs))), ',');
-        $query = "insert into $this->table(".implode($columns, ',').") values($in)";
-        $inputs = array_map('strip_tags', $inputs);
-        $this->execute($query, $inputs);
+        $statment = $this->pdo->prepare(static::$query);
+        $verfierStatment = $statment->execute($this->inputs);
+        if (!$verfierStatment) {
+            log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
+            throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
+        }
     }
 
-    public function update(array $columns, array $inputs, array $conditions = null)
+    public static function select(array $columns)
     {
-        $query = "update $this->table set";
-        foreach ($columns as $key) {
-            $query .= " $key = ?,";
-        }
-        $query = rtrim($query, ',');
-        if (!is_null($conditions)) {
-            $query .= ' where';
-            foreach ($conditions as $key) {
-                $query .= " $key[0] $key[1] $key[2] ?";
-                $inputs[] = $key[3];
-            }
-        }
-        $this->execute($query, $inputs);
+        static::$query = 'select '.implode($columns, ',')." from ".static::$table;
+        return new static();
     }
 
-    public function delete(array $conditions)
+    public static function insert(array $columns, array $inputs)
     {
-        $query = "delete from $this->table where ";
-        foreach ($conditions as $key) {
-            $query .= " $key[0] $key[1] $key[2] ?";
-            $inputs[] = $key[3];
-        }
-        $this->execute($query, $inputs);
+        $columns = implode(',', $columns);
+        $values  = implode(',', array_fill(0, count($inputs), '?'));
+        static::$query .= "insert into ".static::$table."($columns) values($values)";
+        static::$inputs = $inputs;
+        return new static();
+    }
+
+    public static function update(array $columns, array $inputs)
+    {
+        $columns = implode(',', array_map(function ($value) {
+            return "$value = ?";
+        }, $columns));
+        $values  = implode(',', array_fill(0, count($inputs), '?'));
+        static::$query = "update ".static::$table." set $columns ";
+        static::$inputs = $inputs;
+        return new static();
+    }
+
+    public static function delete()
+    {
+        static::$query = 'delete from '.static::$table;
+        return new staitc();
+    }
+
+    public function where(string $column, string $condition, string $input)
+    {
+        static::$query .= static::$whereFlag." $column $condition ? ";
+        static::$whereFlag = ' and ';
+        static::$inputs[] = $input;
+        return $this;
+    }
+
+    public function or(string $column, string $condition, string $input)
+    {
+        static::$query .= " or $column $condition ? ";
+        static::$inputs[] = $input;
+        return $this;
+    }
+
+    public function groupBy(string $column)
+    {
+        static::$query .= " group by $column ";
+        return $this;
+    }
+
+    public function orderBy(string $column, string $order = 'desc')
+    {
+        static::$query .= " order by $column $order ";
+        return $this;
+    }
+
+    public function limit(int $limit, int $offset = null)
+    {
+        $offset = ($offset) ? ','.$offset : '';
+        static::$query .= " limit $limit $offset";
+        return $this;
     }
 }
