@@ -1,6 +1,0 @@
-.DS_Store
-vendor/
-log/
-public/Storage/
-composer.phar
-.env
