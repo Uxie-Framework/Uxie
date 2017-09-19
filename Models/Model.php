@@ -45,9 +45,11 @@ abstract class Model
         $verfierStatment = $statment->execute($this->inputs);
         if (!$verfierStatment) {
             log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
+
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
         $data = $statment->fetchAll(PDO::FETCH_OBJ);
+
         return $data;
     }
 
@@ -57,6 +59,7 @@ abstract class Model
         $verfierStatment = $statment->execute($this->inputs);
         if (!$verfierStatment) {
             log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
+
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
     }
@@ -64,6 +67,7 @@ abstract class Model
     public static function select(array $columns)
     {
         static::$query = 'select '.implode($columns, ',').' from '.static::$table;
+
         return new static();
     }
 
@@ -71,8 +75,9 @@ abstract class Model
     {
         $columns = implode(',', $columns);
         $values = implode(',', array_fill(0, count($inputs), '?'));
-+        static::$query .= 'insert into '.static::$table."($columns) values($values)";
+        +static::$query .= 'insert into '.static::$table."($columns) values($values)";
         static::$inputs = $inputs;
+
         return new static();
     }
 
@@ -82,14 +87,16 @@ abstract class Model
             return "$value = ?";
         }, $columns));
         $values = implode(',', array_fill(0, count($inputs), '?'));
-+        static::$query = 'update '.static::$table." set $columns ";
+        +static::$query = 'update '.static::$table." set $columns ";
         static::$inputs = $inputs;
+
         return new static();
     }
 
     public static function delete()
     {
         static::$query = 'delete from '.static::$table;
+
         return new staitc();
     }
 
@@ -98,6 +105,7 @@ abstract class Model
         static::$query .= static::$whereFlag." $column $condition ? ";
         static::$whereFlag = ' and ';
         static::$inputs[] = $input;
+
         return $this;
     }
 
@@ -105,18 +113,21 @@ abstract class Model
     {
         static::$query .= " or $column $condition ? ";
         static::$inputs[] = $input;
+
         return $this;
     }
 
     public function groupBy(string $column)
     {
         static::$query .= " group by $column ";
+
         return $this;
     }
 
     public function orderBy(string $column, string $order = 'desc')
     {
         static::$query .= " order by $column $order ";
+
         return $this;
     }
 
@@ -124,6 +135,7 @@ abstract class Model
     {
         $offset = ($offset) ? ','.$offset : '';
         static::$query .= " limit $limit $offset";
+
         return $this;
     }
 }
