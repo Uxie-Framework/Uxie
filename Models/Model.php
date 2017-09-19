@@ -71,7 +71,7 @@ abstract class Model
     {
         $columns = implode(',', $columns);
         $values = implode(',', array_fill(0, count($inputs), '?'));
-+       static::$query .= 'insert into '.static::$table."($columns) values($values)";
++        static::$query .= 'insert into '.static::$table."($columns) values($values)";
         static::$inputs = $inputs;
         return new static();
     }
@@ -82,7 +82,7 @@ abstract class Model
             return "$value = ?";
         }, $columns));
         $values = implode(',', array_fill(0, count($inputs), '?'));
-+       static::$query = 'update '.static::$table." set $columns ";
++        static::$query = 'update '.static::$table." set $columns ";
         static::$inputs = $inputs;
         return new static();
     }
