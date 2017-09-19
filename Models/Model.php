@@ -63,15 +63,15 @@ abstract class Model
 
     public static function select(array $columns)
     {
-        static::$query = 'select '.implode($columns, ',')." from ".static::$table;
+        static::$query = 'select '.implode($columns, ',').' from '.static::$table;
         return new static();
     }
 
     public static function insert(array $columns, array $inputs)
     {
         $columns = implode(',', $columns);
-        $values  = implode(',', array_fill(0, count($inputs), '?'));
-        static::$query .= "insert into ".static::$table."($columns) values($values)";
+        $values = implode(',', array_fill(0, count($inputs), '?'));
++       static::$query .= 'insert into '.static::$table."($columns) values($values)";
         static::$inputs = $inputs;
         return new static();
     }
@@ -81,8 +81,8 @@ abstract class Model
         $columns = implode(',', array_map(function ($value) {
             return "$value = ?";
         }, $columns));
-        $values  = implode(',', array_fill(0, count($inputs), '?'));
-        static::$query = "update ".static::$table." set $columns ";
+        $values = implode(',', array_fill(0, count($inputs), '?'));
++       static::$query = 'update '.static::$table." set $columns ";
         static::$inputs = $inputs;
         return new static();
     }
