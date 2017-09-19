@@ -4,7 +4,7 @@ namespace Controllers;
 
 use Router\Router as Router;
 
-class ErrorsController
+class ErrorsController extends Controller
 {
     public function displayError($code, $error)
     {

@@ -7,21 +7,22 @@ use Exception;
 class Router extends web
 {
     public $data = [];
-    public $controller;
+    public $route;
     private $url;
 
+    //this method do fetch data and route from requested url
     public function __construct()
     {
         $url = urldecode(ltrim($_SERVER['REQUEST_URI'], '/'));
-        if (array_key_exists($url, $this->routes)) {
+        if (array_key_exists($url, $this->routes)) { // in case requested url exist in routes
             $this->url = $url;
-            $this->controller = $this->routes[$url];
-        } else {
+            $this->route = $this->routes[$url];
+        } else { // in case requested url don't exist in url (case data passed in url)
             $url = explode('/', $url);
             while (!empty($url)) {
                 $this->data[] = str_replace('+', ' ', array_pop($url));
                 if (array_key_exists(implode('/', $url), $this->routes) && !empty($url)) {
-                    $this->controller = $this->routes[implode('/', $url)];
+                    $this->route = $this->routes[implode('/', $url)];
                     $this->url = implode('/', $url);
                     break;
                 }
@@ -29,7 +30,7 @@ class Router extends web
         }
         $this->data = array_reverse($this->data);
 
-        if (empty($this->controller)) {
+        if (empty($this->routes)) {
             throw new Exception('Sorry this link does not exist', '404');
         }
     }
@@ -37,11 +38,15 @@ class Router extends web
     // this method fetch class and method names and then calls them.
     public function execute()
     {
-        $parameters = explode('@', $this->controller);
-        $class = '\Controllers\\'.$parameters[0];
-        $method = $parameters[1];
-        $controller = new $class();
-        call_user_func_array([$controller, $method], $this->data);
+        if (strpos($this->route, '@') && !strpos($this->route, '/')) { // if route is in format of Class@method
+            $parameters = explode('@', $this->route);
+            $class = '\Controllers\\'.$parameters[0];
+            $method = $parameters[1];
+            $route = new $class();
+            call_user_func_array([$route, $method], $this->data);
+        } else { // any other case but Class@method format
+            $this->getView($this->route);
+        }
     }
 
     public static function getView(string $view, array $data = null)

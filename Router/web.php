@@ -6,8 +6,8 @@ abstract class web
 {
     // key for url, value for view
     protected $routes = [
-        ''       => 'IndexController@index',
-        'error'  => 'ErrorsController@displayError',
+        ''       => 'index', // using a view
+        'error'  => 'ErrorsController@displayError', // using a controller method
     ];
 
     // Middlewares to be executed before the script
