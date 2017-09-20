@@ -15,7 +15,7 @@ class Router extends web
     {
         $url = urldecode(ltrim($_SERVER['REQUEST_URI'], '/'));
         if (array_key_exists($url, $this->routes)) { // in case requested url exist in routes
-            $this->url = $url;
+            $this->url   = $url;
             $this->route = $this->routes[$url];
         } else { // in case requested url don't exist in url (case data passed in url)
             $url = explode('/', $url);
@@ -23,7 +23,7 @@ class Router extends web
                 $this->data[] = str_replace('+', ' ', array_pop($url));
                 if (array_key_exists(implode('/', $url), $this->routes) && !empty($url)) {
                     $this->route = $this->routes[implode('/', $url)];
-                    $this->url = implode('/', $url);
+                    $this->url   = implode('/', $url);
                     break;
                 }
             }
@@ -40,9 +40,9 @@ class Router extends web
     {
         if (strpos($this->route, '@') && !strpos($this->route, '/')) { // if route is in format of Class@method
             $parameters = explode('@', $this->route);
-            $class = '\Controllers\\'.$parameters[0];
-            $method = $parameters[1];
-            $route = new $class();
+            $class      = '\Controllers\\'.$parameters[0];
+            $method     = $parameters[1];
+            $route      = new $class();
             call_user_func_array([$route, $method], $this->data);
         } else { // any other case but Class@method format
             $this->getView($this->route);
@@ -105,5 +105,9 @@ class Router extends web
     public static function redirect(string $url)
     {
         header('Location: '.$url);
+    }
+    public static function getCurrentRoute()
+    {
+        return $this->route;
     }
 }
