@@ -94,10 +94,9 @@ class Router extends web
     }
 
     // return full url (only inside application)
-    public function url(string $url)
+    public function fullUrl(string $url)
     {
         $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
-
         return $host.$url;
     }
 
@@ -106,8 +105,8 @@ class Router extends web
     {
         header('Location: '.$url);
     }
-    public static function getCurrentRoute()
+    public static function getCurrentUrl()
     {
-        return $this->route;
+        return $this->url;
     }
 }

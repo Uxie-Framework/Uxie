@@ -19,9 +19,9 @@ $dotenv->load(); // load the .env file
 //import default settings
 require_once '../defaults.php';
 
-// middleware to be executed before everything else.
+// middleware to be executed before everything.
 $router->priorMiddleware();
 // executed controller method realted to route
 $router->execute();
-// middleware to be executed after everything else.
+// middleware to be executed after everything.
 $router->lateMiddleware();
