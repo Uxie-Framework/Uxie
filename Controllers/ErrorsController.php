@@ -12,6 +12,6 @@ class ErrorsController extends Controller
             $code = 'ERROR';
             $error = '404';
         }
-        Router::getView('error', ['code' => $code, 'error' => $error]);
+        view('error', ['code' => $code, 'error' => $error]);
     }
 }

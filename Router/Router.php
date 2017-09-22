@@ -45,19 +45,13 @@ class Router extends web
             $route      = new $class();
             call_user_func_array([$route, $method], $this->data);
         } else { // any other case but Class@method format
-            $this->getView($this->route);
+            view($this->route);
         }
     }
 
-    public static function getView(string $view, array $data = null)
+    public function getCurrentUrl()
     {
-        require_once '../Views/'.$view.'.php';
-    }
-
-    //return data stored in url.
-    public function getData()
-    {
-        return $this->data;
+        return $this->url.'/'.implode('/', $this->data);
     }
 
     public function priorMiddleware()
@@ -84,29 +78,5 @@ class Router extends web
                 }
             }
         }
-    }
-
-    // redirect to a specific url (only inside application);
-    public static function route(string $url)
-    {
-        $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
-        header('Location: '.$host.$url);
-    }
-
-    // return full url (only inside application)
-    public function fullUrl(string $url)
-    {
-        $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
-        return $host.$url;
-    }
-
-    // reidrect to an external url
-    public static function redirect(string $url)
-    {
-        header('Location: '.$url);
-    }
-    public function getCurrentUrl()
-    {
-        return $this->url.'/'.implode('/', $this->data);
     }
 }
