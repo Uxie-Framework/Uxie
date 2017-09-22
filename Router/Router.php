@@ -30,7 +30,7 @@ class Router extends web
         }
         $this->data = array_reverse($this->data);
 
-        if (empty($this->routes)) {
+        if (!isset($this->route)) {
             throw new Exception('Sorry this link does not exist', '404');
         }
     }
