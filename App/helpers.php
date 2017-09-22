@@ -4,6 +4,7 @@
 function fullUrl(string $url)
 {
     $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
+
     return $host.$url;
 }
 // redirect to a specific url (only inside application);
@@ -26,11 +27,13 @@ function view(string $view, array $data = null)
 function getData()
 {
     global $router;
+
     return $router->data;
 }
 //retur url with data
 function getCurrentUrl()
 {
     global $router;
+
     return $router->getCurrentUrl();
 }

@@ -2,8 +2,6 @@
 
 namespace App;
 
-use Router\Router;
-
 class throwError
 {
     public function __construct($msg, $code)

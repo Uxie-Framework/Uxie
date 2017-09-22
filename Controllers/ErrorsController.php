@@ -2,8 +2,6 @@
 
 namespace Controllers;
 
-use Router\Router as Router;
-
 class ErrorsController extends Controller
 {
     public function displayError($code, $error)
