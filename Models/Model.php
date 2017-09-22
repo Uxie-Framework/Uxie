@@ -42,7 +42,7 @@ abstract class Model
     public function get()
     {
         $statment = $this->pdo->prepare(static::$query);
-        $verfierStatment = $statment->execute($this->inputs);
+        $verfierStatment = $statment->execute(static::$inputs);
         if (!$verfierStatment) {
             log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
 
@@ -56,17 +56,36 @@ abstract class Model
     public function execute()
     {
         $statment = $this->pdo->prepare(static::$query);
-        $verfierStatment = $statment->execute($this->inputs);
+        $verfierStatment = $statment->execute(static::$inputs);
         if (!$verfierStatment) {
             log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
 
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
+        return $statment;
     }
 
-    public static function select(array $columns)
+    public function count()
     {
-        static::$query = 'select '.implode($columns, ',').' from '.static::$table;
+        $statment = $this->execute();
+        return $statment->rowCount();
+    }
+
+    public static function find(string $column, string $value)
+    {
+        $data = static::select(['*'])->where($column, '=', $value)->get();
+        return $data;
+    }
+
+    public static function findOrFail(string $column, string $value)
+    {
+        $exist = static::select(['*'])->where($column, '=', $value)->count();
+        return boolval($exist);
+    }
+
+    public static function select(array $columns = ['*'])
+    {
+        static::$query = 'select '.implode($columns, ',').' from '.static::$table.' ';
 
         return new static();
     }
@@ -75,7 +94,7 @@ abstract class Model
     {
         $columns = implode(',', $columns);
         $values = implode(',', array_fill(0, count($inputs), '?'));
-        +static::$query .= 'insert into '.static::$table."($columns) values($values)";
+        static::$query .= 'insert into '.static::$table."($columns) values($values)";
         static::$inputs = $inputs;
 
         return new static();
@@ -87,7 +106,7 @@ abstract class Model
             return "$value = ?";
         }, $columns));
         $values = implode(',', array_fill(0, count($inputs), '?'));
-        +static::$query = 'update '.static::$table." set $columns ";
+        static::$query = 'update '.static::$table." set $columns ";
         static::$inputs = $inputs;
 
         return new static();
@@ -102,7 +121,7 @@ abstract class Model
 
     public function where(string $column, string $condition, string $input)
     {
-        static::$query .= static::$whereFlag." $column $condition ? ";
+        static::$query .= ' '.static::$whereFlag." $column $condition ? ";
         static::$whereFlag = ' and ';
         static::$inputs[] = $input;
 

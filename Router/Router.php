@@ -105,8 +105,8 @@ class Router extends web
     {
         header('Location: '.$url);
     }
-    public static function getCurrentUrl()
+    public function getCurrentUrl()
     {
-        return $this->url;
+        return $this->url.'/'.implode('/', $this->data);
     }
 }

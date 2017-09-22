@@ -4,5 +4,5 @@ namespace Models;
 
 class statistics_uniq extends Model
 {
-    protected $table = 'statistics_uniq';
+    protected static $table = 'statistics_uniq';
 }
