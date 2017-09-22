@@ -62,24 +62,28 @@ abstract class Model
 
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
+
         return $statment;
     }
 
     public function count()
     {
         $statment = $this->execute();
+
         return $statment->rowCount();
     }
 
     public static function find(string $column, string $value)
     {
         $data = static::select(['*'])->where($column, '=', $value)->get();
+
         return $data;
     }
 
     public static function findOrFail(string $column, string $value)
     {
         $exist = static::select(['*'])->where($column, '=', $value)->count();
+
         return boolval($exist);
     }
 
