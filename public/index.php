@@ -8,14 +8,23 @@
 // import composer autoloader
 require_once '../vendor/autoload.php';
 
-use Dotenv\Dotenv; // use phpdotenv namespace in the vendor folder
+// use phpdotenv namespace in the vendor folder
+use Dotenv\Dotenv;
+use Kernel\Kernel;
 
-$dotenv = new Dotenv('../'); // specify the filename to use (.env in the root folder)
-$dotenv->load(); // load the .env file
+// specify the filename to use (.env in the root folder)
+$dotenv = new Dotenv('../');
+// load the .env file
+$dotenv->load();
 
 //import default settings
 require_once '../defaults.php';
+
 //preapring for launching application
 $Kernel = new Kernel();
+
 // launching application
 $Kernel->launch();
+
+// stop application
+$Kernel->stop();

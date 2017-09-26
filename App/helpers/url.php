@@ -7,7 +7,7 @@ function fullUrl(string $url)
 
     return $host.$url;
 }
-// redirect to a specific url (only inside application);
+// redirect to a specific url (inside application);
 function route(string $url)
 {
     $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
@@ -21,19 +21,12 @@ function redirect(string $url)
 // include a view
 function view(string $view, array $data = null)
 {
+    if ($data) {
+        $keys = array_keys($data);
+        $values = array_values($data);
+        for ($i=0; $i < count($keys); $i++) {
+            ${$keys[$i]} = $values[$i];
+        }
+    }
     require_once '../Views/'.$view.'.php';
-}
-//return data stored in url.
-function getData()
-{
-    global $router;
-
-    return $router->data;
-}
-//retur url with data
-function getCurrentUrl()
-{
-    global $router;
-
-    return $router->getCurrentUrl();
 }

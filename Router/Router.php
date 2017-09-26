@@ -13,7 +13,7 @@ class Router extends web
     //this method do fetch data and route from requested url
     public function __construct()
     {
-        $this->trimUrl()
+        $this->trimUrl();
     }
 
     // this method trim request url and find the right route for it
@@ -53,7 +53,11 @@ class Router extends web
     {
         return $this->url.'/'.implode('/', $this->data);
     }
-
+    //return data stored in url.
+    public function getData()
+    {
+        return $this->data;
+    }
     public function priorMiddleware()
     {
         if (array_key_exists($this->url, $this->priorMiddleware)) {
