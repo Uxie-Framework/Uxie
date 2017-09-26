@@ -16,8 +16,8 @@
   </head>
   <body>
     <h1 style="font-size: 7vw;color: rgb(236, 18, 103)">Error</h1>
-    <h2 style="font-size: 5vw;"><?php echo $data['error'] ?></h2><br>
-    <h2>Error Code : <?php echo $data['code']; ?></h2>
-    <h4>Please contact admin : <br><br><?php echo getenv('ADMIN_EMAIL') ?></h4>
+    <h2 style="font-size: 5vw;">{{$error}}</h2><br>
+    <h2>Error Code : {{$code}}</h2>
+    <h4>Please contact admin : <br><br>{{ getenv('ADMIN_EMAIL') }}</h4>
   </body>
 </html>

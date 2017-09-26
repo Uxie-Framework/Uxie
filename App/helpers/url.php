@@ -1,4 +1,5 @@
 <?php
+use Jenssegers\Blade\Blade;
 
 // return full valide url (inside application)
 function fullUrl(string $url)
@@ -21,12 +22,10 @@ function redirect(string $url)
 // include a view
 function view(string $view, array $data = null)
 {
+    $blade = new Blade('../views', '../cache/blade');
     if ($data) {
-        $keys = array_keys($data);
-        $values = array_values($data);
-        for ($i=0; $i < count($keys); $i++) {
-            ${$keys[$i]} = $values[$i];
-        }
+        echo $blade->make($view, $data);
+    } else {
+        echo $blade->make($view);
     }
-    require_once '../Views/'.$view.'.php';
 }

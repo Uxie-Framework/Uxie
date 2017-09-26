@@ -2,6 +2,7 @@
 namespace Kernel;
 
 use Router\Router as Router;
+use Jenssegers\Blade\Blade;
 
 /**
  * This class is responsible for launching the application
@@ -35,7 +36,8 @@ class Kernel
             $route = new $class();
             call_user_func_array([$route, $method], $this->router->data);
         } else { // any other case but Class@method format
-            view($this->router->route);
+            $blade = new Blade('../views', '../cache/blade');
+            echo $blade->make($this->router->route);
         }
     }
 }
