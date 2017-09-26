@@ -13,41 +13,41 @@ class Router extends web
     //this method do fetch data and route from requested url
     public function __construct()
     {
+        $this->trimUrl()
+    }
+
+    // this method trim request url and find the right route for it
+    private function trimUrl()
+    {
         $url = urldecode(ltrim($_SERVER['REQUEST_URI'], '/'));
         if (array_key_exists($url, $this->routes)) { // in case requested url exist in routes
             $this->url = $url;
             $this->route = $this->routes[$url];
         } else { // in case requested url don't exist in url (case data passed in url)
-            $url = explode('/', $url);
-            while (!empty($url)) {
-                $this->data[] = str_replace('+', ' ', array_pop($url));
-                if (array_key_exists(implode('/', $url), $this->routes) && !empty($url)) {
-                    $this->route = $this->routes[implode('/', $url)];
-                    $this->url = implode('/', $url);
-                    break;
-                }
-            }
+            $this->fetchUrl($url);
         }
         $this->data = array_reverse($this->data);
-
         if (!isset($this->route)) {
             throw new Exception('Sorry this link does not exist', '404');
         }
     }
 
-    // this method fetch class and method names and then calls them.
-    public function execute()
+    // this method fetch real url from attached data
+    private function fetchUrl(string $url)
     {
-        if (strpos($this->route, '@') && !strpos($this->route, '/')) { // if route is in format of Class@method
-            $parameters = explode('@', $this->route);
-            $class = '\Controllers\\'.$parameters[0];
-            $method = $parameters[1];
-            $route = new $class();
-            call_user_func_array([$route, $method], $this->data);
-        } else { // any other case but Class@method format
-            view($this->route);
+        $url = explode('/', $url);
+        while (!empty($url)) {
+            $this->data[] = str_replace('+', ' ', array_pop($url));
+            if (array_key_exists(implode('/', $url), $this->routes) && !empty($url)) {
+                $this->route = $this->routes[implode('/', $url)];
+                $this->url = implode('/', $url);
+                break;
+            }
         }
+        $this->data = array_reverse($this->data);
     }
+
+    // this method fetch class and method names and then calls them.
 
     public function getCurrentUrl()
     {
