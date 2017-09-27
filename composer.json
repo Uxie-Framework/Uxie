@@ -25,7 +25,7 @@
     "autoload": {
         "files": [
             "app/helpers/url.php",
-            "Kernel/Kernel.php"
+            "app/helpers/sessions&cookies.php"
         ],
     "psr-4": {
       "App\\":"App/",

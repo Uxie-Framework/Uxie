@@ -2,6 +2,7 @@
 
 namespace Router;
 
+use App\RequestHandler as Request;
 use Exception;
 
 class Router extends web
@@ -45,6 +46,12 @@ class Router extends web
             }
         }
         $this->data = array_reverse($this->data);
+    }
+
+    private function RequestHandler()
+    {
+        $request = new Request();  // use request handler
+        array_unshift($this->data, $request);
     }
 
     // this method fetch class and method names and then calls them.

@@ -36,8 +36,7 @@ class Kernel
             $route = new $class();
             call_user_func_array([$route, $method], $this->router->data);
         } else { // any other case but Class@method format
-            $blade = new Blade('../views', '../cache/blade');
-            echo $blade->make($this->router->route);
+            view($this->router->route);
         }
     }
 }
