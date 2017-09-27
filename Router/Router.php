@@ -15,6 +15,7 @@ class Router extends web
     public function __construct()
     {
         $this->trimUrl();
+        $this->RequestHandle();
     }
 
     // this method trim request url and find the right route for it
@@ -48,7 +49,7 @@ class Router extends web
         $this->data = array_reverse($this->data);
     }
 
-    private function RequestHandler()
+    private function RequestHandle()
     {
         $request = new Request();  // use request handler
         array_unshift($this->data, $request);
