@@ -12,6 +12,7 @@ class RequestHandler
             $this->setupRequest();
             return $this;
         }
+        return false;
     }
 
     private function setupRequest()
