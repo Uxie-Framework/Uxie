@@ -1,4 +1,5 @@
 <?php
+
 use Jenssegers\Blade\Blade;
 use Router\Router;
 
