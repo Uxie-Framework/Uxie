@@ -1,4 +1,5 @@
 <?php
+
 ob_start();
 date_default_timezone_set(getenv('TIMEZONE'));
 error_reporting(getenv('ERROR_REPORTING'));

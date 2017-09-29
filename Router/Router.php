@@ -1,4 +1,5 @@
 <?php
+
 namespace Router;
 
 use App\RequestHandler as Request;
@@ -80,6 +81,7 @@ class Router extends web
     public static function getCurrentUrl()
     {
         $router = new self();
+
         return $router->url.'/'.implode('/', $router->data);
     }
 
@@ -87,6 +89,7 @@ class Router extends web
     public static function data()
     {
         $router = new self();
+
         return $router->data;
     }
 }
