@@ -8,11 +8,18 @@ abstract class web
     protected $routes = [
         ''      => 'index',                         // using a view
         'error' => 'ErrorsController@displayError', // using a controller method
+        // an example of how to use complex routes
+        // 'user'  => [
+        //      'profile' => 'profile/show',
+        //      'new' => [
+        //         'store' => 'UserController@store',
+        //      ],
+        //  ],
     ];
 
     // Middlewares to be executed before the script
     // Route for first value ,Middleware name for second value
-    protected $priorMiddleware = [
+    public $priorMiddleware = [
         // 'exampleRoute' => 'exampleMiddlewareFile',
         // how to Assign Multi Middlewares
         // 'exampleRoute' => ['exampleMiddlewareFile',
@@ -21,7 +28,7 @@ abstract class web
     ];
 
     // Middlewares to be executed after the script
-    protected $lateMiddleware = [
+    public $lateMiddleware = [
 
     ];
 }

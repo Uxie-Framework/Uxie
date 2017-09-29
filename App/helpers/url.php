@@ -1,5 +1,7 @@
 <?php
+
 use Jenssegers\Blade\Blade;
+use Router\Router;
 
 // return full valide url (inside application)
 function url(string $url)
@@ -11,7 +13,6 @@ function url(string $url)
 // redirect to a specific url (inside application);
 function route(string $url)
 {
-    ob_start();
     $host = 'http'.(($_SERVER['SERVER_PORT'] == 443) ? 's://' : '://').$_SERVER['HTTP_HOST'].'/';
     header('Location: '.$host.$url);
 }
@@ -30,4 +31,12 @@ function view(string $view, array $data = null)
     } else {
         echo $blade->make($view);
     }
+}
+function getData()
+{
+    return Router::getData();
+}
+function getCurrentUrl()
+{
+    return Router::getCurrentUrl();
 }
