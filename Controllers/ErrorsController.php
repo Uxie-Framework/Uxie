@@ -4,7 +4,7 @@ namespace Controllers;
 
 class ErrorsController extends Controller
 {
-    public function displayError($code, $error)
+    public function displayError(string $code, string $error)
     {
         if (getenv('PRODUCTION_MODE') == 'ON') {
             $code = 'ERROR';

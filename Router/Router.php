@@ -1,5 +1,4 @@
 <?php
-
 namespace Router;
 
 use App\RequestHandler as Request;
@@ -9,12 +8,15 @@ class Router extends web
 {
     public $data = [];
     public $route;
-    private $url;
+    public $url;
 
     //this method do fetch data and route from requested url
     public function __construct()
     {
         $this->trimUrl();
+        if (!$this->route) {
+            throw new Exception('Sorry this link does not exist', '404');
+        }
         $this->RequestHandle();
     }
 
@@ -26,71 +28,65 @@ class Router extends web
             $this->url = $url;
             $this->route = $this->routes[$url];
         } else { // in case requested url don't exist in url (case data passed in url)
-            $this->fetchUrl($url);
-        }
-        $this->data = array_reverse($this->data);
-        if (!isset($this->route)) {
-            throw new Exception('Sorry this link does not exist', '404');
+            $this->fetchFromUrl($url);
+            if (is_array($this->route)) {
+                $this->trimRoute();
+            }
         }
     }
 
-    // this method fetch real url from attached data
-    private function fetchUrl(string $url)
+    // this method fetch data from url
+    private function fetchFromUrl(string $url)
     {
         $url = explode('/', $url);
         while (!empty($url)) {
-            $this->data[] = str_replace('+', ' ', array_pop($url));
+            array_unshift($this->data, str_replace('+', ' ', array_pop($url)));
             if (array_key_exists(implode('/', $url), $this->routes) && !empty($url)) {
                 $this->route = $this->routes[implode('/', $url)];
                 $this->url = implode('/', $url);
                 break;
             }
         }
-        $this->data = array_reverse($this->data);
     }
 
+    // this method is executed in case of complex routes
+    private function trimRoute()
+    {
+        if (!empty($this->data) && is_array($this->route)) {
+            $urlRoute = array_shift($this->data);
+            $this->url = $this->url.'/'.$urlRoute;
+            if (array_key_exists($urlRoute, $this->route)) {
+                $this->route = $this->route[$urlRoute];
+            }
+            if (!empty($this->data) && is_array($this->route)) {
+                $this->trimRoute();
+            }
+        }
+        if (is_array($this->route)) {
+            $this->route = null;
+        }
+    }
+
+    // this method add a request object that contains data from POST
     private function RequestHandle()
     {
-        $request = new Request();  // use request handler
-        if (!$request) {
-            array_unshift($this->data, $request);
+        $request = new Request();
+        if (!$request) { // check if request contain any data (POST only)
+            array_unshift($this->data, $request); // merge request into data variable
         }
     }
 
-    // this method fetch class and method names and then calls them.
-
-    public function getCurrentUrl()
+    // get current request full url.
+    public static function getCurrentUrl()
     {
-        return $this->url.'/'.implode('/', $this->data);
+        $router = new self();
+        return $router->url.'/'.implode('/', $router->data);
     }
+
     //return data stored in url.
-    public function getData()
+    public static function data()
     {
-        return $this->data;
-    }
-    public function priorMiddleware()
-    {
-        if (array_key_exists($this->url, $this->priorMiddleware)) {
-            if (!is_array($this->priorMiddleware[$this->url])) {
-                require_once '../Middlewares/'.$this->priorMiddleware[$this->url].'.php';
-            } else {
-                foreach ($this->priorMiddleware[$this->url] as $key) {
-                    require_once '../Middlewares/'.$key.'.php';
-                }
-            }
-        }
-    }
-
-    public function lateMiddleware()
-    {
-        if (array_key_exists($this->url, $this->lateMiddleware)) {
-            if (!is_array($this->lateMiddleware[$this->url])) {
-                require_once '../Middlewares/'.$this->lateMiddleware[$this->url].'.php';
-            } else {
-                foreach ($this->lateMiddleware[$this->url] as $key) {
-                    require_once '../Middlewares/'.$key.'.php';
-                }
-            }
-        }
+        $router = new self();
+        return $router->data;
     }
 }

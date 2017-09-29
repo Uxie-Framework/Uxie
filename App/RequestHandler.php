@@ -15,6 +15,7 @@ class RequestHandler
         return false;
     }
 
+    // set POST values to variables
     private function setupRequest()
     {
         $keys = array_keys($_POST);
