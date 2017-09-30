@@ -1,8 +1,9 @@
 <?php
-
 namespace App;
 
-class statistics
+use Models;
+
+class Statistics
 {
     private $statisticsHits;
     private $id;
@@ -14,7 +15,6 @@ class statistics
 
     public function __construct()
     {
-        $this->statisticsHits = new \Models\statistics_hits();
         $this->id = uniqid(uniqid());
         $this->target = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
         $this->track = (isset($_SERVER['HTTP_REFERER'])) ? $_SERVER['HTTP_REFERER'] : '';
@@ -33,19 +33,22 @@ class statistics
 
     private function hits()
     {
-        $this->statisticsHits->insert(['ip', 'browser', 'target', 'track', 'date'], [$this->ip, $this->browser, $this->target, $this->track, $this->date]);
+        //Models\StatisticsHits::insert(['ip', 'browser', 'target', 'track', 'date'], [$this->ip, $this->browser, $this->target, $this->track, $this->date])->save();
     }
 
     private function uniqVisits()
     {
-        $statisticsUniq = new \Models\statistics_uniq();
-        if (isset($_COOKIE['visitor'])) {
-            $this->id = $_COOKIE['visitor'];
-            $statisticsUniq->query("update statistics_uniq set hits=hits+1 where id='$this->id'");
+        if (cookie('visitor')) {
+            $this->id = cookie('visitor');
+            Models\StatisticsUniq::update(['ip'], [$this->ip])->where('id', '=', $this->id)->save();
+            Models\StatisticsUniq::increase('hits', 'hits + 1')->save();
         } else {
             $this->id = uniqid();
-            setcookie('visitor', $this->id, time() + 3600 * 24 * 30 * 12);
-            $statisticsUniq->insert(['id', 'ip', 'time', 'hits'], [$this->id, $this->ip, $this->date, 1]);
+            cookie('visitor', $this->id, time() + 3600 * 24 * 30 * 12);
+            cookie('hits', 1, time()+3600*24*30*12);
+            $fields = ['id', 'ip', 'time', 'hits'];
+            $values = [$this->id, $this->ip, $this->date, 1];
+            Models\StatisticsUniq::insert($fields, $values)->save();
         }
     }
 }

@@ -2,7 +2,7 @@
 
 namespace Models;
 
-class statistics_hits extends Model
+class StatisticsHits extends Model
 {
     protected static $table = 'statistics_hits';
 }

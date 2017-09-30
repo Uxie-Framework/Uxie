@@ -17,11 +17,16 @@ function unsetSession($key)
 
 function cookie($key, $value = null, $time = null)
 {
-    if ($time) {
+    if ($value && $time) {
         setcookie($key, $value, $time);
-    } elseif (!$time) {
+    } elseif ($value && !$time) {
         setcookie($key, $value);
-    } elseif ($value && $time) {
+    } elseif (!$value && !$time) {
         return $_COOKIE[$key];
     }
+}
+
+function unsetCookie($key)
+{
+    setcookie($key, '', time()-1);
 }

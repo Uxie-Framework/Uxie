@@ -11,7 +11,7 @@ abstract class Model
     protected static $table = '';
     protected $pdo;
     protected static $query;
-    protected static $inputs;
+    protected static $inputs = [];
     protected static $whereFlag = 'where'; // this variable is to know if where method already called
 
     public function __construct()
@@ -38,30 +38,30 @@ abstract class Model
             throw new Exception($e->getMessage(), $e->getCode());
         }
     }
+    private function execute()
+    {
+        $statment = $this->pdo->prepare(static::$query);
+        $verifierStatment = $statment->execute(static::$inputs);
+        static::$inputs = null;
+        static::$query = null;
+        if (!$verifierStatment) {
+            log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
+
+            throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
+        }
+        return $statment;
+    }
 
     public function get()
     {
-        $statment = $this->pdo->prepare(static::$query);
-        $verfierStatment = $statment->execute(static::$inputs);
-        if (!$verfierStatment) {
-            log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
-
-            throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
-        }
+        $statment = $this->execute();
         $data = $statment->fetchAll(PDO::FETCH_OBJ);
-
         return $data;
     }
 
-    public function execute()
+    public function save()
     {
-        $statment = $this->pdo->prepare(static::$query);
-        $verfierStatment = $statment->execute(static::$inputs);
-        if (!$verfierStatment) {
-            log::queryError(implode(' ', $statment->errorInfo()), $statment->errorCode());
-
-            throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
-        }
+        $statment = $this->execute();
 
         return $statment;
     }
@@ -85,6 +85,12 @@ abstract class Model
         $exist = static::select(['*'])->where($column, '=', $value)->count();
 
         return boolval($exist);
+    }
+
+    public static function increase(string $column, string $value)
+    {
+        static::$query = "update ".static::$table." set $column = ".$value;
+        return new static();
     }
 
     public static function select(array $columns = ['*'])
