@@ -7,7 +7,10 @@ abstract class web
     // key for url, value for view
     protected $routes = [
         ''      => 'index',                         // using a view
-        'error' => 'ErrorsController@displayError', // using a controller method
+
+        // using a controller method
+        //'error' => 'ErrorsController@displayError',
+
         // an example of how to use complex routes
         // 'user'  => [
         //      'profile' => 'profile/show',
@@ -20,6 +23,7 @@ abstract class web
     // Middlewares to be executed before the script
     // Route for first value ,Middleware name for second value
     public $priorMiddleware = [
+        '' => 'statistics',
         // 'exampleRoute' => 'exampleMiddlewareFile',
         // how to Assign Multi Middlewares
         // 'exampleRoute' => ['exampleMiddlewareFile',
