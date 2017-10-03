@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace Model;
 
 use App\log;
 use Exception;

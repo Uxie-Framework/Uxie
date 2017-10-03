@@ -1,6 +1,6 @@
 <?php
 
-namespace Models;
+namespace Model;
 
 class StatisticsHits extends Model
 {

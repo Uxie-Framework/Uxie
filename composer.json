@@ -29,8 +29,9 @@
         ],
     "psr-4": {
       "App\\":"App/",
-      "Controllers\\":"Controllers/",
-      "Models\\":"Models/",
+      "Middleware\\":"Middleware/",
+      "Controller\\":"Controllers/",
+      "Model\\":"Models/",
       "Router\\":"Router/",
       "Kernel\\":"Kernel/"
     }
