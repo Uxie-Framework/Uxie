@@ -1,7 +1,7 @@
 <?php
 namespace App;
 
-use Models;
+use Model;
 
 class Statistics
 {
@@ -33,22 +33,22 @@ class Statistics
 
     private function hits()
     {
-        //Models\StatisticsHits::insert(['ip', 'browser', 'target', 'track', 'date'], [$this->ip, $this->browser, $this->target, $this->track, $this->date])->save();
+        Model\StatisticsHits::insert(['ip', 'browser', 'target', 'track', 'date'], [$this->ip, $this->browser, $this->target, $this->track, $this->date])->save();
     }
 
     private function uniqVisits()
     {
         if (cookie('visitor')) {
             $this->id = cookie('visitor');
-            Models\StatisticsUniq::update(['ip'], [$this->ip])->where('id', '=', $this->id)->save();
-            Models\StatisticsUniq::increase('hits', 'hits + 1')->save();
+            Model\StatisticsUniq::update(['ip'], [$this->ip])->where('id', '=', $this->id)->save();
+            Model\StatisticsUniq::increase('hits', 'hits + 1')->save();
         } else {
             $this->id = uniqid();
             cookie('visitor', $this->id, time() + 3600 * 24 * 30 * 12);
             cookie('hits', 1, time()+3600*24*30*12);
             $fields = ['id', 'ip', 'time', 'hits'];
             $values = [$this->id, $this->ip, $this->date, 1];
-            Models\StatisticsUniq::insert($fields, $values)->save();
+            Model\StatisticsUniq::insert($fields, $values)->save();
         }
     }
 }
