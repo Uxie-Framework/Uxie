@@ -43,6 +43,9 @@ class Kernel
 
     private function priorMiddleware()
     {
+        foreach ($this->router->globalMiddleware as $global) {
+            require_once '../Middlewares/'.$global.'.php';
+        }
         if (array_key_exists($this->router->url, $this->router->priorMiddleware)) {
             if (!is_array($this->router->priorMiddleware[$this->router->url])) {
                 require_once '../Middlewares/'.$this->router->priorMiddleware[$this->router->url].'.php';
