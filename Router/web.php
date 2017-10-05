@@ -22,6 +22,9 @@ abstract class web
 
     // Middlewares to be executed before the script
     // Route for first value ,Middleware name for second value
+    public $globalMiddleware = [
+        //'globalMiddleware',
+    ];
     public $priorMiddleware = [
         '' => 'statistics',
         // 'exampleRoute' => 'exampleMiddlewareFile',

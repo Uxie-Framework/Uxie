@@ -17,9 +17,9 @@ class Kernel
         $this->priorMiddleware();
     }
 
-    public function launch()
+    public function start()
     {
-        $this->execute();
+        $this->launch();
     }
 
     // this is the last method excuted
@@ -28,7 +28,7 @@ class Kernel
         $this->lateMiddleware();
     }
 
-    private function execute()
+    private function launch()
     {
         if (strpos($this->router->route, '@') && !strpos($this->router->route, '/')) { // if route is in format of Class@method
             $parameters = explode('@', $this->router->route);
@@ -43,6 +43,9 @@ class Kernel
 
     private function priorMiddleware()
     {
+        foreach ($this->router->globalMiddleware as $global) {
+            require_once '../Middlewares/'.$global.'.php';
+        }
         if (array_key_exists($this->router->url, $this->router->priorMiddleware)) {
             if (!is_array($this->router->priorMiddleware[$this->router->url])) {
                 require_once '../Middlewares/'.$this->router->priorMiddleware[$this->router->url].'.php';

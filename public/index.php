@@ -24,7 +24,7 @@ require_once '../defaults.php';
 $Kernel = new Kernel();
 
 // launching application
-$Kernel->launch();
+$Kernel->start();
 
 // stop application
 $Kernel->stop();
