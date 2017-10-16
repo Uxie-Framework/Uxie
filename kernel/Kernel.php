@@ -14,7 +14,7 @@ class Kernel
     public function __construct()
     {
         $this->router = new Router();
-        $this->priorMiddleware();
+        $this->priorMiddlewares();
     }
 
     public function start()
@@ -25,7 +25,7 @@ class Kernel
     // this is the last method excuted
     public function stop()
     {
-        $this->lateMiddleware();
+        $this->lateMiddlewares();
     }
 
     private function launch()
@@ -34,14 +34,14 @@ class Kernel
             $parameters = explode('@', $this->router->route);
             $class = '\Controllers\\'.$parameters[0];
             $method = $parameters[1];
-            $route = new $class();
-            call_user_func_array([$route, $method], $this->router->data);
+            $controller = new $class();
+            call_user_func_array([$controller, $method], $this->router->data);
         } else { // any other case but Class@method format
             view($this->router->route);
         }
     }
 
-    private function priorMiddleware()
+    private function priorMiddlewares()
     {
         foreach ($this->router->globalMiddleware as $global) {
             require_once '../Middlewares/'.$global.'.php';
@@ -57,7 +57,7 @@ class Kernel
         }
     }
 
-    private function lateMiddleware()
+    private function lateMiddlewares()
     {
         if (array_key_exists($this->router->url, $this->router->lateMiddleware)) {
             if (!is_array($this->router->lateMiddleware[$this->router->url])) {
