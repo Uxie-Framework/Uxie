@@ -1,11 +1,11 @@
 <?php
 
-namespace Router;
+namespace web;
 
-abstract class web
+class web
 {
     // key for url, value for view
-    protected $routes = [
+    public static $routes = [
         ''      => 'index',                         // using a view
 
         // using a controller method
@@ -25,7 +25,7 @@ abstract class web
     public $globalMiddleware = [
         //'globalMiddleware',
     ];
-    public $priorMiddleware = [
+    public static $priorMiddlewares = [
         '' => 'statistics',
         // 'exampleRoute' => 'exampleMiddlewareFile',
         // how to Assign Multi Middlewares
@@ -35,7 +35,7 @@ abstract class web
     ];
 
     // Middlewares to be executed after the script
-    public $lateMiddleware = [
-
+    public static $lateMiddleware = [
+        //
     ];
 }

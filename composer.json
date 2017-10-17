@@ -32,8 +32,8 @@
       "Middleware\\":"Middleware/",
       "Controller\\":"Controllers/",
       "Model\\":"Models/",
-      "Router\\":"Router/",
-      "Kernel\\":"Kernel/"
+      "Kernel\\":"Kernel/",
+      "Web\\":"web/"
     }
   }
 }
