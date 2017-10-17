@@ -1,4 +1,5 @@
 <?php
+
 namespace App\middleware;
 
 class MiddlewareHandler implements MiddlewareInterface
@@ -23,6 +24,7 @@ class MiddlewareHandler implements MiddlewareInterface
                 }
             }
         }
+
         return $self;
     }
 
@@ -37,6 +39,7 @@ class MiddlewareHandler implements MiddlewareInterface
     {
         return $this->middlewaresList;
     }
+
     public function setMiddleware(string $newMiddleware)
     {
         $this->middlewaresList[] = $newMiddleware;

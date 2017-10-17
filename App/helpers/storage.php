@@ -28,5 +28,5 @@ function cookie($key, $value = null, $time = null)
 
 function unsetCookie($key)
 {
-    setcookie($key, '', time()-1);
+    setcookie($key, '', time() - 1);
 }

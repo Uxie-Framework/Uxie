@@ -1,9 +1,10 @@
 <?php
+
 namespace App;
 
 use Model;
 
-class Statistics
+class statistics
 {
     private $statisticsHits;
     private $id;
@@ -45,7 +46,7 @@ class Statistics
         } else {
             $this->id = uniqid();
             cookie('visitor', $this->id, time() + 3600 * 24 * 30 * 12);
-            cookie('hits', 1, time()+3600*24*30*12);
+            cookie('hits', 1, time() + 3600 * 24 * 30 * 12);
             $fields = ['id', 'ip', 'time', 'hits'];
             $values = [$this->id, $this->ip, $this->date, 1];
             Model\StatisticsUniq::insert($fields, $values)->save();
