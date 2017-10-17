@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Router;
 
 use App\http\RequestHandler as Request;

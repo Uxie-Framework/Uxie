@@ -2,10 +2,9 @@
 
 namespace Kernel;
 
-use App\Router\Router as Router;
-use Web\Web as Web;
-use App\Middleware\MiddlewareHandler as MiddlewareHandler;
 use App\Facade\Request\RequestHandler;
+use App\Middleware\MiddlewareHandler as MiddlewareHandler;
+use Web\Web as Web;
 
 /**
  * excute the application.

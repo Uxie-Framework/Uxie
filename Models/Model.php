@@ -38,6 +38,7 @@ abstract class Model
             throw new Exception($e->getMessage(), $e->getCode());
         }
     }
+
     private function execute()
     {
         $statment = $this->pdo->prepare(static::$query);
@@ -49,6 +50,7 @@ abstract class Model
 
             throw new Exception('Sorry it looks like something went wrong please contact us', '0300');
         }
+
         return $statment;
     }
 
@@ -56,6 +58,7 @@ abstract class Model
     {
         $statment = $this->execute();
         $data = $statment->fetchAll(PDO::FETCH_OBJ);
+
         return $data;
     }
 
@@ -89,7 +92,8 @@ abstract class Model
 
     public static function increase(string $column, string $value)
     {
-        static::$query = "update ".static::$table." set $column = ".$value;
+        static::$query = 'update '.static::$table." set $column = ".$value;
+
         return new static();
     }
 

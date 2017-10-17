@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Facade\Request;
 
-use App\Router\Router;
 use App\http\Request;
+use App\Router\Router;
 
 class RequestHandler
 {

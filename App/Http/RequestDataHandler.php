@@ -1,9 +1,9 @@
 <?php
+
 namespace App\Http;
 
 class RequestDataHandler extends RequsetMethodHandler
 {
-
     // set POST values to variables
     protected function postHandler()
     {
