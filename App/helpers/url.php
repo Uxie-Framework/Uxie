@@ -1,7 +1,7 @@
 <?php
 
+use App\Router\Router;
 use Jenssegers\Blade\Blade;
-use Router\Router;
 
 // return full valide url (inside application)
 function url(string $url)

@@ -23,6 +23,8 @@ require_once '../defaults.php';
 //preapring for launching application
 $Kernel = new Kernel();
 
+$Kernel->prepare();
+
 // launching application
 $Kernel->start();
 

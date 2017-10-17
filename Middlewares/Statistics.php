@@ -1,4 +1,5 @@
 <?php
+
 namespace Middleware;
 
 use App;
