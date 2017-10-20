@@ -5,22 +5,18 @@ namespace App\Facade\Request;
 use App\http\Request;
 use App\Router\Router;
 
-class RequestHandler
+class RequestFacade
 {
     public $router;
     public $request;
 
-    public function __construct()
+    public function __construct(Request $request, Router $router)
     {
-        $this->handleRequest();
+        $this->request = $request;
+        $this->router = $router;
+
         if (!$this->request) {
             array_unshift($this->router->data, $this->request);
         }
-    }
-
-    public function handleRequest()
-    {
-        $this->request = new Request();
-        $this->router = new Router();
     }
 }

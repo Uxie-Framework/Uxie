@@ -6,13 +6,11 @@ class Request extends RequestDataHandler
 {
     public function __construct()
     {
-        switch ($this->getMethod()) {
-            case 'POST':
-                $this->postHandler();
-                break;
+        $this->dataHandler(new RequestDataHandler());
+    }
 
-            default:
-                return false;
-        }
+    private function dataHandler(RequestDataHandler $handler)
+    {
+        $handler->handle();
     }
 }

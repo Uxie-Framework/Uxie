@@ -2,7 +2,9 @@
 
 namespace Kernel;
 
-use App\Facade\Request\RequestHandler;
+use App\Http\Request;
+use App\Router\Router;
+use App\Facade\Request\RequestFacade;
 use App\Middleware\MiddlewareHandler as MiddlewareHandler;
 use Web\Web as Web;
 
@@ -15,7 +17,7 @@ class Kernel
 
     public function prepare()
     {
-        $this->request = new RequestHandler();
+        $this->request = new RequestFacade(new Request(), new Router());
         MiddlewareHandler::handle(Web::$priorMiddlewares, $this->request->router->url)->callMiddlewares();
     }
 
@@ -27,7 +29,7 @@ class Kernel
     // this is the last method excuted
     public function stop()
     {
-        MiddlewareHandler::handle(Web::$priorMiddlewares, $this->request->router->url)->callMiddlewares();
+        MiddlewareHandler::handle(Web::$lateMiddlewares, $this->request->router->url)->callMiddlewares();
     }
 
     private function launch()
