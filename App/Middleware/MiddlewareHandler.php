@@ -1,47 +1,12 @@
 <?php
 
-namespace App\middleware;
+namespace App\Middleware;
 
-class MiddlewareHandler implements MiddlewareInterface
+class MiddlewareHandler
 {
-    private $middlewaresList = [];
-
-    public function __construct()
+    public function __construct(MiddlewareInterface $middleware)
     {
-        return $this;
-    }
-
-    public static function handle(array $middlewares, string $route)
-    {
-        $self = new self();
-
-        if (array_key_exists($route, $middlewares)) {
-            if (!is_array($middlewares[$route])) {
-                $self->middlewaresList[] = '../Middlewares/'.$middlewares[$route].'.php';
-            } else {
-                foreach ($middlewares[$route] as $middleware) {
-                    $self->middlewaresList[] = '../Middlewares/'.$middleware.'.php';
-                }
-            }
-        }
-
-        return $self;
-    }
-
-    public function callMiddlewares()
-    {
-        foreach ($this->middlewaresList as $middleware) {
-            require_once $middleware;
-        }
-    }
-
-    public function getMiddlewares()
-    {
-        return $this->middlewaresList;
-    }
-
-    public function setMiddleware(string $newMiddleware)
-    {
-        $this->middlewaresList[] = $newMiddleware;
+        $middleware->handle();
+        $middleware->callMiddlewares();
     }
 }

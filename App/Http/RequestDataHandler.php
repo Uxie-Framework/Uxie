@@ -2,10 +2,10 @@
 
 namespace App\Http;
 
-class RequestDataHandler extends RequsetMethodHandler
+class RequestDataHandler
 {
     // set POST values to variables
-    protected function postHandler()
+    protected function handle()
     {
         $keys = array_keys($_POST);
         $values = array_values($_POST);

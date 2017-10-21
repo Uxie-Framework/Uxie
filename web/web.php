@@ -22,7 +22,7 @@ class web
 
     // Middlewares to be executed before the script
     // Route for first value ,Middleware name for second value
-    public $globalMiddleware = [
+    public $globalMiddlewares = [
         //'globalMiddleware',
     ];
     public static $priorMiddlewares = [
@@ -35,7 +35,7 @@ class web
     ];
 
     // Middlewares to be executed after the script
-    public static $lateMiddleware = [
+    public static $lateMiddlewares = [
         //
     ];
 }

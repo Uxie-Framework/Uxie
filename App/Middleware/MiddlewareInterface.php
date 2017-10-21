@@ -4,11 +4,7 @@ namespace App\middleware;
 
 interface MiddlewareInterface
 {
-    public static function handle(array $middlewares, string $route);
+    public function handle();
 
     public function callMiddlewares();
-
-    public function getMiddlewares();
-
-    public function setMiddleware(string $newMiddleware);
 }
