@@ -20,19 +20,20 @@ class Kernel
     public function prepare()
     {
         //$this->request = new RequestFacade(new Request(), new Router());
-        $this->requset = new Router();
-        new MiddlewareHandler(new PriorMiddleware($this->request->router));
+        $this->request = new Router();
+        var_dump($this->request->route);
+        //new MiddlewareHandler(new PriorMiddleware($this->request->router));
     }
 
     public function start()
     {
-        $this->launch();
+        //$this->launch();
     }
 
     // this is the last method excuted
     public function stop()
     {
-        new MiddlewareHandler(new lateMiddleware($this->request->router));
+        //new MiddlewareHandler(new lateMiddleware($this->request->router));
     }
 
     private function launch()

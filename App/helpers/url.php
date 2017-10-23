@@ -32,11 +32,3 @@ function view(string $view, array $data = null)
         echo $blade->make($view);
     }
 }
-function getData()
-{
-    return Router::getData();
-}
-function getCurrentUrl()
-{
-    return Router::getCurrentUrl();
-}

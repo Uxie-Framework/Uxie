@@ -2,51 +2,53 @@
 
 namespace App\Router;
 
-/**
- *
- */
-class RouteTrimmer implements RouteTrimmerInterface
+class RouteTrimmer
 {
     public $variables = [];
     private $realRoute = [];
 
-    public function __construct(string $route)
+    public function trim(string $route)
     {
-        $this->realRoute = $this->trim($route);
-    }
-
-    private function trim(string $route)
-    {
-        return $this->explode($route);
+        $this->explode($route);
     }
 
     private function explode(string $route)
     {
-        return $this->sifter(explode('/', $route));
+        $this->sifter(explode('/', $route));
     }
 
     private function sifter(array $routeArray)
     {
         foreach ($routeArray as $value) {
-            if (isVariable($value)) {
-                $this->variables[] = $value;
+            if ($this->isVariable($value)) {
+                $this->variables[] = $this->retrieveVariable($value)[1][0];
             } else {
-                $this->realRoute[] = $values;
+                $this->realRoute[] = $value;
             }
         }
     }
 
     private function isVariable(string $value)
     {
-        preg_match_all('/\{$.*?\}/', $value, $validate);
-        if (empty($validate)) {
+        if (empty($this->retrieveVariable($value)[0])) {
             return false;
         }
         return true;
     }
 
+    private function retrieveVariable(string $value)
+    {
+        preg_match_all('@{\$(.*?)}@', $value, $variables);
+        return $variables;
+    }
+
     public function getRealRoute()
     {
         return implode('/', $this->realRoute);
+    }
+
+    public function getVariables()
+    {
+        return $this->variables;
     }
 }
