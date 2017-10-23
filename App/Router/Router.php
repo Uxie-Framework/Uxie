@@ -7,29 +7,46 @@ use Exception;
 
 class Router extends UrlResolver
 {
+    use RoutesSetters;
+
+    private $routes = [];
+    private $url;
+
     //this method do fetch data and route from requested url
     public function __construct()
     {
-        $this->findRoute();
-
-        if (!$this->route) {
-            throw new Exception('Sorry this link does not exist', '404');
-        }
+        $this->url = urldecode(ltrim($_SERVER['REQUEST_URI'], '/'));
+        $this->setUp($this);
     }
 
-    // get current request full url.
-    public static function getCurrentUrl()
+    private function setUp(Router $router)
     {
-        $router = new self();
-
-        return $router->url.'/'.implode('/', $router->data);
+        require_once '../web/routes.php';
     }
 
-    //return data stored in url.
-    public static function data()
+    public function get(string $route, $action)
     {
-        $router = new self();
+        $this->addRoute(new Route('GET', $route, $action));
+    }
 
-        return $router->data;
+    public function post(string $route, $action)
+    {
+        $this->addRoute(new Route('POST', $route, $action));
+    }
+
+    public function group(string $route, Closure $action)
+    {
+        //
+    }
+
+    private function addRoute(RouteInterface $route)
+    {
+        $this->routes[] = $route;
+        $this->checkRoute($route);
+    }
+
+    private function checkRoute(CheckRouteInterface $checkRoute)
+    {
+        //
     }
 }

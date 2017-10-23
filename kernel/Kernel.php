@@ -19,7 +19,8 @@ class Kernel
 
     public function prepare()
     {
-        $this->request = new RequestFacade(new Request(), new Router());
+        //$this->request = new RequestFacade(new Request(), new Router());
+        $this->requset = new Router();
         new MiddlewareHandler(new PriorMiddleware($this->request->router));
     }
 
