@@ -20,7 +20,7 @@ class Router
             return $this;
         }
 
-        throw new Exception("This Page Does Not Exist", 404);
+        throw new Exception('This Page Does Not Exist', 404);
     }
 
     private function setUp(Router $router)
@@ -54,7 +54,7 @@ class Router
         if ($validator->validate()) {
             $this->route = end($this->routes);
             $this->route->setVariablesValues($validator->variables);
-            $this->route->setRequest(new Request);
+            $this->route->setRequest(new Request());
         }
     }
 

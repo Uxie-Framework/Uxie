@@ -33,12 +33,14 @@ class RouteTrimmer
         if (empty($this->retrieveVariable($value)[0])) {
             return false;
         }
+
         return true;
     }
 
     private function retrieveVariable(string $value)
     {
         preg_match_all('@{\$(.*?)}@', $value, $variables);
+
         return $variables;
     }
 

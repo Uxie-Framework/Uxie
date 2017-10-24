@@ -13,6 +13,7 @@ class RequestDataHandler
             $this->{$keys[$i]} = $values[$i];
             $variables[$keys[$i]] = $values[$i];
         }
+
         return $variables;
     }
 }

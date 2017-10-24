@@ -2,10 +2,8 @@
 
 namespace Kernel;
 
-use App\Http\Request;
-use App\Router\Router;
-use App\Facade\Request\RequestFacade;
 use App\Middleware\Middleware;
+use App\Router\Router;
 use Web\Middlewares as Middlewares;
 
 /**
@@ -25,7 +23,7 @@ class Kernel
     public function start()
     {
         $this->middleware->handle(Middlewares::$priorMiddlewares)->call();
-        $this->launch(new Launch);
+        $this->launch(new Launch());
     }
 
     // this is the last method excuted
