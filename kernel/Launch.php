@@ -32,8 +32,10 @@ class Launch
             $method = $parameters[1];
             $controller = new $class();
             call_user_func_array([$controller, $method], $route->variables);
+
             return true;
         }
-        throw new Exception("Route Parameter Error", 1);
+
+        throw new Exception('Route Parameter Error', 1);
     }
 }

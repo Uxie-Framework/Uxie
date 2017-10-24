@@ -17,7 +17,7 @@ class Route
         $this->method = $method;
         $this->route = $route;
         $this->action = $action;
-        $this->trimmed = $this->trimRoute(new RouteTrimmer);
+        $this->trimmed = $this->trimRoute(new RouteTrimmer());
     }
 
     private function trimRoute(RouteTrimmer $trimmer)

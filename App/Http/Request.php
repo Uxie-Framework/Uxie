@@ -8,7 +8,7 @@ class Request
 
     public function __construct()
     {
-        $this->handleData(new RequestDataHandler);
+        $this->handleData(new RequestDataHandler());
     }
 
     private function handleData(RequestDataHandler $handler)
