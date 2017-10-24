@@ -2,48 +2,38 @@
 
 namespace Kernel;
 
-use App\Http\Request;
+use App\Middleware\Middleware;
 use App\Router\Router;
-use App\Facade\Request\RequestFacade;
-use App\Middleware\MiddlewareHandler;
-use App\Middleware\PriorMiddleware;
-use App\Middleware\lateMiddleware;
-use Web\Web as Web;
+use Web\Middlewares as Middlewares;
 
 /**
  * excute the application.
  */
 class Kernel
 {
-    private $request;
+    private $route;
+    private $middleware;
 
     public function prepare()
     {
-        $this->request = new RequestFacade(new Request(), new Router());
-        new MiddlewareHandler(new PriorMiddleware($this->request->router));
+        $this->route = (new Router())->route;
+        $this->middleware = new Middleware($this->route);
     }
 
     public function start()
     {
-        $this->launch();
+        $this->middleware->handle(Middlewares::$priorMiddlewares)->call();
+        $this->launch(new Launch());
     }
 
     // this is the last method excuted
     public function stop()
     {
-        new MiddlewareHandler(new lateMiddleware($this->request->router));
+        $this->middleware->handle(Middlewares::$lateMiddlewares)->call();
     }
 
-    private function launch()
+    private function launch(Launch $launch)
     {
-        if (strpos($this->request->router->route, '@') && !strpos($this->request->router->route, '/')) { // if route is in format of Class@method
-            $parameters = explode('@', $this->request->router->route);
-            $class = '\Controllers\\'.$parameters[0];
-            $method = $parameters[1];
-            $controller = new $class();
-            call_user_func_array([$controller, $method], $this->request->router->data);
-        } else { // any other case but Class@method format
-            view($this->request->router->route);
-        }
+        $launch->execute($this->route);
     }
 }

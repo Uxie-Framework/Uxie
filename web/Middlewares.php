@@ -1,25 +1,9 @@
 <?php
 
-namespace web;
+namespace Web;
 
-class web
+class Middlewares
 {
-    // key for url, value for view
-    public static $routes = [
-        ''      => 'index',                         // using a view
-
-        // using a controller method
-        //'error' => 'ErrorsController@displayError',
-
-        // an example of how to use complex routes
-        // 'user'  => [
-        //      'profile' => 'profile/show',
-        //      'new' => [
-        //         'store' => 'UserController@store',
-        //      ],
-        //  ],
-    ];
-
     // Middlewares to be executed before the script
     // Route for first value ,Middleware name for second value
     public $globalMiddlewares = [

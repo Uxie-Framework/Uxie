@@ -1,6 +1,5 @@
 <?php
 
-use App\Router\Router;
 use Jenssegers\Blade\Blade;
 
 // return full valide url (inside application)
@@ -31,12 +30,4 @@ function view(string $view, array $data = null)
     } else {
         echo $blade->make($view);
     }
-}
-function getData()
-{
-    return Router::getData();
-}
-function getCurrentUrl()
-{
-    return Router::getCurrentUrl();
 }
