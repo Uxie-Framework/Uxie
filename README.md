@@ -36,23 +36,23 @@ documentation with examples is available in the same file
 insert data:  
 `
 Model\Table::insert(['column1', 'column2'], [value1, value2])->save();
-`
-retrieve data:
+`  
+retrieve data:  
 `
 Model\StatisticsHits::select()->where('id', '=', '675')->get();
-`
-and planty of other methods such as limit, orderVy, groupBy, count, update, delete  
+`  
+and planty of other methods such as limit, orderBy, groupBy, count, update, delete  
 ## built-in visitors analyser:
 it's a built in middleware that record each user hits and data and store them in a table
 such as ip, browser, source, date
 ## Request handler:
 it's a built in handler for POST requests (simulaire to laravels one)  
-`
+```
 public function store($request)  
 {  
   echo $reqeust->name;  
 }
-`
+```
 ## Exception handler:
 Uxie comes with a built in exception handler that will handle errors/exceptions for you.
 ## Errors logger:
