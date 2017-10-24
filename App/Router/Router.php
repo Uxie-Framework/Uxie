@@ -7,7 +7,7 @@ use Exception;
 
 class Router
 {
-    public $route;
+    private $route;
     private $routes = [];
     private $url;
 
@@ -38,15 +38,21 @@ class Router
         $this->addRoute(new Route('POST', $route, $action));
     }
 
-    public function group(string $route, Closure $action)
-    {
-        //
-    }
-
     private function addRoute(Route $route)
     {
         $this->routes[] = $route;
         $this->validateRoute(new RouteValidator($route, $this->url));
+    }
+
+    public function resource(string $route, string $controller)
+    {
+        $this->get("$route", "$controller@index");
+        $this->get("$route/create", "$controller@create");
+        $this->post($route, "$controller@store");
+        $this->get($route.'/{$id}', "$controller@show");
+        $this->get($route.'/edit/{$id}', "$controller@edit");
+        $this->post($route.'/update/{$id}', "$controller@update");
+        $this->post($route.'/destroy/{$id}', "$controller@delete");
     }
 
     private function validateRoute(RouteValidator $validator)

@@ -14,16 +14,16 @@ class Route
 
     public function __construct(string $method, string $route, $action)
     {
-        $this->method = $method;
-        $this->route = $route;
-        $this->action = $action;
+        $this->method  = $method;
+        $this->route   = $route;
+        $this->action  = $action;
         $this->trimmed = $this->trimRoute(new RouteTrimmer());
     }
 
     private function trimRoute(RouteTrimmer $trimmer)
     {
         $trimmer->trim($this->route);
-        $this->route = $trimmer->getRealRoute();
+        $this->route     = $trimmer->getRealRoute();
         $this->variables = $trimmer->getVariables();
 
         return $trimmer;

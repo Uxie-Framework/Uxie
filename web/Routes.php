@@ -5,3 +5,4 @@ $router->get('', function () {
 });
 
 // example $router->post('test', 'controller@test');
+// example $router->resource('user', 'controller');

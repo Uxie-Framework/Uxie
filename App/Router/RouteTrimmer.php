@@ -4,7 +4,7 @@ namespace App\Router;
 
 class RouteTrimmer
 {
-    public $variables = [];
+    public $variables  = [];
     private $realRoute = [];
 
     public function trim(string $route)

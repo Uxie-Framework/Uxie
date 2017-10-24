@@ -10,7 +10,7 @@ class RouteValidator
 
     public function __construct(Route $route, string $url)
     {
-        $this->url = $url;
+        $this->url   = $url;
         $this->route = $route;
     }
 
