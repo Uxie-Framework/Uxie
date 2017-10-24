@@ -1,10 +1,7 @@
 <?php
 
 $router->get('', function () {
-    echo 'hello';
+    view('index');
 });
 
-
-$router->get('index/tt/{$hello}/{$tsdf}', 'controller@method');
-$router->get('index/test/{$hello}/{$tsdf}', 'controller@method');
-$router->get('index/to}/{$tsdf}', 'controller@method');
+// example $router->post('test', 'controller@test');

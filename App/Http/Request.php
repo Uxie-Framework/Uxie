@@ -1,16 +1,28 @@
 <?php
 
-namespace App\http;
+namespace App\Http;
 
-class Request extends RequestDataHandler
+class Request
 {
+    private $variables = [];
+
     public function __construct()
     {
-        $this->dataHandler(new RequestDataHandler());
+        $this->handleData(new RequestDataHandler);
     }
 
-    private function dataHandler(RequestDataHandler $handler)
+    private function handleData(RequestDataHandler $handler)
     {
-        $handler->handle();
+        $this->variables = $handler->handle();
+    }
+
+    public function __set($name, $value)
+    {
+        $this->variables[$name] = $value;
+    }
+
+    public function __get($name)
+    {
+        return $this->variables[$name];
     }
 }

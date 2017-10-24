@@ -1,10 +1,10 @@
 <?php
 
-namespace App\middleware;
+namespace App\Middleware;
 
 interface MiddlewareInterface
 {
-    public function handle();
+    public function handle(array $middlewares);
 
-    public function callMiddlewares();
+    public function call();
 }

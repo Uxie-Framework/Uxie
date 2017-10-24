@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-use App\http\RequestHandler as Request;
+use App\http\Request as Request;
 use Exception;
 
 class Router
@@ -15,9 +15,11 @@ class Router
     {
         $this->url = urldecode(ltrim($_SERVER['REQUEST_URI'], '/'));
         $this->setUp($this);
+
         if (isset($this->route)) {
-            return $this->route;
+            return $this;
         }
+
         throw new Exception("This Page Does Not Exist", 404);
     }
 
@@ -50,13 +52,14 @@ class Router
     private function validateRoute(RouteValidator $validator)
     {
         if ($validator->validate()) {
-            $this->route = $this->getRoute();
+            $this->route = end($this->routes);
             $this->route->setVariablesValues($validator->variables);
+            $this->route->setRequest(new Request);
         }
     }
 
     public function getRoute()
     {
-        return end($this->routes);
+        return $this->route;
     }
 }

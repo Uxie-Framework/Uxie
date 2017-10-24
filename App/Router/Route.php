@@ -1,5 +1,8 @@
 <?php
+
 namespace App\Router;
+
+use App\Http\Request;
 
 class Route
 {
@@ -34,5 +37,18 @@ class Route
     public function setVariablesValues(array $values)
     {
         $this->variables = array_combine($this->variables, $values);
+    }
+
+    public function setRequest(Request $request)
+    {
+        if ($this->method != 'POST') {
+            return false;
+        }
+        $this->pushRequest($request);
+    }
+
+    private function pushRequest($request)
+    {
+        array_unshift($this->variables, $request);
     }
 }
