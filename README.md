@@ -16,34 +16,34 @@ Uxie is a PHP MVC Framework.
 
 # Documentation:
 ## Routing :
-Web/Routes.php
-`$router->get('', function() {
+Web/Routes.php  
+`$router->get('', function() {  
   view('index');
-});
-$router->post('test', 'Controller@method');
-$router->resource('user', 'UserController');
-`
+});  
+$router->post('test', 'Controller@method');  
+$router->resource('user', 'UserController');  
+`  
 ## Blade Templating Engine :
-use helper function view()
-`view('YourView', ['data' => $data])`
+use helper function view()  
+`view('YourView', ['data' => $data])`  
 ## Middlewares :
-all middlewares are defined in Web/middlewares.php
-documentation with examples is available in the same file
+all middlewares are defined in Web/middlewares.php  
+documentation with examples is available in the same file  
 ## Built-in model :
-insert data:
-`Model\Table::insert(['column1', 'column2'], [value1, value2])->save();`
-retrieve data:
-`Model\StatisticsHits::select()->where('id', '=', '675')->get();`
-and planty of other methods such as limit, orderVy, groupBy, count, update, delete
+insert data:  
+`Model\Table::insert(['column1', 'column2'], [value1, value2])->save();`  
+retrieve data:  
+`Model\StatisticsHits::select()->where('id', '=', '675')->get();`  
+and planty of other methods such as limit, orderVy, groupBy, count, update, delete  
 ## built-in visitors analyser:
-it's a built in middleware that record each user hits and data and store them in a table 
+it's a built in middleware that record each user hits and data and store them in a table
 such as ip, browser, source, date
 ## Request handler:
-it's a built in handler for POST requests (simulaire to laravels one)
-`public function store($request)
-{
-  echo $reqeust->name;
-}`
+it's a built in handler for POST requests (simulaire to laravels one)  
+`public function store($request)  
+{  
+  echo $reqeust->name;  
+}`  
 ## Exception handler:
 Uxie comes with a built in exception handler that will handle errors/exceptions for you.
 ## Errors logger:
