@@ -3,8 +3,9 @@
 namespace App\Router;
 
 use App\Http\Request;
+use Exception;
 
-class Route
+class Route implements RouteInterface
 {
     public $method;
     public $action;
@@ -20,11 +21,11 @@ class Route
         $this->trimmed = $this->trimRoute(new RouteTrimmer());
     }
 
-    private function trimRoute(RouteTrimmer $trimmer)
+    private function trimRoute(RouteTrimmerInterface $trimmer)
     {
         $trimmer->trim($this->route);
         $this->route     = $trimmer->getRealRoute();
-        $this->variables = $trimmer->getVariables();
+        $this->variables = $trimmer->getVariablesNames();
 
         return $trimmer;
     }
@@ -34,8 +35,16 @@ class Route
         return $this->route;
     }
 
+    public function getVariables()
+    {
+        return $this->variables;
+    }
+
     public function setVariablesValues(array $values)
     {
+        if (count($values) != count($this->variables)) {
+            throw new Exception("Variables Passed Dont Match", 1468);
+        }
         $this->variables = array_combine($this->variables, $values);
     }
 

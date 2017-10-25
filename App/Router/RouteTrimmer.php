@@ -2,7 +2,7 @@
 
 namespace App\Router;
 
-class RouteTrimmer
+class RouteTrimmer implements RouteTrimmerInterface
 {
     public $variables  = [];
     private $realRoute = [];
@@ -49,7 +49,7 @@ class RouteTrimmer
         return implode('/', $this->realRoute);
     }
 
-    public function getVariables()
+    public function getVariablesNames()
     {
         return $this->variables;
     }

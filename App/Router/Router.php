@@ -5,7 +5,7 @@ namespace App\Router;
 use App\http\Request as Request;
 use Exception;
 
-class Router
+class Router implements RouterInterface
 {
     private $route;
     private $routes = [];
@@ -23,7 +23,7 @@ class Router
         throw new Exception('This Page Does Not Exist', 404);
     }
 
-    private function setUp(Router $router)
+    private function setUp(RouterInterface $router)
     {
         require_once '../web/Routes.php';
     }
@@ -38,12 +38,6 @@ class Router
         $this->addRoute(new Route('POST', $route, $action));
     }
 
-    private function addRoute(Route $route)
-    {
-        $this->routes[] = $route;
-        $this->validateRoute(new RouteValidator($route, $this->url));
-    }
-
     public function resource(string $route, string $controller)
     {
         $this->get("$route", "$controller@index");
@@ -55,9 +49,15 @@ class Router
         $this->post($route.'/destroy/{$id}', "$controller@delete");
     }
 
-    private function validateRoute(RouteValidator $validator)
+    private function addRoute(RouteInterface $route)
     {
-        if ($validator->validate()) {
+        $this->routes[] = $route;
+        $this->validateRoute(new RouteValidator());
+    }
+
+    private function validateRoute(RouteValidatorInterface $validator)
+    {
+        if ($validator->validate(end($this->routes), $this->url)) {
             $this->route = end($this->routes);
             $this->route->setVariablesValues($validator->variables);
             $this->route->setRequest(new Request());

@@ -2,25 +2,21 @@
 
 namespace App\Router;
 
-class RouteValidator
+class RouteValidator implements RouteValidatorInterface
 {
     public $variables = [];
     private $url;
     private $route;
-
-    public function __construct(Route $route, string $url)
-    {
-        $this->url   = $url;
-        $this->route = $route;
-    }
 
     private function explode()
     {
         return explode('/', $this->url);
     }
 
-    public function validate()
+    public function validate(RouteInterface $route, string $url)
     {
+        $this->url   = $url;
+        $this->route = $route;
         $urlArray = $this->explode();
 
         for ($i = 0; $i < count($this->explode()); $i++) {
@@ -35,7 +31,7 @@ class RouteValidator
 
     private function validateUrl(array $urlArray)
     {
-        if ($this->route->route == implode('/', $urlArray)) {
+        if ($this->route->getRoute() == implode('/', $urlArray)) {
             return true;
         }
 
@@ -44,7 +40,7 @@ class RouteValidator
 
     private function validateVariables(array $variables)
     {
-        if (count($variables) == count($this->route->variables)) {
+        if (count($variables) == count($this->route->getVariables())) {
             return true;
         }
 
