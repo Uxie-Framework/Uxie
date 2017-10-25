@@ -39,7 +39,7 @@ Model\Table::insert(['column1', 'column2'], [value1, value2])->save();
 `  
 retrieve data:  
 `
-Model\StatisticsHits::select()->where('id', '=', '675')->get();
+Model\table::select()->where('name', '=', 'user')->limit(10)->get();
 `  
 and planty of other methods such as limit, orderBy, groupBy, count, update, delete  
 ## built-in visitors analyser:
