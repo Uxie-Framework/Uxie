@@ -1,14 +1,12 @@
 <?php
 
-namespace App\middleware;
+namespace App\Middleware;
+
+use App\Router\RouteInterface;
 
 interface MiddlewareInterface
 {
-    public static function handle(array $middlewares, string $route);
-
-    public function callMiddlewares();
-
-    public function getMiddlewares();
-
-    public function setMiddleware(string $newMiddleware);
+    public function __construct(RouteInterface $route);
+    public function handle(array $middlewares);
+    public function call();
 }
