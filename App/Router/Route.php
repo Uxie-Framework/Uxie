@@ -7,11 +7,11 @@ use Exception;
 
 class Route implements RouteInterface
 {
-    public $method;
-    public $action;
-    public $variables;
-    public $route;
+    private $action;
+    private $variables;
+    private $route;
     private $trimmed;
+    private $method;
 
     public function __construct(string $method, string $route, $action)
     {
@@ -40,10 +40,20 @@ class Route implements RouteInterface
         return $this->variables;
     }
 
+    public function getAction()
+    {
+        return $this->action;
+    }
+
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
     public function setVariablesValues(array $values)
     {
         if (count($values) != count($this->variables)) {
-            throw new Exception("Variables Passed Dont Match", 1468);
+            throw new Exception("Variables passed don't match", 1468);
         }
         $this->variables = array_combine($this->variables, $values);
     }
