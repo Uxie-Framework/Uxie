@@ -16,24 +16,23 @@ class Kernel
 
     public function prepare()
     {
-        $this->route = (new Router())->route;
+        $this->route      = (new Router())->getRoute();
         $this->middleware = new Middleware($this->route);
     }
 
     public function start()
     {
         $this->middleware->handle(Middlewares::$priorMiddlewares)->call();
-        $this->launch(new Launch());
+        $this->launch(new Launcher());
     }
 
-    // this is the last method excuted
     public function stop()
     {
         $this->middleware->handle(Middlewares::$lateMiddlewares)->call();
     }
 
-    private function launch(Launch $launch)
+    private function launch(Launcher $launcher)
     {
-        $launch->execute($this->route);
+        $launcher->execute($this->route);
     }
 }

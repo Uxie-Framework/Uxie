@@ -6,7 +6,7 @@ use App\Router\Route;
 use Closure;
 use Exception;
 
-class Launch
+class Launcher
 {
     public function execute(Route $route)
     {
