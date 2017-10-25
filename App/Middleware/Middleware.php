@@ -2,14 +2,14 @@
 
 namespace App\Middleware;
 
-use App\Router\Route;
+use App\Router\RouteInterface;
 
 class Middleware implements MiddlewareInterface
 {
     private $route;
     private $middlewaresList = [];
 
-    public function __construct(Route $route)
+    public function __construct(RouteInterface $route)
     {
         $this->route = $route->route;
     }
