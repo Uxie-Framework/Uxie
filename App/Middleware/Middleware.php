@@ -11,7 +11,7 @@ class Middleware implements MiddlewareInterface
 
     public function __construct(RouteInterface $route)
     {
-        $this->route = $route->route;
+        $this->route = $route->getRoute();
     }
 
     public function handle(array $middlewares)
