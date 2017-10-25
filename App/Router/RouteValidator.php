@@ -17,6 +17,11 @@ class RouteValidator implements RouteValidatorInterface
     {
         $this->url   = $url;
         $this->route = $route;
+
+        if (!$this->validateMethodType()) {
+            return false;
+        }
+
         $urlArray = $this->explode();
 
         for ($i = 0; $i < count($this->explode()); $i++) {
@@ -45,5 +50,12 @@ class RouteValidator implements RouteValidatorInterface
         }
 
         return false;
+    }
+
+    private function validateMethodType()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == $this->route->getMethod()) {
+            return true;
+        }
     }
 }

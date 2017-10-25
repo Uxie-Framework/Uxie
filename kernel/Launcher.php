@@ -10,8 +10,8 @@ class Launcher
 {
     public function execute(Route $route)
     {
-        if (is_callable($route->action)) {
-            $this->isClosure($route->action);
+        if (is_callable($route->getAction())) {
+            $this->isClosure($route->getAction());
 
             return true;
         }
