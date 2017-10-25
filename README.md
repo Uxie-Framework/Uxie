@@ -48,7 +48,7 @@ such as ip, browser, source, date
 ## Request handler:
 it's a built in handler for POST requests (simulaire to laravels one)  
 ```php
-public function store($request)  
+public function store(Request $request)  
 {  
   echo $reqeust->name;  
 }
