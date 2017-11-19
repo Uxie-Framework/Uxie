@@ -18,11 +18,16 @@ Uxie is a PHP MVC Framework.
 ## Routing :
 Web/Routes.php  
 ```php
-$router->get('', function() {  
+$this->get('', function() {  
   view('index');
 });  
-$router->post('test', 'Controller@method');  
-$router->resource('user', 'UserController'); // same function as laravel 
+$this->post('test', 'Controller@method');  
+$this->resource('user', 'UserController'); // same function as laravel
+$this->group('user', function() {
+    $this->get('profile', function() {
+        echo 'Prifile';
+    });
+});
 ```
 ## Blade Templating Engine :
 use helper function view()  

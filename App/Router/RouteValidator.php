@@ -8,11 +8,6 @@ class RouteValidator implements RouteValidatorInterface
     private $url;
     private $route;
 
-    private function explode()
-    {
-        return explode('/', $this->url);
-    }
-
     public function validate(RouteInterface $route, string $url)
     {
         $this->url   = $url;
@@ -22,9 +17,9 @@ class RouteValidator implements RouteValidatorInterface
             return false;
         }
 
-        $urlArray = $this->explode();
+        $urlArray = $this->explodeUrl();
 
-        for ($i = 0; $i < count($this->explode()); $i++) {
+        for ($i = 0; $i < count($this->explodeUrl()); $i++) {
             if ($this->validateUrl($urlArray) && $this->validateVariables($this->variables)) {
                 return true;
             }
@@ -32,6 +27,17 @@ class RouteValidator implements RouteValidatorInterface
         }
 
         return false;
+    }
+
+    private function explodeUrl()
+    {
+        $array = explode('/', $this->url);
+
+        if ((count($array) > 1)&&(end($array) == false)) { // remove '/' from urls that with '/';
+            array_pop($array);
+        }
+
+        return $array;
     }
 
     private function validateUrl(array $urlArray)

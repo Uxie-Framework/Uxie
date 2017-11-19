@@ -4,12 +4,14 @@ namespace App\Router;
 
 use App\http\Request as Request;
 use Exception;
+use Closure;
 
 class Router implements RouterInterface
 {
     private $route;
     private $routes = [];
     private $url;
+    private $prefix = '';
 
     public function __construct()
     {
@@ -30,12 +32,12 @@ class Router implements RouterInterface
 
     public function get(string $route, $action)
     {
-        $this->addRoute(new Route('GET', $route, $action));
+        $this->addRoute(new Route('GET', $this->prefix, $route, $action));
     }
 
     public function post(string $route, $action)
     {
-        $this->addRoute(new Route('POST', $route, $action));
+        $this->addRoute(new Route('POST', $this->prefix, $route, $action));
     }
 
     public function resource(string $route, string $controller)
@@ -47,6 +49,18 @@ class Router implements RouterInterface
         $this->get($route.'/edit/{$id}', "$controller@edit");
         $this->post($route.'/update/{$id}', "$controller@update");
         $this->post($route.'/destroy/{$id}', "$controller@delete");
+    }
+
+    public function group(string $prefix, Closure $action)
+    {
+        $this->prefix = $prefix;
+        $action();
+        $this->initialisePrefix();
+    }
+
+    private function initialisePrefix()
+    {
+        $this->prefix = '';
     }
 
     private function addRoute(RouteInterface $route)

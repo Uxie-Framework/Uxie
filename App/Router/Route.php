@@ -13,10 +13,10 @@ class Route implements RouteInterface
     private $trimmed;
     private $method;
 
-    public function __construct(string $method, string $route, $action)
+    public function __construct(string $method, string $prefix, string $route, $action)
     {
         $this->method  = $method;
-        $this->route   = $route;
+        $this->route   = $prefix.$route;
         $this->action  = $action;
         $this->trimmed = $this->trimRoute(new RouteTrimmer());
     }

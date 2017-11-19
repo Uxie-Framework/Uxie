@@ -6,7 +6,7 @@ use App\Http\Request;
 
 interface RouteInterface
 {
-    public function __construct(string $method, string $route, $action);
+    public function __construct(string $method, string $prefix, string $route, $action);
     public function getRoute();
     public function getVariables();
     public function getMethod();
