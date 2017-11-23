@@ -25,7 +25,7 @@ $this->post('test', 'Controller@method');
 $this->resource('user', 'UserController'); // same function as laravel
 $this->group('user', function() {
     $this->get('profile', function() {
-        echo 'Prifile';
+        echo 'Profile';
     });
 });
 ```
@@ -47,7 +47,7 @@ retrieve data:
 Model\table::select()->where('name', '=', 'user')->limit(10)->get();
 `  
 and planty of other methods such as limit, orderBy, groupBy, count, update, delete  
-## built-in visitors analyser:
+## built-in visitors analyser (Not fully developed):
 it's a built in middleware that record each user hits and data and store them in a table
 such as ip, browser, source, date
 ## Request handler:
@@ -59,9 +59,9 @@ public function store(Request $request)
 }
 ```
 ## Exception handler:
-Uxie comes with a built in exception handler that will handle errors/exceptions for you.
+Uxie comes with a built in exception handler that will handle thrown exceptions automatically.
 ## Errors logger:
-All errors occured during excution will be logged in log/All_errors.log
-## Helper functions:
+All errors/exceptions thrown during execution will be logged in log/All_errors.log
+## Helpers:
 Helpers are functions available to use everywhere inside the framework such as view(),session(),redirect(),route(),url()
 all function are available in App/helpers.
