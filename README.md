@@ -18,11 +18,18 @@ Uxie is a PHP MVC Framework.
 ## Routing :
 Web/Routes.php  
 ```php
-$this->get('', function() {  
+// basic route (get)
+$this->get('', function() {
   view('index');
-});  
-$this->post('test', 'Controller@method');  
+});
+
+// execute method from controller
+$this->post('test', 'Controller@method');
+
+// resource method wich contains(index,create,store,show,edit,update,delete) same as laravel
 $this->resource('user', 'UserController'); // same function as laravel
+
+// add a collection of routes with a prefix
 $this->group('user', function() {
     $this->get('profile', function() {
         echo 'Profile';
