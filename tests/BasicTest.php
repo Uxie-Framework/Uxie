@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 class BasicTest extends TestCase
 {
-    public function basictest()
+    public function test()
     {
         $this->assertTrue(true);
     }
