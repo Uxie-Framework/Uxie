@@ -10,7 +10,7 @@ class Middlewares
         //'globalMiddleware',
     ];
     public static $priorMiddlewares = [
-        '' => 'statistics',
+        //'' => 'statistics',
         // 'exampleRoute' => 'exampleMiddlewareFile',
         // how to Assign Multi Middlewares
         // 'exampleRoute' => ['exampleMiddlewareFile',

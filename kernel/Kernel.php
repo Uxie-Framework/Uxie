@@ -3,7 +3,7 @@
 namespace Kernel;
 
 use App\Middleware\Middleware;
-use App\Router\Router;
+use Router\Router;
 use Web\Middlewares as Middlewares;
 
 /**
