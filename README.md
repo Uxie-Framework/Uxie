@@ -17,6 +17,7 @@ Uxie is a PHP MVC Framework.
 # Documentation:
 ## Routing :
 Web/Routes.php  
+
 ```php
 // basic route (get)
 $this->get('', function() {
@@ -35,6 +36,7 @@ $this->group('user', function() {
         echo 'Profile';
     });
 });
+
 ```
 ## Blade Templating Engine :
 use helper function view()  
@@ -51,24 +53,31 @@ Model\Table::insert(['column1', 'column2'], [value1, value2])->save();
 `  
 retrieve data:  
 `
+
 Model\table::select()->where('name', '=', 'user')->limit(10)->get();
 `  
 and planty of other methods such as limit, orderBy, groupBy, count, update, delete  
 ## built-in visitors analyser (Not fully developed):
+
 it's a built in middleware that record each user hits and data and store them in a table
 such as ip, browser, source, date
 ## Request handler:
 it's a built in handler for POST requests (simulaire to laravels one)  
+
 ```php
 public function store(Request $request)  
+
 {  
   echo $reqeust->name;  
 }
 ```
 ## Exception handler:
+
 Uxie comes with a built in exception handler that will handle thrown exceptions automatically.
 ## Errors logger:
 All errors/exceptions thrown during execution will be logged in log/All_errors.log
 ## Helpers:
+
+
 Helpers are functions available to use everywhere inside the framework such as view(),session(),redirect(),route(),url()
 all function are available in App/helpers.
