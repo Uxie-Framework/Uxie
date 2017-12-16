@@ -2,7 +2,7 @@
 
 namespace App\Middleware;
 
-use App\Router\RouteInterface;
+use Router\RouteInterface;
 
 class Middleware implements MiddlewareInterface
 {

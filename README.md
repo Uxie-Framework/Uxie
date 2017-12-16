@@ -17,12 +17,26 @@ Uxie is a PHP MVC Framework.
 # Documentation:
 ## Routing :
 Web/Routes.php  
-```
-$router->get('', function() {  
+
+```php
+// basic route (get)
+$this->get('', function() {
   view('index');
-});  
-$router->post('test', 'Controller@method');  
-$router->resource('user', 'UserController');  
+});
+
+// execute method from controller
+$this->post('test', 'Controller@method');
+
+// resource method wich contains(index,create,store,show,edit,update,delete) same as laravel
+$this->resource('user', 'UserController'); // same function as laravel
+
+// add a collection of routes with a prefix
+$this->group('user', function() {
+    $this->get('profile', function() {
+        echo 'Profile';
+    });
+});
+
 ```
 ## Blade Templating Engine :
 use helper function view()  
@@ -39,24 +53,31 @@ Model\Table::insert(['column1', 'column2'], [value1, value2])->save();
 `  
 retrieve data:  
 `
-Model\StatisticsHits::select()->where('id', '=', '675')->get();
+
+Model\table::select()->where('name', '=', 'user')->limit(10)->get();
 `  
-and planty of other methods such as limit, orderBy, groupBy, count, update, delete  
-## built-in visitors analyser:
+and planty of other methods such as limit, orderBy, groupBy, count, update, delete  
+## built-in visitors analyser (Not fully developed):
+
 it's a built in middleware that record each user hits and data and store them in a table
 such as ip, browser, source, date
 ## Request handler:
 it's a built in handler for POST requests (simulaire to laravels one)  
-```
-public function store($request)  
+
+```php
+public function store(Request $request)  
+
 {  
   echo $reqeust->name;  
 }
 ```
 ## Exception handler:
-Uxie comes with a built in exception handler that will handle errors/exceptions for you.
+
+Uxie comes with a built in exception handler that will handle thrown exceptions automatically.
 ## Errors logger:
-All errors occured during excution will be logged in log/All_errors.log
-## Helper functions:
+All errors/exceptions thrown during execution will be logged in log/All_errors.log
+## Helpers:
+
+
 Helpers are functions available to use everywhere inside the framework such as view(),session(),redirect(),route(),url()
 all function are available in App/helpers.

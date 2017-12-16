@@ -1,8 +1,18 @@
 <?php
 
-$router->get('', function () {
+$this->get('', function () {
     view('index');
 });
 
-// example $router->post('test', 'controller@test');
-// example $router->resource('user', 'controller');
+// post example
+// $this->post('test', 'controller@test');
+
+// resource example
+// $this->resource('user', 'controller');
+
+// group example
+//$this->group('myprefix/', function () {
+//     $this->get('create', function () {
+//         view('create');
+//     });
+// });

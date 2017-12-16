@@ -2,7 +2,7 @@
 
 namespace Kernel;
 
-use App\Router\Route;
+use Router\Route;
 use Closure;
 use Exception;
 
