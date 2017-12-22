@@ -56,11 +56,11 @@ Documentation with examples is available in the same file.
 Insert data:  
 ```php
 Model\table::insert(['column1', 'column2'], [value1, value2])->save();
-```  
+```
 Retrieve data:  
 ```php
 Model\table::select()->where('name', '=', 'user')->limit(10)->get();
-```  
+```
 And plenty of other methods such as limit, orderBy, groupBy, count, update and delete.  
 
 ## Built-in visitors analyzer (Not fully developed):
