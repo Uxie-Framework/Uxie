@@ -2,7 +2,7 @@
 /**
  * Uxie - A PHP Micro-Framework.
  *
- * @author   Cheribet Mohamed Amine <MohamedAmine1c@gmail.com>
+ * @author Cheribet Mohamed Amine <MohamedAmine1c@gmail.com>
  */
 
 // import composer autoloader
@@ -17,10 +17,10 @@ $dotenv = new Dotenv('../');
 // load the .env file
 $dotenv->load();
 
-//import default settings
+// import default settings
 require_once '../defaults.php';
 
-//preapring for launching application
+// preapring for launching application
 $Kernel = new Kernel();
 
 $Kernel->prepare();
