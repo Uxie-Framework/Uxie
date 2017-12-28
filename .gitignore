@@ -1,2 +1,10 @@
-vendor/
+/vendor
 .env
+composer.phar
+log/
+cache/blade/
+/.idea
+/.vscode
+.vscode
+.phpintel
+.DS_Store
