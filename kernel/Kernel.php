@@ -16,7 +16,7 @@ class Kernel
 
     public function prepare()
     {
-        $this->route      = (new Router())->getRoute();
+        $this->route      = (new Router('../web/Routes.php'))->getRoute();
         $this->middleware = new Middleware($this->route);
     }
 
