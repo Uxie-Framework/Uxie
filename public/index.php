@@ -11,8 +11,8 @@ require_once '../vendor/autoload.php';
 // use phpdotenv namespace in the vendor folder
 use Dotenv\Dotenv;
 use Kernel\Kernel;
-
-// specify the filename to use (.env in the root folder)
+use Router\Router;
+// specify the filename location to use (.env in the root folder)
 $dotenv = new Dotenv('../');
 // load the .env file
 $dotenv->load();

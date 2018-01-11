@@ -24,7 +24,7 @@ function redirect(string $url)
 // include a view
 function view(string $view, array $data = null)
 {
-    $blade = new Blade('../views', '../cache/blade');
+    $blade = new Blade('../Views', '../cache/blade');
     if ($data) {
         echo $blade->make($view, $data);
     } else {
