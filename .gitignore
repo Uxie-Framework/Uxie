@@ -2,7 +2,6 @@
 .env
 composer.phar
 log/
-cache/blade/
 /.idea
 /.vscode
 .vscode

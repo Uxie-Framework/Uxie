@@ -27,8 +27,8 @@
 
     "autoload": {
         "files": [
-            "app/helpers/url.php",
-            "app/helpers/storage.php"
+            "App/helpers/url.php",
+            "App/helpers/storage.php"
         ],
     "psr-4": {
       "App\\":"App/",

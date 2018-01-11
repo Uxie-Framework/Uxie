@@ -12,11 +12,11 @@ class Launcher
     {
         if (is_callable($route->getAction())) {
             $this->isClosure($route->getAction());
-
             return true;
         }
 
         $this->isController($route);
+
     }
 
     private function isClosure(Closure $action)

@@ -7,7 +7,7 @@ use Router\Router;
 use Web\Middlewares as Middlewares;
 
 /**
- * excute the application.
+ * execute the application.
  */
 class Kernel
 {
