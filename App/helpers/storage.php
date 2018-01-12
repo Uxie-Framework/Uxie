@@ -3,8 +3,10 @@
 function session($key, $value = null)
 {
     session_start();
-    if (!$value) {
+    if (!$value && isset($_SESSION[$key])) {
         return $_SESSION[$key];
+    } elseif (!$value) {
+        return false;
     }
     $_SESSION[$key] = $value;
 }
@@ -23,6 +25,8 @@ function cookie($key, $value = null, $time = null)
         setcookie($key, $value);
     } elseif (!$value && !$time) {
         return $_COOKIE[$key];
+    } else {
+        return false;
     }
 }
 

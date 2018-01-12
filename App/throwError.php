@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Throwable;
+
 class throwError
 {
     public function __construct(Throwable $e)

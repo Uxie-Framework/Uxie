@@ -7,3 +7,5 @@ log/
 .vscode
 .phpintel
 .DS_Store
+
+cache/blade/
