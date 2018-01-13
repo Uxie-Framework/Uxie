@@ -9,6 +9,7 @@
         "php": ">=7.0",
         "uxie/router": "^0.1",
         "uxie/model": "^0.1",
+        "uxie/statistics": "^0.1",
         "vlucas/phpdotenv": "^2.4",
         "mohamed-amine/file-uploader": "^1.1",
         "intervention/image": "^2.4",
@@ -21,14 +22,13 @@
             "name": "Mohamed Amine",
             "email": "MohamedAmine1c@gmail.com",
             "homepage": "https://github.com/MohamedAmine-C/Uxie",
-            "role": "Developer"
+            "role": "Owner"
         }
     ],
 
     "autoload": {
         "files": [
-            "App/helpers/url.php",
-            "App/helpers/storage.php"
+            "App/helpers/helpers.php"
         ],
     "psr-4": {
       "App\\":"App/",

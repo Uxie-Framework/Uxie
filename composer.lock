@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "375333728affe450274fd17f90b14ab3",
+    "content-hash": "7f616edbd9c265cb0e0774c9142ffd1f",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -1689,16 +1689,16 @@
         },
         {
             "name": "sebastian/comparator",
-            "version": "2.1.1",
+            "version": "2.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/comparator.git",
-                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f"
+                "reference": "11c07feade1d65453e06df3b3b90171d6d982087"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
-                "reference": "b11c729f95109b56a0fe9650c6a63a0fcd8c439f",
+                "url": "https://api.github.com/repos/sebastianbergmann/comparator/zipball/11c07feade1d65453e06df3b3b90171d6d982087",
+                "reference": "11c07feade1d65453e06df3b3b90171d6d982087",
                 "shasum": ""
             },
             "require": {
@@ -1749,7 +1749,7 @@
                 "compare",
                 "equality"
             ],
-            "time": "2017-12-22T14:50:35+00:00"
+            "time": "2018-01-12T06:34:42+00:00"
         },
         {
             "name": "sebastian/diff",
@@ -2548,6 +2548,46 @@
             ],
             "description": "Uxie Framework Router",
             "time": "2017-12-28T16:06:59+00:00"
+        },
+        {
+            "name": "uxie/statistics",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Uxie-Framework/Statistics.git",
+                "reference": "7d5084b904e500c39893102b4c7c8f44bb7fcecd"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/7d5084b904e500c39893102b4c7c8f44bb7fcecd",
+                "reference": "7d5084b904e500c39893102b4c7c8f44bb7fcecd",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "uxie/model": "^0.1"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Statistics\\": "src/",
+                    "Model\\": "src/Model/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Uxie Framework Visits Recorder",
+            "time": "2018-01-13T14:55:15+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

@@ -2,6 +2,6 @@
 
 namespace Middleware;
 
-use App;
+use Statistics;
 
-new App\Statistics();
+new Statistics\Visit();
