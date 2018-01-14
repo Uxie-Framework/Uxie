@@ -102,7 +102,7 @@ $data = Model\table::select()->where('name', '=', 'user')->limit(10)->get();
 ```
 Retrieve single row:
 ```php
-$name = Model/table::find('name', 'MyName');
+$user = Model/table::find('name', 'MyName');
 ```
 And plenty of other methods such as limit, orderBy, groupBy, count, update and delete.
 simple example:
