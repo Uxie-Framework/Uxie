@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7f616edbd9c265cb0e0774c9142ffd1f",
+    "content-hash": "805777101396fa5cdccf05bf75df2052",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2512,21 +2512,60 @@
             "time": "2018-01-13T16:41:04+00:00"
         },
         {
-            "name": "uxie/router",
-            "version": "v0.1.2",
+            "name": "uxie/request-handler",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Uxie-Framework/Router.git",
-                "reference": "4758616fa4ce8b7b49ca1f196dba67290ddf13e0"
+                "url": "https://github.com/Uxie-Framework/Request-Handler.git",
+                "reference": "9475920c16ed1878c4276d79f355cc8aaadfeea7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Router/zipball/4758616fa4ce8b7b49ca1f196dba67290ddf13e0",
-                "reference": "4758616fa4ce8b7b49ca1f196dba67290ddf13e0",
+                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/9475920c16ed1878c4276d79f355cc8aaadfeea7",
+                "reference": "9475920c16ed1878c4276d79f355cc8aaadfeea7",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Request\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Uxie Framework Request Handler",
+            "time": "2018-01-19T20:10:11+00:00"
+        },
+        {
+            "name": "uxie/router",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Uxie-Framework/Router.git",
+                "reference": "70958dc7ffec541828ab549dac8afed5c9015673"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Uxie-Framework/Router/zipball/70958dc7ffec541828ab549dac8afed5c9015673",
+                "reference": "70958dc7ffec541828ab549dac8afed5c9015673",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0",
+                "uxie/request-handler": "^0.1"
             },
             "type": "library",
             "autoload": {
@@ -2547,7 +2586,7 @@
                 }
             ],
             "description": "Uxie Framework Router",
-            "time": "2017-12-28T16:06:59+00:00"
+            "time": "2018-01-19T19:46:35+00:00"
         },
         {
             "name": "uxie/statistics",

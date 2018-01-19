@@ -16,7 +16,6 @@ class Launcher
         }
 
         $this->isController($route);
-
     }
 
     private function isClosure(Closure $action)
@@ -26,12 +25,12 @@ class Launcher
 
     private function isController(Route $route)
     {
-        if (strpos($route->action, '@') && !strpos($route->action, '/')) { // if route is in format of Class@method
-            $parameters = explode('@', $route->action);
+        if (strpos($route->getAction(), '@') && !strpos($route->getAction(), '/')) { // if route is in format of Class@method
+            $parameters = explode('@', $route->getAction());
             $class = '\Controller\\'.$parameters[0];
             $method = $parameters[1];
             $controller = new $class();
-            call_user_func_array([$controller, $method], $route->variables);
+            call_user_func_array([$controller, $method], $route->getVariables());
 
             return true;
         }
