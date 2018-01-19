@@ -6,7 +6,7 @@ class Middlewares
 {
     // Middlewares to be executed before the script
     // Route for first value ,Middleware name for second value
-    public $globalMiddlewares = [
+    public static $globalMiddlewares = [
         //'globalMiddleware',
     ];
     public static $priorMiddlewares = [

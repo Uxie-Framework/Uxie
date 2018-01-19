@@ -66,3 +66,10 @@ function unsetCookie($key)
 {
     setcookie($key, '', time() - 1);
 }
+
+function csrf_field()
+{
+    $token = uniqid(random_int(0, 1000));
+    session('_token', $token);
+    return "<input type='hidden' name='_token' value=".$token.">";
+}

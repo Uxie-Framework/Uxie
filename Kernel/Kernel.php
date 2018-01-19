@@ -23,6 +23,7 @@ class Kernel
     public function start()
     {
         $this->middleware->handle(Middlewares::$priorMiddlewares)->call();
+        $this->middleware->handle(Middlewares::$globalMiddlewares)->call();
         $this->launch(new Launcher());
     }
 

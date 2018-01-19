@@ -2475,16 +2475,16 @@
         },
         {
             "name": "uxie/model",
-            "version": "v0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Model.git",
-                "reference": "e77749f8b1309e1a00cdc16389fbc892061cd35e"
+                "reference": "dd4f46b9d4b08f98277af5237df0aba0e562f794"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Model/zipball/e77749f8b1309e1a00cdc16389fbc892061cd35e",
-                "reference": "e77749f8b1309e1a00cdc16389fbc892061cd35e",
+                "url": "https://api.github.com/repos/Uxie-Framework/Model/zipball/dd4f46b9d4b08f98277af5237df0aba0e562f794",
+                "reference": "dd4f46b9d4b08f98277af5237df0aba0e562f794",
                 "shasum": ""
             },
             "require": {
@@ -2509,7 +2509,7 @@
                 }
             ],
             "description": "Uxie Framework Model",
-            "time": "2017-12-16T11:49:44+00:00"
+            "time": "2018-01-13T16:41:04+00:00"
         },
         {
             "name": "uxie/router",
@@ -2551,16 +2551,16 @@
         },
         {
             "name": "uxie/statistics",
-            "version": "v0.1",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Statistics.git",
-                "reference": "7d5084b904e500c39893102b4c7c8f44bb7fcecd"
+                "reference": "ebe1c2df4fdd66f0f44bf09b8eee55b34735d5d6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/7d5084b904e500c39893102b4c7c8f44bb7fcecd",
-                "reference": "7d5084b904e500c39893102b4c7c8f44bb7fcecd",
+                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/ebe1c2df4fdd66f0f44bf09b8eee55b34735d5d6",
+                "reference": "ebe1c2df4fdd66f0f44bf09b8eee55b34735d5d6",
                 "shasum": ""
             },
             "require": {
@@ -2587,7 +2587,7 @@
                 }
             ],
             "description": "Uxie Framework Visits Recorder",
-            "time": "2018-01-13T14:55:15+00:00"
+            "time": "2018-01-13T16:39:28+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
