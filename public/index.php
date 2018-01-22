@@ -9,24 +9,27 @@
 require_once '../vendor/autoload.php';
 
 // use phpdotenv namespace in the vendor folder
-use Dotenv\Dotenv;
-use Kernel\Kernel;
-use Router\Router;
+
+use DI\DI;
+
+$container = DI::container();
+
 // specify the filename location to use (.env in the root folder)
-$dotenv = new Dotenv('../');
+$container->build('Dotenv', ['../']);
+
 // load the .env file
-$dotenv->load();
+$container->get('Dotenv')->load();
 
 // import default settings
 require_once '../defaults.php';
 
 // preapring for launching application
-$Kernel = new Kernel();
+$container->build('Kernel');
 
-$Kernel->prepare();
+$container->get('Kernel')->prepare();
 
 // launching application
-$Kernel->start();
+$container->get('Kernel')->start();
 
 // stop application
-$Kernel->stop();
+$container->get('Kernel')->stop();
