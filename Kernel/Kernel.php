@@ -2,38 +2,37 @@
 
 namespace Kernel;
 
-use App\Middleware\Middleware;
-use Router\Router;
 use Web\Middlewares as Middlewares;
+use DI\DI;
 
 /**
  * execute the application.
  */
 class Kernel
 {
-    private $route;
-    private $middleware;
+    private $container;
 
     public function prepare()
     {
-        $this->route      = (new Router('../web/Routes.php'))->getRoute();
-        $this->middleware = new Middleware($this->route);
+        $this->container = DI::container();
+        $this->container->build('Router', ['../web/Routes.php']);
+        $this->container->build('Middleware', [$this->container->get('Router')->getRoute()]);
     }
 
     public function start()
     {
-        $this->middleware->handle(Middlewares::$priorMiddlewares)->call();
-        $this->middleware->handle(Middlewares::$globalMiddlewares)->call();
-        $this->launch(new Launcher());
+        $this->container->get('Middleware')->handle(Middlewares::$priorMiddlewares);
+        $this->container->get('Middleware')->handle(Middlewares::$globalMiddlewares);
+        $this->launch($this->container->build('Launcher'));
     }
 
     public function stop()
     {
-        $this->middleware->handle(Middlewares::$lateMiddlewares)->call();
+        $this->container->get('Middleware')->handle(Middlewares::$lateMiddlewares)->call();
     }
 
     private function launch(Launcher $launcher)
     {
-        $launcher->execute($this->route);
+        $launcher->execute($this->container->get('Router')->getRoute());
     }
 }

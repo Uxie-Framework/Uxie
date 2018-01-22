@@ -13,6 +13,7 @@
         "uxie/request-handler": "^0.1",
         "vlucas/phpdotenv": "^2.4",
         "mohamed-amine/file-uploader": "^1.1",
+        "mohamed-amine/di-container": "^0.1",
         "intervention/image": "^2.4",
         "jenssegers/blade": "^1.1",
         "phpunit/phpunit": "^6.0"
