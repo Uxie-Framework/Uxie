@@ -5,7 +5,7 @@ Uxie is a PHP MVC Framework.
 #### - Perfect MVC environment.
 #### - Dependency injection container ( With service provider).
 #### - Routing.
-#### - Blade templating engine.
+#### - Mutual Templating Engine (Blade & Pug):
 #### - Middlewares.
 #### - Model.
 #### - visitors statistics.
@@ -73,11 +73,29 @@ public function store(Request $request)
   // equivalent to $_POST['name'];
 }
 ```
-## Blade Templating Engine (same as Laravel):
+## Mutual Templating Engine (Blade & Pug):
+
+#### Important Notes:
+- All view must be inside Views folder.
+
+#### How to use it:
 Use helper function view(string $view, array $variables):  
 ```php
 view('YourView', ['data' => $data, 'Amine' => $name]);
-```  
+
+// To use Pug view use: 
+pugView(string $view, array $data);
+
+// to use Blade view use:
+bladeView(string $view, array $data);
+```
+#### How to Chose wich Templating engine to use:
+To change Templating engine you should edit .env file
+```
+Engine = Blade
+# or
+Engine = Pug
+```
 
 ## Dependency injection container:
 uxie comes with a di container that resolves all of your classes dependencies and their dependencies and so on
