@@ -3,7 +3,7 @@
 // include a view
 function view(string $view, array $data = null)
 {
-    if (getenv('Engine') == 'Blade') {
+    if (getenv('TEMPLATING_ENGINE') == 'Blade') {
         bladeView($view, $data);
     } else {
         pugView($view, $data);
@@ -13,11 +13,8 @@ function bladeView(string $view, array $data = null)
 {
     global $container;
     $container->build('Blade', ['../Views', '../cache/blade']);
-    if ($data) {
-        echo $container->get('Blade')->make($view, $data);
-    } else {
-        echo $container->get('Blade')->make($view);
-    }
+
+    echo $container->get('Blade')->make($view, $data);
 }
 
 function pugView(string $view, array $data = null)
@@ -28,11 +25,8 @@ function pugView(string $view, array $data = null)
         'cache'              => '../cache/pug',
         'basedir'            => '../Views',
         ]]);
-    if ($data) {
-        echo $container->get('Pug')->render("../Views/$view.pug", $data);
-    } else {
-        echo $container->get('Pug')->render("../Views/$view.pug");
-    }
+
+    echo $container->get('Pug')->render("../Views/$view.pug", $data);
 }
 
 // return full valide url (inside application)
