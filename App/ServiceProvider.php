@@ -8,10 +8,12 @@ namespace App;
 trait ServiceProvider
 {
     private $serviceProviders = [
-        'Router' => \Router\Router::class,
-        'Kernel' => \Kernel\Kernel::class,
-        'Launcher' => \Kernel\Launcher::class,
+        'Router'     => \Router\Router::class,
+        'Kernel'     => \Kernel\Kernel::class,
+        'Launcher'   => \Kernel\Launcher::class,
         'Middleware' => \App\Middleware\Middleware::class,
-        'Dotenv' => \Dotenv\Dotenv::class,
+        'Dotenv'     => \Dotenv\Dotenv::class,
+        'Blade'      => \Jenssegers\Blade\Blade::class,
+        'Pug'        => \Pug\Pug::class,
     ];
 }

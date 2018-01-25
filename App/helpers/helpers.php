@@ -1,6 +1,39 @@
 <?php
 
-use Jenssegers\Blade\Blade;
+// include a view
+function view(string $view, array $data = null)
+{
+    if (getenv('Engine') == 'Blade') {
+        bladeView($view, $data);
+    } else {
+        pugView($view, $data);
+    }
+}
+function bladeView(string $view, array $data = null)
+{
+    global $container;
+    $container->build('Blade', ['../Views', '../cache/blade']);
+    if ($data) {
+        echo $container->get('Blade')->make($view, $data);
+    } else {
+        echo $container->get('Blade')->make($view);
+    }
+}
+
+function pugView(string $view, array $data = null)
+{
+    global $container;
+    $container->build('Pug', [[
+        'expressionLanguage' => 'php',
+        'cache'              => '../cache/pug',
+        'basedir'            => '../Views',
+        ]]);
+    if ($data) {
+        echo $container->get('Pug')->render("../Views/$view.pug", $data);
+    } else {
+        echo $container->get('Pug')->render("../Views/$view.pug");
+    }
+}
 
 // return full valide url (inside application)
 function url(string $url)
@@ -20,16 +53,6 @@ function redirect(string $url)
 {
     ob_start();
     header('Location: '.$url);
-}
-// include a view
-function view(string $view, array $data = null)
-{
-    $blade = new Blade('../Views', '../cache/blade');
-    if ($data) {
-        echo $blade->make($view, $data);
-    } else {
-        echo $blade->make($view);
-    }
 }
 
 function session($key, $value = null)

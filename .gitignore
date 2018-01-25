@@ -8,3 +8,4 @@ log/
 .phpintel
 .DS_Store
 cache/blade/*.php
+cache/pug/*.php
