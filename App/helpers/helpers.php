@@ -1,7 +1,7 @@
 <?php
 
 // include a view
-function view(string $view, array $data = null)
+function view(string $view, array $data = [])
 {
     if (getenv('TEMPLATING_ENGINE') == 'Blade') {
         bladeView($view, $data);
@@ -9,7 +9,7 @@ function view(string $view, array $data = null)
         pugView($view, $data);
     }
 }
-function bladeView(string $view, array $data = null)
+function bladeView(string $view, array $data = [])
 {
     global $container;
     $container->build('Blade', ['../Views', '../cache/blade']);
@@ -17,7 +17,7 @@ function bladeView(string $view, array $data = null)
     echo $container->get('Blade')->make($view, $data);
 }
 
-function pugView(string $view, array $data = null)
+function pugView(string $view, array $data = [])
 {
     global $container;
     $container->build('Pug', [[
