@@ -3,6 +3,7 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
+#### - Dependency injection container
 #### - Routing.
 #### - Blade templating engine.
 #### - Middlewares.
@@ -78,6 +79,36 @@ Use helper function view(string $view, array $variables):
 view('YourView', ['data' => $data, 'Amine' => $name]);
 ```  
 
+## Dependency injection container:
+uxie comes with a di container that resolves all of your classes dependencies and their dependencies and so on
+to use it:
+```php
+global $container;
+
+// instead of this:
+$myClass = new \Namespace\MyClass( new Class1(), new Class2( new Class3()));
+
+// you can use this:
+$myClass = $container->build('\Namespace\MyClass');
+
+// if you have some arguments
+// instead of this:
+$myClass = new \Namespace\MyClass('argument1', 'argument2');
+
+// use this
+$container->build('\Namespace\Myclass', ['argument1', 'argument2']);
+
+$container->get('MyClass')->someMethod();
+```
+## the global $container:
+the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the container, 
+this way you will be able to create an object once and use it many times
+
+```php
+global $container;
+$container->build('someclass');
+$container->get('someClass')->someMethod();
+```
 ## Middlewares:
 there are 3 types of middlewares : prior-middlewares,late-middlewares and global-middlewares
 All middlewares are defined in web/middlewares.php.
