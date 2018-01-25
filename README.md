@@ -3,7 +3,7 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
-#### - Dependency injection container
+#### - Dependency injection container ( With service provider).
 #### - Routing.
 #### - Blade templating engine.
 #### - Middlewares.
@@ -100,7 +100,26 @@ $container->build('\Namespace\Myclass', ['argument1', 'argument2']);
 
 $container->get('MyClass')->someMethod();
 ```
-## the global $container:
+
+## Service Provider:
+service provider is a trait with ```App``` wich contain class short-names to make di-container easier to use:
+
+```php
+trait ServiceProvider
+{
+    private $serviceProviders = [
+        'Router'     => \Router\Router::class,
+        'Kernel'     => \Kernel\Kernel::class,
+        'Launcher'   => \Kernel\Launcher::class,
+        'Middleware' => \App\Middleware\Middleware::class,
+        'Dotenv'     => \Dotenv\Dotenv::class,
+        'Blade'      => \Jenssegers\Blade\Blade::class,
+        'Pug'        => \Pug\Pug::class,
+    ];
+}
+```
+
+## The global $container:
 the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the container, 
 this way you will be able to create an object once and use it many times
 
