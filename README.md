@@ -4,6 +4,7 @@ Uxie is a PHP MVC Framework.
 # Features:
 #### - Perfect MVC environment.
 #### - Dependency injection container ( With service provider).
+#### - Global Container:
 #### - Routing.
 #### - Mutual Templating Engine (Blade & Pug):
 #### - Middlewares.
