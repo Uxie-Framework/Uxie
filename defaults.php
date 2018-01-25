@@ -6,5 +6,6 @@ error_reporting(getenv('ERROR_REPORTING'));
 ini_set('memory_limit', getenv('MEMORY_LIMIT'));
 
 set_exception_handler(function (Throwable $e) {
-    new App\ThrowError($e);
+    global $container;
+    $container->build('App\ThrowError', [$e]);
 });

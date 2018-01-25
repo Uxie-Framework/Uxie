@@ -8,13 +8,16 @@ use DI\DI;
 /**
  * execute the application.
  */
+
+
 class Kernel
 {
     private $container;
 
     public function prepare()
     {
-        $this->container = DI::container();
+        global $container;
+        $this->container = $container;
         $this->container->build('Router', ['../web/Routes.php']);
         $this->container->build('Middleware', [$this->container->get('Router')->getRoute()]);
     }

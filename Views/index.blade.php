@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>Welcome</title>
         <link rel="stylesheet" href="/style/main.css">
-        <style media="screen">
+        <style type='text/css'>
             .welcome {
                 font-family: slim;
                 text-align: center;

@@ -2,6 +2,6 @@
 
 namespace Middleware;
 
-use Statistics;
+global $container;
 
-new Statistics\Visit();
+$container->build('Statistics\Visit');
