@@ -3,7 +3,7 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
-#### - Security Out of the box against SQL injection, XSS, CSRF.
+#### - Security (secured against SQL injection, XSS, CSRF).
 #### - Dependency injection container ( With service provider).
 #### - Global Container:
 #### - Routing.
