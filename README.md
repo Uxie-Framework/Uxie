@@ -3,17 +3,18 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
+#### - Security Out of the box against SQL injection, XSS, CSRF.
 #### - Dependency injection container ( With service provider).
 #### - Global Container:
 #### - Routing.
 #### - Mutual Templating Engine (Blade & Pug):
 #### - Middlewares.
-#### - Model.
-#### - visitors statistics.
+#### - Ready to use Model.
+#### - Visitors Statistics Recorder.
 #### - Http Request handler.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
-#### - Helper functions.  
+#### - Helper functions.
 
 # Documentation:  
 
@@ -187,6 +188,7 @@ Data such as ip, browser, os, PreviousUrl, CurrentUrl, date.
 It's a built-in handler for `POST` requests
 
 ```php
+// you must add 'csrf_field()' to the form to protect against CSRF
 public function store(Request $request)  
 {
   echo $request->name;  
