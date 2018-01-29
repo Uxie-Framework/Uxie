@@ -16,6 +16,6 @@ class ThrowError
             $error = '404';
         }
 
-        view('error', ['code' => $code, 'error' => $error]);
+        view('CoreViews/error', ['code' => $code, 'error' => $error]);
     }
 }
