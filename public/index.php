@@ -2,7 +2,7 @@
 /**
  * Uxie - A PHP Micro-Framework.
  *
- * @author Cheribet Mohamed Amine <MohamedAmine1c@gmail.com>
+ * @author M.Amine Cheribet <MohamedAmine1c@gmail.com>
  */
 
 // import composer autoloader
@@ -12,13 +12,14 @@ require_once '../vendor/autoload.php';
 
 use DI\DI;
 
+// create Dependency injection container
 $container = DI::container();
 
-// specify the filename location to use (.env in the root folder)
-$container->build('Dotenv', ['../']);
+// create Dotenv object & specify the filename location to use (.env in the root folder)
+$container->build('Dotenv\Dotenv', ['../']);
 
 // load the .env file
-$container->get('Dotenv')->load();
+$container->Dotenv->load();
 
 // import default settings
 require_once '../defaults.php';
@@ -26,10 +27,10 @@ require_once '../defaults.php';
 // preapring for launching application
 $container->build('Kernel');
 
-$container->get('Kernel')->prepare();
+$container->Kernel->prepare();
 
 // launching application
-$container->get('Kernel')->start();
+$container->Kernel->start();
 
 // stop application
-$container->get('Kernel')->stop();
+$container->Kernel->stop();
