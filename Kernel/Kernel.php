@@ -17,7 +17,7 @@ class Kernel
     {
         global $container;
         $this->container = $container;
-        $this->container->build('Router', ['../web/Routes.php']);
+        $this->container->build('Router', [__DIR__.'/../web/Routes.php']);
         $this->container->build('Middleware', [$this->container->Router->getRoute()]);
     }
 
