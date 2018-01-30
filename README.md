@@ -4,7 +4,7 @@ Uxie is a PHP MVC Framework.
 # Features:
 #### - Perfect MVC environment.
 #### - Security (secured against SQL injection, XSS, CSRF).
-#### - Dependency injection container ( With service provider).
+#### - IOC (injection of control) Container.
 #### - Global Container:
 #### - Routing.
 #### - Mutual Templating Engine (Blade & Pug):
@@ -99,8 +99,8 @@ Engine = Blade
 Engine = Pug
 ```
 
-## Dependency injection container:
-uxie comes with a di container that resolves all of your classes dependencies and their dependencies and so on
+## IOC Container:
+uxie comes with a IOC container that resolves all of your classes dependencies and their dependencies and so on
 to use it:
 ```php
 global $container;
@@ -121,7 +121,7 @@ $container->build('\Namespace\Myclass', ['argument1', 'argument2']);
 $container->get('MyClass')->someMethod();
 ```
 
-## Service Provider:
+### Service Provider:
 service provider is a trait with ```App``` wich contain class short-names to make di-container easier to use:
 
 ```php
@@ -139,7 +139,7 @@ trait ServiceProvider
 }
 ```
 
-## The global $container:
+### The global $container:
 the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the container, 
 this way you will be able to create an object once and use it many times
 
