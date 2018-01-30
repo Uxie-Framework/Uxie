@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Uxie - A PHP Micro-Framework.
+ * Uxie - A PHP Framework.
  *
  * @author M.Amine Cheribet <MohamedAmine1c@gmail.com>
  */
@@ -8,12 +9,10 @@
 // import composer autoloader
 require_once '../vendor/autoload.php';
 
-// use phpdotenv namespace in the vendor folder
+use IOC\IOC;
 
-use DI\DI;
-
-// create Dependency injection container
-$container = DI::container();
+// create IOC container
+$container = IOC::container();
 
 // create Dotenv object & specify the filename location to use (.env in the root folder)
 $container->build('Dotenv\Dotenv', ['../']);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "689dde401d7278e412f8c17e1c1867fe",
+    "content-hash": "29315c3644da7e34eedac02d22d561de",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -194,16 +194,16 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.5.28",
+            "version": "v5.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "a7095697649494ced03d33cf4e756ccee94f8ab2"
+                "reference": "25821159f2bb12dc9e5720a4b13ea3372ffa8216"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/a7095697649494ced03d33cf4e756ccee94f8ab2",
-                "reference": "a7095697649494ced03d33cf4e756ccee94f8ab2",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/25821159f2bb12dc9e5720a4b13ea3372ffa8216",
+                "reference": "25821159f2bb12dc9e5720a4b13ea3372ffa8216",
                 "shasum": ""
             },
             "require": {
@@ -234,20 +234,20 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "https://laravel.com",
-            "time": "2017-08-14T18:00:01+00:00"
+            "time": "2018-01-19T17:58:33+00:00"
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.5.28",
+            "version": "v5.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "03e9014d2091a30b025c895aa6d39c2755576ea5"
+                "reference": "eb9a0171866fca0669c9acab6c7441e19b4694ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/03e9014d2091a30b025c895aa6d39c2755576ea5",
-                "reference": "03e9014d2091a30b025c895aa6d39c2755576ea5",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/eb9a0171866fca0669c9acab6c7441e19b4694ca",
+                "reference": "eb9a0171866fca0669c9acab6c7441e19b4694ca",
                 "shasum": ""
             },
             "require": {
@@ -278,11 +278,11 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2017-11-22T19:01:14+00:00"
+            "time": "2018-01-19T17:59:58+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v5.5.28",
+            "version": "v5.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -327,16 +327,16 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.5.28",
+            "version": "v5.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
-                "reference": "505d1a1e4a4d6e05db7f4d54bb1c9668e0afc754"
+                "reference": "b0ee7466dc73a5a2aa46a47a57664324b73191e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/505d1a1e4a4d6e05db7f4d54bb1c9668e0afc754",
-                "reference": "505d1a1e4a4d6e05db7f4d54bb1c9668e0afc754",
+                "url": "https://api.github.com/repos/illuminate/filesystem/zipball/b0ee7466dc73a5a2aa46a47a57664324b73191e7",
+                "reference": "b0ee7466dc73a5a2aa46a47a57664324b73191e7",
                 "shasum": ""
             },
             "require": {
@@ -373,20 +373,20 @@
             ],
             "description": "The Illuminate Filesystem package.",
             "homepage": "https://laravel.com",
-            "time": "2017-12-14T13:33:54+00:00"
+            "time": "2017-12-28T15:31:37+00:00"
         },
         {
             "name": "illuminate/support",
-            "version": "v5.5.28",
+            "version": "v5.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "4db3cc82b483172b1b25d9dfcec684927f5c8cf9"
+                "reference": "f6eb4fc687a1956cb44007604cd31dc50858eca9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/4db3cc82b483172b1b25d9dfcec684927f5c8cf9",
-                "reference": "4db3cc82b483172b1b25d9dfcec684927f5c8cf9",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/f6eb4fc687a1956cb44007604cd31dc50858eca9",
+                "reference": "f6eb4fc687a1956cb44007604cd31dc50858eca9",
                 "shasum": ""
             },
             "require": {
@@ -430,20 +430,20 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2017-12-24T20:02:59+00:00"
+            "time": "2018-01-19T13:47:08+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v5.5.28",
+            "version": "v5.5.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "7e8d3cb28ab6f1c450b670646b1517f367399447"
+                "reference": "d101d49ebf6a4876f28b8a5ed1f205b0a73fd8c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/7e8d3cb28ab6f1c450b670646b1517f367399447",
-                "reference": "7e8d3cb28ab6f1c450b670646b1517f367399447",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/d101d49ebf6a4876f28b8a5ed1f205b0a73fd8c9",
+                "reference": "d101d49ebf6a4876f28b8a5ed1f205b0a73fd8c9",
                 "shasum": ""
             },
             "require": {
@@ -478,7 +478,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2017-11-21T13:35:42+00:00"
+            "time": "2018-01-06T12:12:26+00:00"
         },
         {
             "name": "intervention/image",
@@ -724,55 +724,17 @@
             "time": "2017-10-27T21:27:00+00:00"
         },
         {
-            "name": "mohamed-amine/di-container",
-            "version": "v0.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/MohamedAmine-C/DI-Container.git",
-                "reference": "e26ff7bd130baeaf833ea88a9cf4fe0e94c82791"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/MohamedAmine-C/DI-Container/zipball/e26ff7bd130baeaf833ea88a9cf4fe0e94c82791",
-                "reference": "e26ff7bd130baeaf833ea88a9cf4fe0e94c82791",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "DI\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "PHP dependency injection container",
-            "time": "2018-01-22T20:41:38+00:00"
-        },
-        {
             "name": "mohamed-amine/file-uploader",
-            "version": "v1.1.1",
+            "version": "v2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedAmine-C/File-Uploader.git",
-                "reference": "711c31c78446a89cc01538598473048b1418333e"
+                "reference": "6cc5563d7726a7615b586fa28537f5f15e364905"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MohamedAmine-C/File-Uploader/zipball/711c31c78446a89cc01538598473048b1418333e",
-                "reference": "711c31c78446a89cc01538598473048b1418333e",
+                "url": "https://api.github.com/repos/MohamedAmine-C/File-Uploader/zipball/6cc5563d7726a7615b586fa28537f5f15e364905",
+                "reference": "6cc5563d7726a7615b586fa28537f5f15e364905",
                 "shasum": ""
             },
             "require": {
@@ -802,7 +764,45 @@
                 "image",
                 "upload"
             ],
-            "time": "2017-09-08T18:41:28+00:00"
+            "time": "2017-10-07T07:53:26+00:00"
+        },
+        {
+            "name": "mohamed-amine/ioc-container",
+            "version": "v0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/MohamedAmine-C/IOC-Container.git",
+                "reference": "551d7cabacd09a155019ebf9b92b4864b80a1a6d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/551d7cabacd09a155019ebf9b92b4864b80a1a6d",
+                "reference": "551d7cabacd09a155019ebf9b92b4864b80a1a6d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "IOC\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Inversion of control container",
+            "time": "2018-01-30T16:29:33+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1105,16 +1105,16 @@
         },
         {
             "name": "phpdocumentor/reflection-docblock",
-            "version": "4.2.0",
+            "version": "4.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/ReflectionDocBlock.git",
-                "reference": "66465776cfc249844bde6d117abff1d22e06c2da"
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/66465776cfc249844bde6d117abff1d22e06c2da",
-                "reference": "66465776cfc249844bde6d117abff1d22e06c2da",
+                "url": "https://api.github.com/repos/phpDocumentor/ReflectionDocBlock/zipball/94fd0001232e47129dd3504189fa1c7225010d08",
+                "reference": "94fd0001232e47129dd3504189fa1c7225010d08",
                 "shasum": ""
             },
             "require": {
@@ -1152,7 +1152,7 @@
                 }
             ],
             "description": "With this component, a library can provide support for annotations via DocBlocks or otherwise retrieve information that is embedded in a DocBlock.",
-            "time": "2017-11-27T17:38:31+00:00"
+            "time": "2017-11-30T07:14:17+00:00"
         },
         {
             "name": "phpdocumentor/type-resolver",
@@ -1716,16 +1716,16 @@
         },
         {
             "name": "phug/compiler",
-            "version": "0.5.17",
+            "version": "0.5.18",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phug-php/compiler.git",
-                "reference": "39ed1f8e153e52a9b24e3e02eecab9feae1d9d40"
+                "reference": "9fd0686c859eea2c8623afc0baec60e1ed65f838"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phug-php/compiler/zipball/39ed1f8e153e52a9b24e3e02eecab9feae1d9d40",
-                "reference": "39ed1f8e153e52a9b24e3e02eecab9feae1d9d40",
+                "url": "https://api.github.com/repos/phug-php/compiler/zipball/9fd0686c859eea2c8623afc0baec60e1ed65f838",
+                "reference": "9fd0686c859eea2c8623afc0baec60e1ed65f838",
                 "shasum": ""
             },
             "require": {
@@ -1772,7 +1772,7 @@
                 "template",
                 "views"
             ],
-            "time": "2018-01-10T17:26:45+00:00"
+            "time": "2018-01-30T16:27:40+00:00"
         },
         {
             "name": "phug/dependency-injection",
@@ -2287,16 +2287,16 @@
         },
         {
             "name": "phug/util",
-            "version": "0.4.13",
+            "version": "0.4.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phug-php/util.git",
-                "reference": "d4fe3e26fd58688568b3f56d33e179abb89ef8aa"
+                "reference": "3594a323cb2a0cc9fdc6284f7f816797881c735b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phug-php/util/zipball/d4fe3e26fd58688568b3f56d33e179abb89ef8aa",
-                "reference": "d4fe3e26fd58688568b3f56d33e179abb89ef8aa",
+                "url": "https://api.github.com/repos/phug-php/util/zipball/3594a323cb2a0cc9fdc6284f7f816797881c735b",
+                "reference": "3594a323cb2a0cc9fdc6284f7f816797881c735b",
                 "shasum": ""
             },
             "require": {
@@ -2342,7 +2342,7 @@
                 "util",
                 "views"
             ],
-            "time": "2018-01-17T16:55:03+00:00"
+            "time": "2018-01-30T16:46:11+00:00"
         },
         {
             "name": "psr/container",
@@ -3271,16 +3271,16 @@
         },
         {
             "name": "symfony/debug",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/debug.git",
-                "reference": "603b95dda8b00020e4e6e60dc906e7b715b1c245"
+                "reference": "53f6af2805daf52a43b393b93d2f24925d35c937"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/debug/zipball/603b95dda8b00020e4e6e60dc906e7b715b1c245",
-                "reference": "603b95dda8b00020e4e6e60dc906e7b715b1c245",
+                "url": "https://api.github.com/repos/symfony/debug/zipball/53f6af2805daf52a43b393b93d2f24925d35c937",
+                "reference": "53f6af2805daf52a43b393b93d2f24925d35c937",
                 "shasum": ""
             },
             "require": {
@@ -3323,11 +3323,11 @@
             ],
             "description": "Symfony Debug Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T17:14:19+00:00"
+            "time": "2018-01-18T22:16:57+00:00"
         },
         {
             "name": "symfony/finder",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/finder.git",
@@ -3435,16 +3435,16 @@
         },
         {
             "name": "symfony/translation",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a"
+                "reference": "10b32cf0eae28b9b39fe26c456c42b19854c4b84"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a",
-                "reference": "17b5962d252b2d6d1d37a2485ebb7ddc5b2bef0a",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/10b32cf0eae28b9b39fe26c456c42b19854c4b84",
+                "reference": "10b32cf0eae28b9b39fe26c456c42b19854c4b84",
                 "shasum": ""
             },
             "require": {
@@ -3499,20 +3499,20 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2018-01-03T07:37:34+00:00"
+            "time": "2018-01-18T22:16:57+00:00"
         },
         {
             "name": "symfony/var-dumper",
-            "version": "v3.4.3",
+            "version": "v3.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "545be7e78ccbec43e599f10ff7500d0b09eda9d0"
+                "reference": "472a9849930cf21f73abdb02240f17cf5b5bd1a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/545be7e78ccbec43e599f10ff7500d0b09eda9d0",
-                "reference": "545be7e78ccbec43e599f10ff7500d0b09eda9d0",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/472a9849930cf21f73abdb02240f17cf5b5bd1a7",
+                "reference": "472a9849930cf21f73abdb02240f17cf5b5bd1a7",
                 "shasum": ""
             },
             "require": {
@@ -3568,7 +3568,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2018-01-03T17:14:19+00:00"
+            "time": "2018-01-29T09:03:43+00:00"
         },
         {
             "name": "theseer/tokenizer",
@@ -3650,16 +3650,16 @@
         },
         {
             "name": "uxie/request-handler",
-            "version": "v0.1.2",
+            "version": "v0.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Request-Handler.git",
-                "reference": "f8592797ba570f1709109e44c16aff127b12730c"
+                "reference": "69a88575525aa62b94a52d66e6e4a94098c75629"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/f8592797ba570f1709109e44c16aff127b12730c",
-                "reference": "f8592797ba570f1709109e44c16aff127b12730c",
+                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/69a88575525aa62b94a52d66e6e4a94098c75629",
+                "reference": "69a88575525aa62b94a52d66e6e4a94098c75629",
                 "shasum": ""
             },
             "require": {
@@ -3684,7 +3684,7 @@
                 }
             ],
             "description": "Uxie Framework Request Handler",
-            "time": "2018-01-25T16:48:43+00:00"
+            "time": "2018-01-27T18:44:05+00:00"
         },
         {
             "name": "uxie/router",
@@ -3817,16 +3817,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozart/assert.git",
-                "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f"
+                "reference": "0df1908962e7a3071564e857d86874dad1ef204a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozart/assert/zipball/2db61e59ff05fe5126d152bd0655c9ea113e550f",
-                "reference": "2db61e59ff05fe5126d152bd0655c9ea113e550f",
+                "url": "https://api.github.com/repos/webmozart/assert/zipball/0df1908962e7a3071564e857d86874dad1ef204a",
+                "reference": "0df1908962e7a3071564e857d86874dad1ef204a",
                 "shasum": ""
             },
             "require": {
@@ -3863,7 +3863,7 @@
                 "check",
                 "validate"
             ],
-            "time": "2016-11-23T20:04:58+00:00"
+            "time": "2018-01-29T19:49:41+00:00"
         }
     ],
     "packages-dev": [],
