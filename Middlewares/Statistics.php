@@ -4,4 +4,4 @@ namespace Middleware;
 
 global $container;
 
-$container->build('Statistics\Visit');
+container()->build('Statistics\Visit');
