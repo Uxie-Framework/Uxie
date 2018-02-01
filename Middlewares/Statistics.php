@@ -2,4 +2,10 @@
 
 namespace Middleware;
 
-container()->build('Statistics\Visit');
+class Statistics
+{
+    public static function start()
+    {
+        container()->build('Statistics\Visit');
+    }
+}

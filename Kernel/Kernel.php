@@ -20,7 +20,6 @@ class Kernel
     public function prepare()
     {
         container()->build('Router', [__DIR__.'/../web/Routes.php']);
-        container()->build('Middleware', [container()->Router->getRoute()]);
     }
 
     /**
@@ -31,8 +30,6 @@ class Kernel
      */
     public function start()
     {
-        container()->Middleware->handle(Middlewares::$priorMiddlewares);
-        container()->Middleware->handle(Middlewares::$globalMiddlewares);
         $this->launch(container()->build('Launcher'));
     }
 
@@ -44,7 +41,6 @@ class Kernel
      */
     public function stop()
     {
-        container()->Middleware->handle(Middlewares::$lateMiddlewares)->call();
     }
 
     /**
