@@ -12,7 +12,7 @@ class Launcher
      * Check if Route action is in Closure form or controller form.
      *
      * @param Route $route
-     * @return void
+     * @return Mix
      */
     public function execute(Route $route)
     {
@@ -38,9 +38,9 @@ class Launcher
      * Call method from controller if it's a valide controller.
      *
      * @param Route $route
-     * @return bool
+     * @return Mix
      */
-    private function isController(Route $route): bool
+    private function isController(Route $route)
     {
         // if route is in format of Class@method
         if (strpos($route->getAction(), '@') && !strpos($route->getAction(), '/')) {
