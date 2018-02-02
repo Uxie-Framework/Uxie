@@ -3,6 +3,7 @@
 namespace Kernel;
 
 use Router\Route;
+use Router\RouteInterface;
 use Closure;
 use Exception;
 
@@ -14,10 +15,10 @@ class Launcher
      * @param Route $route
      * @return Mix
      */
-    public function execute(Route $route)
+    public function execute(RouteInterface $route)
     {
         if ($route->getAction() instanceof Closure) {
-            return $this->isClosure($route->getAction());
+            return $this->isClosure($route);
         }
 
         return $this->isController($route);
@@ -29,9 +30,10 @@ class Launcher
      * @param Closure $action
      * @return void
      */
-    private function isClosure(Closure $action): void
+    private function isClosure(RouteInterface $route): void
     {
-        $action();
+        $action = $route->getAction();
+        $action(...array_values($route->getVariables()));
     }
 
     /**
@@ -40,7 +42,7 @@ class Launcher
      * @param Route $route
      * @return Mix
      */
-    private function isController(Route $route)
+    private function isController(RouteInterface $route)
     {
         // if route is in format of Class@method
         if (strpos($route->getAction(), '@') && !strpos($route->getAction(), '/')) {
