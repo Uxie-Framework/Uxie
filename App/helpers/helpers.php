@@ -90,3 +90,9 @@ function csrf_field()
     session('_token', $token);
     echo "<input type='hidden' name='_token' value='".$token."'>";
 }
+
+function container()
+{
+    global $container;
+    return $container;
+}

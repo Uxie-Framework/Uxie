@@ -3,7 +3,6 @@
 namespace Kernel;
 
 use Web\Middlewares as Middlewares;
-use DI\DI;
 
 /**
  * execute the application.
@@ -11,30 +10,47 @@ use DI\DI;
 
 class Kernel
 {
-    private $container;
-
+    /**
+     * Prepare Application for launching
+     * Load necessairy Instances for the application to run
+     * Use IOC container to build Router & Middleware instances
+     *
+     * @return void
+     */
     public function prepare()
     {
-        global $container;
-        $this->container = $container;
-        $this->container->build('Router', ['../web/Routes.php']);
-        $this->container->build('Middleware', [$this->container->Router->getRoute()]);
+        container()->build('Router', [__DIR__.'/../web/Routes.php']);
     }
 
+    /**
+     * Start the application
+     * Define prior and late Middlewares
+     * Launch the application
+     * @return void
+     */
     public function start()
     {
-        $this->container->Middleware->handle(Middlewares::$priorMiddlewares);
-        $this->container->Middleware->handle(Middlewares::$globalMiddlewares);
-        $this->launch($this->container->build('Launcher'));
+        $this->launch(container()->build('Launcher'));
     }
 
+    /**
+     * Last method excuted during application life cycle
+     * handle late Middleware
+     *
+     * @return void
+     */
     public function stop()
     {
-        $this->container->Middleware->handle(Middlewares::$lateMiddlewares)->call();
     }
 
+    /**
+     * Excute application depending on Route
+     *
+     * @param Launcher $launcher
+     * @return void
+     */
     private function launch(Launcher $launcher)
     {
-        $launcher->execute($this->container->Router->getRoute());
+        $launcher->execute(container()->Router->getRoute());
     }
 }

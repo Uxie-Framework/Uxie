@@ -768,16 +768,16 @@
         },
         {
             "name": "mohamed-amine/ioc-container",
-            "version": "v0.3",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedAmine-C/IOC-Container.git",
-                "reference": "551d7cabacd09a155019ebf9b92b4864b80a1a6d"
+                "reference": "ccf9398d39c9ff3d0b295be69422b3360aa2dbb5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/551d7cabacd09a155019ebf9b92b4864b80a1a6d",
-                "reference": "551d7cabacd09a155019ebf9b92b4864b80a1a6d",
+                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/ccf9398d39c9ff3d0b295be69422b3360aa2dbb5",
+                "reference": "ccf9398d39c9ff3d0b295be69422b3360aa2dbb5",
                 "shasum": ""
             },
             "require": {
@@ -802,7 +802,7 @@
                 }
             ],
             "description": "Inversion of control container",
-            "time": "2018-01-30T16:29:33+00:00"
+            "time": "2018-01-30T17:20:44+00:00"
         },
         {
             "name": "myclabs/deep-copy",

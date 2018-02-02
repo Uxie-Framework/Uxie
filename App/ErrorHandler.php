@@ -4,7 +4,7 @@ namespace App;
 
 use Throwable;
 
-class ThrowError
+class ErrorHandler
 {
     public function __construct(Throwable $e)
     {

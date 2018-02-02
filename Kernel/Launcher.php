@@ -3,36 +3,54 @@
 namespace Kernel;
 
 use Router\Route;
+use Router\RouteInterface;
 use Closure;
 use Exception;
 
 class Launcher
 {
-    public function execute(Route $route)
+    /**
+     * Check if Route action is in Closure form or controller form.
+     *
+     * @param Route $route
+     * @return Mix
+     */
+    public function execute(RouteInterface $route)
     {
-        if (is_callable($route->getAction())) {
-            $this->isClosure($route->getAction());
-            return true;
+        if ($route->getAction() instanceof Closure) {
+            return $this->isClosure($route);
         }
 
-        $this->isController($route);
+        return $this->isController($route);
     }
 
-    private function isClosure(Closure $action)
+    /**
+     * Check if route action is a Closure then excute it.
+     *
+     * @param Closure $action
+     * @return void
+     */
+    private function isClosure(RouteInterface $route): void
     {
-        $action();
+        $action = $route->getAction();
+        $action(...array_values($route->getVariables()));
     }
 
-    private function isController(Route $route)
+    /**
+     * Call method from controller if it's a valide controller.
+     *
+     * @param Route $route
+     * @return Mix
+     */
+    private function isController(RouteInterface $route)
     {
-        if (strpos($route->getAction(), '@') && !strpos($route->getAction(), '/')) { // if route is in format of Class@method
+        // if route is in format of Class@method
+        if (strpos($route->getAction(), '@') && !strpos($route->getAction(), '/')) {
             $parameters = explode('@', $route->getAction());
             $class = '\Controller\\'.$parameters[0];
             $method = $parameters[1];
             $controller = new $class();
-            call_user_func_array([$controller, $method], $route->getVariables());
-
-            return true;
+            return call_user_func_array([$controller, $method], $route->getVariables());
         }
 
         throw new Exception('Route Parameter Error', 1);
