@@ -304,16 +304,9 @@ cookie('name', 'amine');
 cookie('name');
 // returns cookie $_COOKIE['name'];
 
-function csrf_field()
-{
-    $token = uniqid(random_int(0, 1000));
-    session('_token', $token);
-    echo "<input type='hidden' name='_token' value='".$token."'>";
-}
+csrf_field();
+// echo something like this <input type='hidden' name='_token' value='l2465431sd534sd'>
 
-function container()
-{
-    global $container;
-    return $container;
-}
+container();
+// returns the global IOC container
 ```
