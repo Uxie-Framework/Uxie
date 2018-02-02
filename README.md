@@ -259,8 +259,9 @@ the above example will return error messages in this form:
         'Your Email Length must be bettwen 5 and 40',
     ]
 ]
-All Error messages teamplates are defined in 'App\Validation Errors.php' to make theme so easy to modify.
 ```
+All Error messages teamplates are defined in 'App\Validation Errors.php' to make theme so easy to modify.
+
 ## Exception handler:
 `Uxie` comes with a built-in exceptions automatic handler that will handle thrown exceptions / errors automatically.  
 
