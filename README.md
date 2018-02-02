@@ -303,4 +303,17 @@ cookie('name', 'amine');
 
 cookie('name');
 // returns cookie $_COOKIE['name'];
+
+function csrf_field()
+{
+    $token = uniqid(random_int(0, 1000));
+    session('_token', $token);
+    echo "<input type='hidden' name='_token' value='".$token."'>";
+}
+
+function container()
+{
+    global $container;
+    return $container;
+}
 ```
