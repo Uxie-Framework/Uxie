@@ -11,7 +11,7 @@ Uxie is a PHP MVC Framework.
 #### - Mutual Templating Engine (Blade & Pug):
 #### - Ready to use Model.
 #### - Visitors Statistics Recorder.
-#### - Http Request handler.
+#### - Request handler & validator.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
 #### - Helper functions.
@@ -63,7 +63,7 @@ public function method($name, $email)
 }
 ```
 
-### passing data via Post request
+### passing data via Post request:
 in routes file :
 ```php
  $this->post('user/store', 'UserController@store');
@@ -79,6 +79,51 @@ public function store(Request $request)
   // equivalent to $_POST['name'];
 }
 ```
+## Middlewares:
+to use middlewares you need to add middleware() method to your route call
+example: 
+```php
+$this->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
+```
+All middlewares are defined in Middlewares folder.
+
+Once a middleware is called the application will excute start method in the middleware.
+
+A middleware must contain a static method 'start':
+```php
+namespace Middleware;
+
+class Middlewaretest
+{
+    public static function start()
+    {
+        echo 'test middleware';
+    }
+}
+```
+
+#### Middleware collections & short names:
+
+To add a collection of middlewares or a short-name to a route you must define the collection in App/MiddlewaresProviders.php:
+```php
+private $middlewaresProvider = [
+        'auth' => 'authenticateUsers',
+        'collection' => [
+            'myMiddleware',
+            'TestMiddleware',
+            'OtherMiddleware',
+        ];
+    ];
+```
+To use collections and short names:
+```php
+// 'auth' short name example:
+$this->get('user', 'controller@method')->middleware('auth');
+
+// 'collection' example:
+$this->get('link', 'controller@method')->middleware('collection');
+```
+
 ## Mutual Templating Engine (Blade & Pug):
 
 #### Important Notes:
@@ -153,15 +198,7 @@ global $container;
 $container->build('someclass');
 $container->get('someClass')->someMethod();
 ```
-## Middlewares:
-there are 3 types of middlewares : prior-middlewares,late-middlewares and global-middlewares
-All middlewares are defined in web/middlewares.php.
-example: 
-```php
-// 'route' => 'middleware',
-'profile' => 'auth',
-```
-All Middlewares files should be created in Middlewares folder
+
 ## Uxie Model:
 how to use it:
 ```php
@@ -189,17 +226,41 @@ Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')
 It's a built-in middleware that record each user hits and data and store them in a database table;
 Data such as ip, browser, os, PreviousUrl, CurrentUrl, date.
 
-## Http Request handler:
-It's a built-in handler for `POST` requests
+## Request handler & validator:
+It's a built-in handler a validator for `POST` inputs:
 
 ```php
-// you must add 'csrf_field()' to the form to protect against CSRF
-public function store(Request $request)  
+// you must add 'csrf_field()' to the HTML form to protect against CSRF
+public function store(Request $request)
 {
   echo $request->name;  
 }
 ```
 
+### Validation:
+Available validation methods : required(), length($min, $max), email(), isip(), isint(), isfloat(), url().
+To validate POST inputs:
+```php
+public function store(Request $request)
+{
+  $errors[] = $request->validate($request->name, 'Name Field')->required()->length(10, 30)->getErrors();
+  $errors[] = $request->validate($request->email, 'Your Email')->required()->length(5, 40)->email()->getErrors();
+}
+```
+the above example will return error messages in this form:
+```php
+[
+    [
+        'Name Field Length must be bettwen 10 and 30',
+        'Name Field is Required',
+    ]
+    [
+        'Your Email is not a valid email',
+        'Your Email Length must be bettwen 5 and 40',
+    ]
+]
+All Error messages teamplates are defined in 'App\Validation Errors.php' to make theme so easy to modify.
+```
 ## Exception handler:
 `Uxie` comes with a built-in exceptions automatic handler that will handle thrown exceptions / errors automatically.  
 
