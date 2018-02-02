@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Uxie - A PHP Framework.
  *
