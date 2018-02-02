@@ -7,8 +7,8 @@ Uxie is a PHP MVC Framework.
 #### - IOC (injection of control) Container.
 #### - Global Container:
 #### - Routing.
-#### - Mutual Templating Engine (Blade & Pug):
 #### - Middlewares.
+#### - Mutual Templating Engine (Blade & Pug):
 #### - Ready to use Model.
 #### - Visitors Statistics Recorder.
 #### - Http Request handler.
@@ -25,6 +25,10 @@ Uxie is a PHP MVC Framework.
 ```php
 $this->get('', function() {
   view('index');
+});
+// passing variables
+$this->get('user/{$name}', function($name) {
+  view('welcom', ['name' => $name]);
 });
 ```
 ### Execute methods from a controller:
@@ -45,10 +49,10 @@ $this->group('user', function() {
     $this->post('user/store', 'Controller@method');
 });
 ```  
-### Passing data via http url
+### Passing data via URL:
 in routes file :
 ```php
-$this->get('profile/@{name}/@{email}', 'Controller@method');
+$this->get('profile/{$name}/{$email}', 'Controller@method');
 ```
 in Controller : 
 ```php
@@ -83,7 +87,7 @@ public function store(Request $request)
 #### How to use it:
 Use helper function view(string $view, array $variables):  
 ```php
-view('YourView', ['data' => $data, 'Amine' => $name]);
+view('YourView', ['data' => $data, 'name' => 'MyName']);
 
 // To use Pug view use: 
 pugView(string $view, array $data);
@@ -103,22 +107,23 @@ Engine = Pug
 uxie comes with a IOC container that resolves all of your classes dependencies and their dependencies and so on
 to use it:
 ```php
-global $container;
 
 // instead of this:
 $myClass = new \Namespace\MyClass( new Class1(), new Class2( new Class3()));
 
 // you can use this:
-$myClass = $container->build('\Namespace\MyClass');
+$myClass = container()->build('\Namespace\MyClass');
 
 // if you have some arguments
 // instead of this:
 $myClass = new \Namespace\MyClass('argument1', 'argument2');
 
 // use this
-$container->build('\Namespace\Myclass', ['argument1', 'argument2']);
+container()->build('\Namespace\Myclass', ['argument1', 'argument2']);
 
-$container->get('MyClass')->someMethod();
+container()->get('MyClass')->someMethod();
+// or this:
+contaienr()->MyClass->someMethod();
 ```
 
 ### Service Provider:
