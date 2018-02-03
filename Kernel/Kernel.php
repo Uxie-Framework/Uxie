@@ -2,24 +2,26 @@
 
 namespace Kernel;
 
+use App;
 use Web\Middlewares as Middlewares;
 
 /**
  * execute the application.
  */
 
-class Kernel
+class Kernel implements KernelInterface
 {
     /**
      * Prepare Application for launching
      * Load necessairy Instances for the application to run
-     * Use IOC container to build Router & Middleware instances
+     * Use IOC container to build Router instance
      *
      * @return void
      */
     public function prepare()
     {
         container()->build('Router', [__DIR__.'/../web/Routes.php']);
+        container()->build('Compiler');
     }
 
     /**
@@ -30,7 +32,8 @@ class Kernel
      */
     public function start()
     {
-        $this->launch(container()->build('Launcher'));
+        container()->Compiler->compileMiddlewares(container()->Router->getRoute()->getMiddlewares());
+        container()->Compiler->compileRoute(container()->Router->getRoute());
     }
 
     /**
@@ -41,16 +44,6 @@ class Kernel
      */
     public function stop()
     {
-    }
-
-    /**
-     * Excute application depending on Route
-     *
-     * @param Launcher $launcher
-     * @return void
-     */
-    private function launch(Launcher $launcher)
-    {
-        $launcher->execute(container()->Router->getRoute());
+        //
     }
 }
