@@ -22,13 +22,13 @@ $container->Dotenv->load();
 // import default settings
 require_once __DIR__.'/../defaults.php';
 
-// preapring for launching application
+// preapring for starting application
 $container->build('Kernel');
 
 $container->Kernel->prepare();
 
-// launching application
+// start the application
 $container->Kernel->start();
 
-// stop application
+// stop the application
 $container->Kernel->stop();
