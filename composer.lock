@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0d5b817ee24d654a9aafb4a1c635e3c",
+    "content-hash": "48f4aee3df3fb5acaae5af1cb741a265",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -2759,6 +2759,82 @@
             "time": "2017-04-07T12:08:54+00:00"
         },
         {
+            "name": "uxie/kernel",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Uxie-Framework/Kernel.git",
+                "reference": "d53110424830ced1ac8c721ac120808c9de780a9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Uxie-Framework/Kernel/zipball/d53110424830ced1ac8c721ac120808c9de780a9",
+                "reference": "d53110424830ced1ac8c721ac120808c9de780a9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kernel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Uxie Framework Kernel",
+            "time": "2018-02-03T16:58:48+00:00"
+        },
+        {
+            "name": "uxie/middleware",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Uxie-Framework/Middleware.git",
+                "reference": "6f33b88900ba71c3f8dd91571bae9e11fe868bdb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Uxie-Framework/Middleware/zipball/6f33b88900ba71c3f8dd91571bae9e11fe868bdb",
+                "reference": "6f33b88900ba71c3f8dd91571bae9e11fe868bdb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MiddlewareHandler\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Uxie Middlewares handler",
+            "time": "2018-02-03T16:59:53+00:00"
+        },
+        {
             "name": "uxie/model",
             "version": "v0.1.1",
             "source": {
@@ -2912,6 +2988,44 @@
             ],
             "description": "Uxie Framework Visits Recorder",
             "time": "2018-01-13T16:39:28+00:00"
+        },
+        {
+            "name": "uxie/validator",
+            "version": "v0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Uxie-Framework/Validator.git",
+                "reference": "02b125c222a1767169445bc74dacba95191a16e9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Uxie-Framework/Validator/zipball/02b125c222a1767169445bc74dacba95191a16e9",
+                "reference": "02b125c222a1767169445bc74dacba95191a16e9",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Validator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Uxie Request Validator",
+            "time": "2018-02-03T16:57:02+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

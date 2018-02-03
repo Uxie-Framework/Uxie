@@ -11,6 +11,9 @@
         "uxie/model": ">=0.1",
         "uxie/statistics": ">=0.1",
         "uxie/request-handler": ">=0.1",
+        "uxie/validator": ">=0.1",
+        "uxie/middleware": ">=0.1",
+        "uxie/kernel": ">=0.1",
         "vlucas/phpdotenv": ">=2.4",
         "mohamed-amine/file-uploader": ">=1.1",
         "mohamed-amine/ioc-container": ">=0.3",
@@ -39,7 +42,6 @@
       "Middleware\\":"Middlewares/",
       "Controller\\":"Controllers/",
       "Model\\":"Models/",
-      "Kernel\\":"Kernel/",
       "Web\\":"web/"
     }
   },

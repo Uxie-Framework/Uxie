@@ -96,3 +96,18 @@ function container()
     global $container;
     return $container;
 }
+
+function rootDir()
+{
+    return $_SERVER['DOCUMENT_ROOT'].'/../';
+}
+
+function previousUrl()
+{
+    return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+}
+
+function currentUrl()
+{
+    return $_SERVER['REQUEST_URI'];
+}
