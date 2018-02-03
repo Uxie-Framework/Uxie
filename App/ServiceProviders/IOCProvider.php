@@ -1,16 +1,16 @@
 <?php
 
-namespace App;
+namespace ServiceProviders;
 
 /**
  * Provide short names to the dependency injection container
  */
-trait ServiceProvider
+trait IOCProvider
 {
     private $serviceProviders = [
         'Router'     => \Router\Router::class,
         'Kernel'     => \Kernel\Kernel::class,
-        'Launcher'   => \Kernel\Launcher::class,
+        'Compiler'   => \Kernel\Compiler\Compiler::class,
         'Middleware' => \App\Middleware\Middleware::class,
         'Dotenv'     => \Dotenv\Dotenv::class,
         'Blade'      => \Jenssegers\Blade\Blade::class,

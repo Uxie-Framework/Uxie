@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace ServiceProviders;
 
 /**
  * Provide Error texts for Request validation
  */
-trait ValidationErrors
+trait ValidationErrorsProvider
 {
     private $validationErrors = [
         'length'   => '$$ Length must be bettwen $$ and $$',
