@@ -1,10 +1,8 @@
 <?php
 
 $this->get('', function () {
-    view('test');
+    view('index');
 });
-
-$this->post('test', 'controller@test')->middleware('statistics');
 
 // post example
 // $this->post('test', 'controller@test');
