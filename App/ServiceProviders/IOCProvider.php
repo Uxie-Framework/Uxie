@@ -15,5 +15,6 @@ trait IOCProvider
         'Dotenv'     => \Dotenv\Dotenv::class,
         'Blade'      => \Jenssegers\Blade\Blade::class,
         'Pug'        => \Pug\Pug::class,
+        'Auth'       => \Authenticator\Auth::class,
     ];
 }
