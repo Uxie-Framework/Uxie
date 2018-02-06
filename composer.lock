@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "62f92f0f53af0827c9ab4d0cd12256fc",
+    "content-hash": "276c27e3fb4b404b699c66b62fbf9bac",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -600,16 +600,16 @@
         },
         {
             "name": "js-phpize/js-phpize",
-            "version": "1.13.0",
+            "version": "1.14.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/pug-php/js-phpize.git",
-                "reference": "596d2da7230db64d7b338141130e8d4364bd59a2"
+                "reference": "a4b904fa673e45f82a25e02d3c1592346ab0d716"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/596d2da7230db64d7b338141130e8d4364bd59a2",
-                "reference": "596d2da7230db64d7b338141130e8d4364bd59a2",
+                "url": "https://api.github.com/repos/pug-php/js-phpize/zipball/a4b904fa673e45f82a25e02d3c1592346ab0d716",
+                "reference": "a4b904fa673e45f82a25e02d3c1592346ab0d716",
                 "shasum": ""
             },
             "require": {
@@ -637,7 +637,7 @@
                 }
             ],
             "description": "Convert js-like syntax to standalone PHP code.",
-            "time": "2018-01-31T09:53:18+00:00"
+            "time": "2018-02-06T08:50:18+00:00"
         },
         {
             "name": "mohamed-amine/file-uploader",
@@ -2760,21 +2760,21 @@
         },
         {
             "name": "uxie/authenticator",
-            "version": "v0.2",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Authenticator.git",
-                "reference": "b453dfd367776449113090e98f000349c15f0450"
+                "reference": "a82c5593677e6093733e1dc9a9b59d005ad11b2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Authenticator/zipball/b453dfd367776449113090e98f000349c15f0450",
-                "reference": "b453dfd367776449113090e98f000349c15f0450",
+                "url": "https://api.github.com/repos/Uxie-Framework/Authenticator/zipball/a82c5593677e6093733e1dc9a9b59d005ad11b2e",
+                "reference": "a82c5593677e6093733e1dc9a9b59d005ad11b2e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
-                "uxie/model": ">= 0.1"
+                "uxie/model": ">=0.2"
             },
             "type": "library",
             "autoload": {
@@ -2795,7 +2795,45 @@
                 }
             ],
             "description": "Uxie Framework Authenticator",
-            "time": "2018-02-05T18:04:05+00:00"
+            "time": "2018-02-05T23:54:05+00:00"
+        },
+        {
+            "name": "uxie/box",
+            "version": "v0.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Uxie-Framework/Box.git",
+                "reference": "8533c2a498028d70a7a56062e1ed4b3c3240b5a1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Uxie-Framework/Box/zipball/8533c2a498028d70a7a56062e1ed4b3c3240b5a1",
+                "reference": "8533c2a498028d70a7a56062e1ed4b3c3240b5a1",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Box\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mohamed Amine",
+                    "email": "MohamedAmine1c@gmail.com",
+                    "homepage": "https://github.com/MohamedAmine1c",
+                    "role": "owner"
+                }
+            ],
+            "description": "Uxie CLI",
+            "time": "2018-02-06T15:16:48+00:00"
         },
         {
             "name": "uxie/kernel",
@@ -2875,16 +2913,16 @@
         },
         {
             "name": "uxie/model",
-            "version": "v0.2",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Model.git",
-                "reference": "a7be22b67cd331dc8b980fa0dfa48e2c9db7e89b"
+                "reference": "d2c5bf309058eea0af5878c90d2472fecc6ad5cd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Model/zipball/a7be22b67cd331dc8b980fa0dfa48e2c9db7e89b",
-                "reference": "a7be22b67cd331dc8b980fa0dfa48e2c9db7e89b",
+                "url": "https://api.github.com/repos/Uxie-Framework/Model/zipball/d2c5bf309058eea0af5878c90d2472fecc6ad5cd",
+                "reference": "d2c5bf309058eea0af5878c90d2472fecc6ad5cd",
                 "shasum": ""
             },
             "require": {
@@ -2909,24 +2947,25 @@
                 }
             ],
             "description": "Uxie Framework Model",
-            "time": "2018-02-05T18:16:00+00:00"
+            "time": "2018-02-05T23:59:13+00:00"
         },
         {
             "name": "uxie/request-handler",
-            "version": "v0.3",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Request-Handler.git",
-                "reference": "2672bec91294dae87f2f9c32fb18900cbf14f4db"
+                "reference": "b7c68334df73f175f5819fc8d903eceec64fe983"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/2672bec91294dae87f2f9c32fb18900cbf14f4db",
-                "reference": "2672bec91294dae87f2f9c32fb18900cbf14f4db",
+                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/b7c68334df73f175f5819fc8d903eceec64fe983",
+                "reference": "b7c68334df73f175f5819fc8d903eceec64fe983",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=7.0",
+                "uxie/validator": ">=0.1"
             },
             "type": "library",
             "autoload": {
@@ -2947,7 +2986,7 @@
                 }
             ],
             "description": "Uxie Framework Request Handler",
-            "time": "2018-02-03T21:02:08+00:00"
+            "time": "2018-02-06T00:10:07+00:00"
         },
         {
             "name": "uxie/router",
