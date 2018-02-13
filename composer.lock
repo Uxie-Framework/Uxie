@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "95391f4e4752a3af95edc12dafc64374",
+    "content-hash": "922ec28a9c3974e83e03a4808eec0380",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -3069,16 +3069,16 @@
         },
         {
             "name": "uxie/authenticator",
-            "version": "v0.2.1",
+            "version": "v0.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Authenticator.git",
-                "reference": "a82c5593677e6093733e1dc9a9b59d005ad11b2e"
+                "reference": "b472443e69cbb93dd9e3e800c688f0bb74fce9cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Authenticator/zipball/a82c5593677e6093733e1dc9a9b59d005ad11b2e",
-                "reference": "a82c5593677e6093733e1dc9a9b59d005ad11b2e",
+                "url": "https://api.github.com/repos/Uxie-Framework/Authenticator/zipball/b472443e69cbb93dd9e3e800c688f0bb74fce9cf",
+                "reference": "b472443e69cbb93dd9e3e800c688f0bb74fce9cf",
                 "shasum": ""
             },
             "require": {
@@ -3104,7 +3104,7 @@
                 }
             ],
             "description": "Uxie Framework Authenticator",
-            "time": "2018-02-05T23:54:05+00:00"
+            "time": "2018-02-09T16:30:17+00:00"
         },
         {
             "name": "uxie/box",
@@ -3299,20 +3299,21 @@
         },
         {
             "name": "uxie/router",
-            "version": "v0.3",
+            "version": "v0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Router.git",
-                "reference": "ccbc4a60996324ee231cb2ff09ccb0b9ca780bc2"
+                "reference": "9b4a1e35222c884bd30f3fafbb4ed0a16520a738"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Router/zipball/ccbc4a60996324ee231cb2ff09ccb0b9ca780bc2",
-                "reference": "ccbc4a60996324ee231cb2ff09ccb0b9ca780bc2",
+                "url": "https://api.github.com/repos/Uxie-Framework/Router/zipball/9b4a1e35222c884bd30f3fafbb4ed0a16520a738",
+                "reference": "9b4a1e35222c884bd30f3fafbb4ed0a16520a738",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
+                "phpunit/phpunit": ">=6.0",
                 "uxie/request-handler": ">=0.1"
             },
             "type": "library",
@@ -3334,7 +3335,7 @@
                 }
             ],
             "description": "Uxie Framework Router",
-            "time": "2018-02-03T20:59:56+00:00"
+            "time": "2018-02-10T11:18:17+00:00"
         },
         {
             "name": "uxie/statistics",
