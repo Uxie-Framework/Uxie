@@ -3,13 +3,16 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
+#### - Totally Agile Design.
+#### - Box (Command Line Tool).
+#### - Docker Compose included.
+#### - Data-Base Migration.
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
-#### - Global Container:
-#### - Routing.
+#### - Router.
 #### - Middlewares.
-#### - Mutual Templating Engine (Blade & Pug):
-#### - Ready to use Model.
+#### - Mutual Templating Engines (Blade & Pug):
+#### - Model.
 #### - Visitors Statistics Recorder.
 #### - Request handler & validator.
 #### - Automatic Exception handling.
@@ -18,10 +21,20 @@ Uxie is a PHP MVC Framework.
 
 # Documentation:  
 
+# Installing: 
+
+Using Composer:
+```
+  composer create-project uxie/uxie <path>
+```
+Using Docker:
+```
+  Docker-compose up --build
+```
 ## Routing:
 `web/Routes.php`
 
-### Basic route `get`:
+#### Basic route `get`:
 ```php
 $this->get('', function() {
   view('index');
@@ -31,16 +44,16 @@ $this->get('user/{$name}', function($name) {
   view('welcom', ['name' => $name]);
 });
 ```
-### Execute methods from a controller:
+#### Execute methods from a controller:
 ```php
 $this->post('test', 'Controller@method');
 ```
 
-### Resource method which contains: (index, create, store, show, edit, update and delete) same as [Laravel](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Routing/Router.php#L294).  
+#### Resource method which contains: (index, create, store, show, edit, update and delete) same as [Laravel](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Routing/Router.php#L294).  
 ```php
 $this->resource('user', 'UserController');
 ```
-### Add a collection of routes with a prefix:
+#### Add a collection of routes with a prefix:
 ```php
 $this->group('user', function() {
     $this->get('profile', function() {
@@ -49,7 +62,7 @@ $this->group('user', function() {
     $this->post('user/store', 'Controller@method');
 });
 ```  
-### Passing data via URL:
+#### Passing data via URL:
 in routes file :
 ```php
 $this->get('profile/{$name}/{$email}', 'Controller@method');
@@ -63,7 +76,7 @@ public function method($name, $email)
 }
 ```
 
-### passing data via Post request:
+#### passing data via Post request:
 in routes file :
 ```php
  $this->post('user/store', 'UserController@store');
@@ -80,16 +93,20 @@ public function store(Request $request)
 }
 ```
 ## Middlewares:
-to use middlewares you need to add middleware() method to your route call
+to use middlewares you need to add middleware() method to your route method
 example: 
 ```php
 $this->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
 ```
-All middlewares are defined in Middlewares folder.
+you can add a late middleware just add true argument to middleware() method:
+```php
+  $this->get('profile', 'controller@index')->middleware('MiddlewareTest, true);
+```
+All middlewares are defined in './Middlewares' folder.
 
-Once a middleware is called the application will excute start method in the middleware.
 
-A middleware must contain a static method 'start':
+
+A middleware must contain a static method 'start': (the application will execute start() to use the middleware)
 ```php
 namespace Middleware;
 
@@ -104,7 +121,7 @@ class Middlewaretest
 
 #### Middleware collections & short names:
 
-To add a collection of middlewares or a short-name to a route you must define the collection in App/MiddlewaresProviders.php:
+To add a collection of middlewares or a short-name to a route you must define the collection in 'App/MiddlewaresProviders.php':
 ```php
 private $middlewaresProvider = [
         'auth' => 'authenticateUsers',
@@ -190,7 +207,7 @@ trait ServiceProvider
 ```
 
 ### The global $container:
-the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the container, 
+the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container, 
 this way you will be able to create an object once and use it many times
 
 ```php
@@ -216,15 +233,15 @@ Retrieve single row:
 ```php
 $user = Model\table::find('name', 'MyName');
 ```
-And plenty of other methods such as limit, orderBy, groupBy, count, update and delete.
+And plenty of other methods such as limit(), orderBy(), groupBy(), count(), update and delete.
 simple example:
 ```php
 Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
 ```
 
 ## Visitors Statistics:
-It's a built-in middleware that record each user hits and data and store them in a database table;
-Data such as ip, browser, os, PreviousUrl, CurrentUrl, date.
+It's a built-in middleware that record each user data and store it in a database table,
+Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
 ## Request handler & validator:
 It's a built-in handler a validator for `POST` inputs:
@@ -309,4 +326,26 @@ csrf_field();
 
 container();
 // returns the global IOC container
+```
+
+## Box (Command Line Tool):
+Box is a command line tool to create Controllers, models & middlewares templates
+for example:
+``` 
+php box Controller TestC
+// or 
+php box Model TestC
+// or
+php box Middleware TestC
+```
+
+## Data-Base Migration:
+it's based on phinx migration to create a migration pass this command:
+```
+php phinx create MyMigration
+```
+To Migrate existing migration files:
+
+```
+php phinx migrate
 ```
