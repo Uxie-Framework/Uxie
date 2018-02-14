@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  uxie:
+    build: ./DockerConfig
+    volumes:
+      -  .:/var/www/html
+      -  ./DockerConfig/php.ini:/usr/local/etc/php/php.ini
+      -  ./DockerConfig/000-default.conf:/etc/apache2/sites-enabled/000-default.conf
+    ports:
+      -  80:80
+    depends_on:
+      -  mysql
+
+  mysql:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: pass # Don't forget to set the password on .env too
+      MYSQL_DATABASE: uxie
+    ports:
+      -  3306:3306

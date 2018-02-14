@@ -51,13 +51,16 @@ function redirect(string $url)
 
 function session($key, $value = null)
 {
-    session_start();
-    if (!$value && isset($_SESSION[$key])) {
-        return $_SESSION[$key];
-    } elseif (!$value) {
-        return false;
+    if (!isset($_SESSION)) {
+        session_start();
     }
-    $_SESSION[$key] = $value;
+    if (!$value && isset($_SESSION[$key])) {
+        return isset($_SESSION[$key]) ? $_SESSION[$key] : false;
+    }
+    if ($value) {
+        return $_SESSION[$key] = $value;
+    }
+    return false;
 }
 
 function unsetSession($key)
