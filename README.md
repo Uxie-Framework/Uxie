@@ -32,7 +32,7 @@ Using Docker:
   Docker-compose up --build
 ```
 ## Routing:
-`web/Routes.php`
+All routes are defined in : `App/Routes.php`
 
 #### Basic route `get`:
 ```php
@@ -121,7 +121,7 @@ class Middlewaretest
 
 #### Middleware collections & short names:
 
-To add a collection of middlewares or a short-name to a route you must define the collection in 'App/MiddlewaresProviders.php':
+To add a collection of middlewares or a short-name to a route you must define the collection in 'App/ServiceProviders/MiddlewaresProviders.php':
 ```php
 private $middlewaresProvider = [
         'auth' => 'authenticateUsers',
@@ -188,8 +188,9 @@ container()->get('MyClass')->someMethod();
 contaienr()->MyClass->someMethod();
 ```
 
-### Service Provider:
-service provider is a trait with ```App``` wich contain class short-names to make di-container easier to use:
+#### IOC Service Provider:
+Service provider located in ```App/ServicePoroviders/IOCProvider.php``` 
+It contains classes short-names to make di-container easier to use:
 
 ```php
 trait ServiceProvider
@@ -206,7 +207,7 @@ trait ServiceProvider
 }
 ```
 
-### The global $container:
+#### The global $container:
 the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container, 
 this way you will be able to create an object once and use it many times
 
@@ -277,7 +278,7 @@ the above example will return error messages in this form:
     ]
 ]
 ```
-All Error messages teamplates are defined in 'App\Validation Errors.php' to make theme so easy to modify.
+All Error messages teamplates are defined in 'App/ServiceProviders/ValidationErrorsProvider.php' to make theme so easy to modify.
 
 ## Exception handler:
 `Uxie` comes with a built-in exceptions automatic handler that will handle thrown exceptions / errors automatically.  
