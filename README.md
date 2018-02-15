@@ -6,7 +6,7 @@ Uxie is a PHP MVC Framework.
 #### - Totally Agile Design.
 #### - Box (Command Line Tool).
 #### - Docker Compose included.
-#### - Data-Base Migration.
+#### - DataBase Migration.
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
 #### - Router.
@@ -340,7 +340,7 @@ php box Model TestC
 php box Middleware TestC
 ```
 
-## Data-Base Migration:
+## DataBase Migration:
 it's based on phinx migration to create a migration pass this command:
 ```
 php phinx create MyMigration
