@@ -10,6 +10,7 @@ Uxie is a PHP MVC Framework.
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
 #### - Router.
+#### - Authentication.
 #### - Middlewares.
 #### - Mutual Templating Engines (Blade & Pug):
 #### - Model.
@@ -92,6 +93,51 @@ public function store(Request $request)
   // equivalent to $_POST['name'];
 }
 ```
+## Authentication:
+Authentication will validate your users login automatically
+#### Login:
+```php
+  use Authenticator\Auth;
+  
+  if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword)) {
+    echo 'success';
+  }
+  
+  // in case of second field required to validate for example e-mail & user-name:
+  
+  if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword, 'email' => $inputEmail])) {
+    echo 'success';
+  }
+```
+#### Check if user loged in:
+```php
+  if (Auth::check())
+  {
+    echo 'success';
+  }
+  // in case you want to check a user value from database row:
+  
+  if (Auth::check(['name' => 'someone'])
+  {
+    echo " i'm someone";
+  }
+```
+#### Logout a user:
+```php
+  Auth::logout();
+```
+
+#### Hashing:
+you need to hash a password before storing it in database
+```php
+  $password = Auth::hash($password);
+```
+#### User data:
+To access user data stored in database for example age, email or anything else :
+```php
+  $email = Auth::user()->email;
+```
+
 ## Middlewares:
 to use middlewares you need to add middleware() method to your route method
 example: 
