@@ -35,7 +35,10 @@ Using Docker:
 ## Routing:
 All routes are defined in : `App/Routes.php`
 
-#### Basic route `get`:
+#### Available Methods:
+GET, POST, PUT, PATCH, DELETE
+
+#### Basic routes examples:
 ```php
 $this->get('', function() {
   view('index');
@@ -44,6 +47,12 @@ $this->get('', function() {
 $this->get('user/{$name}', function($name) {
   view('welcom', ['name' => $name]);
 });
+
+$this->put('update', Controller@update);
+
+$this->patch('update', Controller@update);
+
+$this->delete('delete', Controller@delete');
 ```
 #### Execute methods from a controller:
 ```php
@@ -60,24 +69,23 @@ $this->group('user', function() {
     $this->get('profile', function() {
         echo 'Profile';
     });
-    $this->post('user/store', 'Controller@method');
+    $this->post('store', 'Controller@method');
 });
 ```  
 #### Passing data via URL:
 in routes file :
 ```php
-$this->get('profile/{$name}/{$email}', 'Controller@method');
+$this->get('profile/{$name}/update', 'Controller@update');
 ```
 in Controller : 
 ```php
-public function method($name, $email)
+public function method($name)
 {
     echo $name;
-    echo $email;
 }
 ```
 
-#### passing data via Post request:
+#### How to use $_POST values (this can apply to PUT PATCH DELETE methods also):
 in routes file :
 ```php
  $this->post('user/store', 'UserController@store');
