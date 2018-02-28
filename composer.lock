@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "814274109ef2f717e5685c5f5e1f8675",
+    "content-hash": "a3af8e9098657d2f126d0ee3dad2584b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -685,16 +685,16 @@
         },
         {
             "name": "mohamed-amine/ioc-container",
-            "version": "v0.3.3",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedAmine-C/IOC-Container.git",
-                "reference": "7a969572ad90c439d3d46cfeb7d106242fc72827"
+                "reference": "569214ac4a4178b5f6220dcabe70a25705cd9b52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/7a969572ad90c439d3d46cfeb7d106242fc72827",
-                "reference": "7a969572ad90c439d3d46cfeb7d106242fc72827",
+                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/569214ac4a4178b5f6220dcabe70a25705cd9b52",
+                "reference": "569214ac4a4178b5f6220dcabe70a25705cd9b52",
                 "shasum": ""
             },
             "require": {
@@ -719,7 +719,7 @@
                 }
             ],
             "description": "Inversion of control container",
-            "time": "2018-02-04T06:35:46+00:00"
+            "time": "2018-02-28T21:14:43+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -3144,16 +3144,16 @@
         },
         {
             "name": "uxie/kernel",
-            "version": "v0.2",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Kernel.git",
-                "reference": "873ff7e873511309e604c14496e479fae2223317"
+                "reference": "a377d22298f6fb66ca2a3b85abbea2de6ca0f7a1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Kernel/zipball/873ff7e873511309e604c14496e479fae2223317",
-                "reference": "873ff7e873511309e604c14496e479fae2223317",
+                "url": "https://api.github.com/repos/Uxie-Framework/Kernel/zipball/a377d22298f6fb66ca2a3b85abbea2de6ca0f7a1",
+                "reference": "a377d22298f6fb66ca2a3b85abbea2de6ca0f7a1",
                 "shasum": ""
             },
             "require": {
@@ -3178,20 +3178,20 @@
                 }
             ],
             "description": "Uxie Framework Kernel",
-            "time": "2018-02-03T20:20:57+00:00"
+            "time": "2018-02-28T17:55:23+00:00"
         },
         {
             "name": "uxie/middleware",
-            "version": "v0.1",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Middleware.git",
-                "reference": "6f33b88900ba71c3f8dd91571bae9e11fe868bdb"
+                "reference": "7ae13e5590003010c22cc24308cb69ad18e19e13"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Middleware/zipball/6f33b88900ba71c3f8dd91571bae9e11fe868bdb",
-                "reference": "6f33b88900ba71c3f8dd91571bae9e11fe868bdb",
+                "url": "https://api.github.com/repos/Uxie-Framework/Middleware/zipball/7ae13e5590003010c22cc24308cb69ad18e19e13",
+                "reference": "7ae13e5590003010c22cc24308cb69ad18e19e13",
                 "shasum": ""
             },
             "require": {
@@ -3216,7 +3216,7 @@
                 }
             ],
             "description": "Uxie Middlewares handler",
-            "time": "2018-02-03T16:59:53+00:00"
+            "time": "2018-02-28T18:34:41+00:00"
         },
         {
             "name": "uxie/model",
@@ -3258,16 +3258,16 @@
         },
         {
             "name": "uxie/request-handler",
-            "version": "v0.3.5",
+            "version": "v0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Request-Handler.git",
-                "reference": "b10a38bb893d2b1f10f0bf268901ee690298beb1"
+                "reference": "bb27ddbce2ab64861291d19ef4d0fbb1133f4ee0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/b10a38bb893d2b1f10f0bf268901ee690298beb1",
-                "reference": "b10a38bb893d2b1f10f0bf268901ee690298beb1",
+                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/bb27ddbce2ab64861291d19ef4d0fbb1133f4ee0",
+                "reference": "bb27ddbce2ab64861291d19ef4d0fbb1133f4ee0",
                 "shasum": ""
             },
             "require": {
@@ -3293,7 +3293,7 @@
                 }
             ],
             "description": "Uxie Framework Request Handler",
-            "time": "2018-02-25T17:41:25+00:00"
+            "time": "2018-02-28T21:08:07+00:00"
         },
         {
             "name": "uxie/router",
@@ -3338,16 +3338,16 @@
         },
         {
             "name": "uxie/services",
-            "version": "v0.0.1",
+            "version": "v0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Services.git",
-                "reference": "39261d38eebc59a24c808b00cff7b85f2d635891"
+                "reference": "a27f266b46c1a10e7ac74700aab4a6a8a5456b9e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Services/zipball/39261d38eebc59a24c808b00cff7b85f2d635891",
-                "reference": "39261d38eebc59a24c808b00cff7b85f2d635891",
+                "url": "https://api.github.com/repos/Uxie-Framework/Services/zipball/a27f266b46c1a10e7ac74700aab4a6a8a5456b9e",
+                "reference": "a27f266b46c1a10e7ac74700aab4a6a8a5456b9e",
                 "shasum": ""
             },
             "require": {
@@ -3375,7 +3375,7 @@
                 }
             ],
             "description": "Uxie Framework Services",
-            "time": "2018-02-28T16:22:19+00:00"
+            "time": "2018-02-28T21:12:38+00:00"
         },
         {
             "name": "uxie/statistics",
@@ -3419,16 +3419,16 @@
         },
         {
             "name": "uxie/validator",
-            "version": "v0.1",
+            "version": "v0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Validator.git",
-                "reference": "02b125c222a1767169445bc74dacba95191a16e9"
+                "reference": "5b9b58da8de33e962c729a3e1bfc96f78d005434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Validator/zipball/02b125c222a1767169445bc74dacba95191a16e9",
-                "reference": "02b125c222a1767169445bc74dacba95191a16e9",
+                "url": "https://api.github.com/repos/Uxie-Framework/Validator/zipball/5b9b58da8de33e962c729a3e1bfc96f78d005434",
+                "reference": "5b9b58da8de33e962c729a3e1bfc96f78d005434",
                 "shasum": ""
             },
             "require": {
@@ -3453,7 +3453,7 @@
                 }
             ],
             "description": "Uxie Request Validator",
-            "time": "2018-02-03T16:57:02+00:00"
+            "time": "2018-02-28T20:59:45+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
