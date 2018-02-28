@@ -4,4 +4,6 @@ require_once '../Framework/vendor/autoload.php';
 
 error_reporting(0);
 
-new Box\Box($argv);
+array_shift($argv);
+
+new Box\Box(...$argv);

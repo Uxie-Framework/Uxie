@@ -1,6 +1,6 @@
 <?php
 
-namespace ServiceProviders;
+namespace App;
 
 trait MiddlewaresProvider
 {

@@ -77,7 +77,7 @@ in routes file :
 ```php
 $this->get('profile/{$name}/update', 'Controller@update');
 ```
-in Controller : 
+in Controller :
 ```php
 public function method($name)
 {
@@ -146,9 +146,10 @@ To access user data stored in database for example age, email or anything else :
   $email = Auth::user()->email;
 ```
 
-## Middlewares:
-to use middlewares you need to add middleware() method to your route method
-example: 
+
+to use middlewares you need to add middleware() method to your route call
+example:
+
 ```php
 $this->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
 ```
@@ -205,7 +206,7 @@ Use helper function view(string $view, array $variables):
 ```php
 view('YourView', ['data' => $data, 'name' => 'MyName']);
 
-// To use Pug view use: 
+// To use Pug view use:
 pugView(string $view, array $data);
 
 // to use Blade view use:
@@ -221,7 +222,7 @@ Engine = Pug
 
 ## IOC Container:
 uxie comes with a IOC container that resolves all of your classes dependencies and their dependencies and so on
-to use it:
+to use it :
 ```php
 
 // instead of this:
@@ -261,8 +262,10 @@ trait ServiceProvider
 }
 ```
 
+
 #### The global $container:
 the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container, 
+
 this way you will be able to create an object once and use it many times
 
 ```php
@@ -344,9 +347,9 @@ All errors/exceptions thrown during runtime will be logged in `log/All_errors.lo
 Helpers are functions available to use everywhere inside the framework such as `view()`, `session()`, `redirect()`, `route()`, `url()`.  
 All function are listed in `App/helpers`.
 
-examples: 
+examples:
 ```php
-url('profile/user'); 
+url('profile/user');
 // returns http(s)://domain.com/profile/user
 
 route('profile/user');
@@ -378,6 +381,9 @@ cookie('name');
 
 csrf_field();
 // echo something like this <input type='hidden' name='_token' value='l2465431sd534sd'>
+
+csrf_token();
+// returns csrf token value
 
 container();
 // returns the global IOC container

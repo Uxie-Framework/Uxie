@@ -10,12 +10,13 @@
         "uxie/router":                 ">=0.5",
         "uxie/model":                  ">=0.2",
         "uxie/statistics":             ">=0.2",
-        "uxie/request-handler":        ">=0.3",
+        "uxie/request-handler":        ">=0.3.4",
         "uxie/validator":              ">=0.1",
         "uxie/middleware":             ">=0.1",
         "uxie/kernel":                 ">=0.2",
         "uxie/authenticator":          ">=0.2",
         "uxie/box":                    ">=0.1",
+        "uxie/services":               ">=0.0.1",
         "vlucas/phpdotenv":            ">=2.4",
         "mohamed-amine/file-uploader": ">=1.1",
         "mohamed-amine/ioc-container": ">=0.3",
@@ -23,7 +24,7 @@
         "jenssegers/blade":            ">=1.1",
         "pug-php/pug":                 "^2.7.4",
         "phpunit/phpunit":             ">=6.0",
-        "robmorgan/phinx":             ">= 0.9"
+        "robmorgan/phinx":             ">=0.9"
     },
 
     "authors": [
@@ -36,9 +37,6 @@
     ],
 
     "autoload": {
-        "files": [
-            "App/helpers/helpers.php"
-        ],
     "psr-4": {
       "App\\":              "App/",
       "ServiceProviders\\": "App/ServiceProviders/",

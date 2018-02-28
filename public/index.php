@@ -23,7 +23,7 @@ $container->Dotenv->load();
 require_once __DIR__.'/../defaults.php';
 
 // preapring for starting application
-$container->build('Kernel');
+$container->build('Kernel\Kernel');
 
 $container->Kernel->prepare();
 
