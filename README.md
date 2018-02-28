@@ -3,13 +3,17 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
+#### - Totally Agile Design.
+#### - Box (Command Line Tool).
+#### - Docker Compose included.
+#### - DataBase Migration.
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
-#### - Global Container:
-#### - Routing.
+#### - Router.
+#### - Authentication.
 #### - Middlewares.
-#### - Mutual Templating Engine (Blade & Pug):
-#### - Ready to use Model.
+#### - Mutual Templating Engines (Blade & Pug):
+#### - Model.
 #### - Visitors Statistics Recorder.
 #### - Request handler & validator.
 #### - Automatic Exception handling.
@@ -18,10 +22,23 @@ Uxie is a PHP MVC Framework.
 
 # Documentation:  
 
-## Routing:
-`web/Routes.php`
+# Installing: 
 
-### Basic route `get`:
+Using Composer:
+```
+  composer create-project uxie/uxie <path>
+```
+Using Docker:
+```
+  Docker-compose up --build
+```
+## Routing:
+All routes are defined in : `App/Routes.php`
+
+#### Available Methods:
+GET, POST, PUT, PATCH, DELETE
+
+#### Basic routes examples:
 ```php
 $this->get('', function() {
   view('index');
@@ -30,40 +47,45 @@ $this->get('', function() {
 $this->get('user/{$name}', function($name) {
   view('welcom', ['name' => $name]);
 });
+
+$this->put('update', Controller@update);
+
+$this->patch('update', Controller@update);
+
+$this->delete('delete', Controller@delete');
 ```
-### Execute methods from a controller:
+#### Execute methods from a controller:
 ```php
 $this->post('test', 'Controller@method');
 ```
 
-### Resource method which contains: (index, create, store, show, edit, update and delete) same as [Laravel](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Routing/Router.php#L294).  
+#### Resource method which contains: (index, create, store, show, edit, update and delete) same as [Laravel](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Routing/Router.php#L294).  
 ```php
 $this->resource('user', 'UserController');
 ```
-### Add a collection of routes with a prefix:
+#### Add a collection of routes with a prefix:
 ```php
 $this->group('user', function() {
     $this->get('profile', function() {
         echo 'Profile';
     });
-    $this->post('user/store', 'Controller@method');
+    $this->post('store', 'Controller@method');
 });
 ```  
-### Passing data via URL:
+#### Passing data via URL:
 in routes file :
 ```php
-$this->get('profile/{$name}/{$email}', 'Controller@method');
+$this->get('profile/{$name}/update', 'Controller@update');
 ```
 in Controller :
 ```php
-public function method($name, $email)
+public function method($name)
 {
     echo $name;
-    echo $email;
 }
 ```
 
-### passing data via Post request:
+#### How to use $_POST values (this can apply to PUT PATCH DELETE methods also):
 in routes file :
 ```php
  $this->post('user/store', 'UserController@store');
@@ -79,17 +101,67 @@ public function store(Request $request)
   // equivalent to $_POST['name'];
 }
 ```
-## Middlewares:
+## Authentication:
+Authentication will validate your users login automatically
+#### Login:
+```php
+  use Authenticator\Auth;
+  
+  if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword)) {
+    echo 'success';
+  }
+  
+  // in case of second field required to validate for example e-mail & user-name:
+  
+  if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword, 'email' => $inputEmail])) {
+    echo 'success';
+  }
+```
+#### Check if user loged in:
+```php
+  if (Auth::check())
+  {
+    echo 'success';
+  }
+  // in case you want to check a user value from database row:
+  
+  if (Auth::check(['name' => 'someone'])
+  {
+    echo " i'm someone";
+  }
+```
+#### Logout a user:
+```php
+  Auth::logout();
+```
+
+#### Hashing:
+you need to hash a password before storing it in database
+```php
+  $password = Auth::hash($password);
+```
+#### User data:
+To access user data stored in database for example age, email or anything else :
+```php
+  $email = Auth::user()->email;
+```
+
+
 to use middlewares you need to add middleware() method to your route call
 example:
+
 ```php
 $this->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
 ```
-All middlewares are defined in Middlewares folder.
+you can add a late middleware just add true argument to middleware() method:
+```php
+  $this->get('profile', 'controller@index')->middleware('MiddlewareTest, true);
+```
+All middlewares are defined in './Middlewares' folder.
 
-Once a middleware is called the application will excute start method in the middleware.
 
-A middleware must contain a static method 'start':
+
+A middleware must contain a static method 'start': (the application will execute start() to use the middleware)
 ```php
 namespace Middleware;
 
@@ -104,7 +176,7 @@ class Middlewaretest
 
 #### Middleware collections & short names:
 
-To add a collection of middlewares or a short-name to a route you must define the collection in App/MiddlewaresProviders.php:
+To add a collection of middlewares or a short-name to a route you must define the collection in 'App/ServiceProviders/MiddlewaresProviders.php':
 ```php
 private $middlewaresProvider = [
         'auth' => 'authenticateUsers',
@@ -171,8 +243,9 @@ container()->get('MyClass')->someMethod();
 contaienr()->MyClass->someMethod();
 ```
 
-### Service Provider:
-service provider is a trait with ```App``` wich contain class short-names to make di-container easier to use:
+#### IOC Service Provider:
+Service provider located in ```App/ServicePoroviders/IOCProvider.php``` 
+It contains classes short-names to make di-container easier to use:
 
 ```php
 trait ServiceProvider
@@ -189,8 +262,10 @@ trait ServiceProvider
 }
 ```
 
-### The global $container:
-the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the container,
+
+#### The global $container:
+the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container, 
+
 this way you will be able to create an object once and use it many times
 
 ```php
@@ -216,15 +291,15 @@ Retrieve single row:
 ```php
 $user = Model\table::find('name', 'MyName');
 ```
-And plenty of other methods such as limit, orderBy, groupBy, count, update and delete.
+And plenty of other methods such as limit(), orderBy(), groupBy(), count(), update and delete.
 simple example:
 ```php
 Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
 ```
 
 ## Visitors Statistics:
-It's a built-in middleware that record each user hits and data and store them in a database table;
-Data such as ip, browser, os, PreviousUrl, CurrentUrl, date.
+It's a built-in middleware that record each user data and store it in a database table,
+Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
 ## Request handler & validator:
 It's a built-in handler a validator for `POST` inputs:
@@ -260,7 +335,7 @@ the above example will return error messages in this form:
     ]
 ]
 ```
-All Error messages teamplates are defined in 'App\Validation Errors.php' to make theme so easy to modify.
+All Error messages teamplates are defined in 'App/ServiceProviders/ValidationErrorsProvider.php' to make theme so easy to modify.
 
 ## Exception handler:
 `Uxie` comes with a built-in exceptions automatic handler that will handle thrown exceptions / errors automatically.  
@@ -312,4 +387,26 @@ csrf_token();
 
 container();
 // returns the global IOC container
+```
+
+## Box (Command Line Tool):
+Box is a command line tool to create Controllers, models & middlewares templates
+for example:
+``` 
+php box Controller TestC
+// or 
+php box Model TestC
+// or
+php box Middleware TestC
+```
+
+## DataBase Migration:
+it's based on phinx migration to create a migration pass this command:
+```
+php phinx create MyMigration
+```
+To Migrate existing migration files:
+
+```
+php phinx migrate
 ```
