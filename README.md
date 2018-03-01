@@ -166,13 +166,13 @@ All middlewares are defined in './Middlewares' folder.
 
 
 
-A middleware must contain a static method 'start': (the application will execute start() to use the middleware)
+A middleware must contain a construct method:
 ```php
 namespace Middleware;
 
 class Middlewaretest
 {
-    public static function start()
+    public function __construct()
     {
         echo 'test middleware';
     }
