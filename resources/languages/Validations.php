@@ -21,5 +21,5 @@ return [
         'isfloat'  => '$$ Doit etre de type float',
         'isip'     => '$$ Doit etre un IP valide',
     ],
-    
+
 ];
