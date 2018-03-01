@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3af8e9098657d2f126d0ee3dad2584b",
+    "content-hash": "24f0f8692904c3e4a54876d619d3dd49",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -3106,16 +3106,16 @@
         },
         {
             "name": "uxie/box",
-            "version": "v0.2",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Box.git",
-                "reference": "7d9a0e2827e05bc3e709ac95e79c5f0c47911c32"
+                "reference": "869c34d4b8f50dba56ca54d511dc01ca9d606f83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Box/zipball/7d9a0e2827e05bc3e709ac95e79c5f0c47911c32",
-                "reference": "7d9a0e2827e05bc3e709ac95e79c5f0c47911c32",
+                "url": "https://api.github.com/repos/Uxie-Framework/Box/zipball/869c34d4b8f50dba56ca54d511dc01ca9d606f83",
+                "reference": "869c34d4b8f50dba56ca54d511dc01ca9d606f83",
                 "shasum": ""
             },
             "require": {
@@ -3140,7 +3140,7 @@
                 }
             ],
             "description": "Uxie CLI",
-            "time": "2018-02-19T11:38:25+00:00"
+            "time": "2018-03-01T10:23:13+00:00"
         },
         {
             "name": "uxie/kernel",
@@ -3338,16 +3338,16 @@
         },
         {
             "name": "uxie/services",
-            "version": "v0.1",
+            "version": "v0.1.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Services.git",
-                "reference": "a27f266b46c1a10e7ac74700aab4a6a8a5456b9e"
+                "reference": "b00b24f4bf9aed9fe63703be628a33e22f78d12f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Services/zipball/a27f266b46c1a10e7ac74700aab4a6a8a5456b9e",
-                "reference": "a27f266b46c1a10e7ac74700aab4a6a8a5456b9e",
+                "url": "https://api.github.com/repos/Uxie-Framework/Services/zipball/b00b24f4bf9aed9fe63703be628a33e22f78d12f",
+                "reference": "b00b24f4bf9aed9fe63703be628a33e22f78d12f",
                 "shasum": ""
             },
             "require": {
@@ -3375,7 +3375,7 @@
                 }
             ],
             "description": "Uxie Framework Services",
-            "time": "2018-02-28T21:12:38+00:00"
+            "time": "2018-03-01T11:15:10+00:00"
         },
         {
             "name": "uxie/statistics",
@@ -3563,7 +3563,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.1.8"
+        "php": ">=7.2"
     },
     "platform-dev": []
 }
