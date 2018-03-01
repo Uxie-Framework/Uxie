@@ -15,8 +15,8 @@
         "uxie/middleware":             ">=0.2",
         "uxie/kernel":                 ">=0.2.1",
         "uxie/authenticator":          ">=0.2",
-        "uxie/box":                    ">=0.1",
-        "uxie/services":               ">=0.1",
+        "uxie/box":                    ">=0.2.1",
+        "uxie/services":               ">=0.1.1",
         "vlucas/phpdotenv":            ">=2.4",
         "mohamed-amine/file-uploader": ">=1.1",
         "mohamed-amine/ioc-container": ">=0.4",
@@ -39,11 +39,9 @@
     "autoload": {
     "psr-4": {
       "App\\":              "App/",
-      "ServiceProviders\\": "App/ServiceProviders/",
-      "Middleware\\":       "Middlewares/",
-      "Controller\\":       "Controllers/",
-      "Model\\":            "Models/",
-      "Web\\":              "web/"
+      "Middleware\\":       "App/Middlewares/",
+      "Controller\\":       "App/Controllers/",
+      "Model\\":            "App/Models/"
     }
   },
   "scripts": {
