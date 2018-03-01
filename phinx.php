@@ -6,7 +6,7 @@
 return
     [
         'paths' => [
-            'migrations' => 'App/Migrations',
+            'migrations' => 'Migrations',
         ],
         'environments' =>
             [
