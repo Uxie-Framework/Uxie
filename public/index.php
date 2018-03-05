@@ -13,15 +13,6 @@ use IOC\IOC;
 // create IOC container
 $container = IOC::container();
 
-// create Dotenv object & specify the filename location to use (.env in the root folder)
-$container->build('Dotenv\Dotenv', [__DIR__.'/../']);
-
-// load the .env file
-$container->Dotenv->load();
-
-// import default settings
-require_once __DIR__.'/../defaults.php';
-
 // preapring for starting application
 $container->build('Kernel\Kernel');
 

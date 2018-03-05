@@ -4,7 +4,7 @@ namespace Middleware;
 
 class Statistics
 {
-    public static function start()
+    public function __construct()
     {
         container()->build('Statistics\Visit');
     }

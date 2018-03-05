@@ -5,24 +5,24 @@ Uxie is a PHP MVC Framework.
 #### - Perfect MVC environment.
 #### - Agile Design.
 #### - Box (Command Line Tool).
-#### - Deploy with Docker using one command line.
-#### - DataBase Migration.
+#### - Deployable with docker.
+#### - DataBase Migration (phinx).
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
 #### - Router.
 #### - Authentication.
 #### - Middlewares.
 #### - Mutual Templating Engines (Blade & Pug):
-#### - Model.
+#### - Built-in Model.
 #### - Visitors Statistics Recorder.
 #### - Request handler & validator.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
-#### - Helper functions.
+#### - Built-in functions (Helpers).
 
 # Documentation:  
 
-# Installing: 
+## Installing:
 
 Using Composer:
 ```
@@ -111,13 +111,13 @@ Authentication will validate your users login automatically
 #### Login:
 ```php
   use Authenticator\Auth;
-  
+
   if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword)) {
     echo 'success';
   }
-  
+
   // in case of second field required to validate for example e-mail & user-name:
-  
+
   if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword, 'email' => $inputEmail])) {
     echo 'success';
   }
@@ -129,7 +129,7 @@ Authentication will validate your users login automatically
     echo 'success';
   }
   // in case you want to check a user value from database row:
-  
+
   if (Auth::check(['name' => 'someone'])
   {
     echo " i'm someone";
@@ -260,6 +260,7 @@ contaienr()->MyClass->someMethod();
 ```
 
 #### IOC Service Provider:
+
 Service provider located in ```App/Services.php``` 
 It contains aliases and sevices that should be loaded when the application start:
 
@@ -280,7 +281,9 @@ It contains aliases and sevices that should be loaded when the application start
 
 
 #### The global $container:
+
 the ```container()```function is global in the framework (can be used every where, it contains all the objects created by the IOC container), 
+
 
 
 ```php
@@ -411,9 +414,9 @@ container();
 ## Box (Command Line Tool):
 Box is a command line tool to create Controllers, models & middlewares templates
 for example:
-``` 
+```
 php box Controller TestC
-// or 
+// or
 php box Model TestC
 // or
 php box Middleware TestC

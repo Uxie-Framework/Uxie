@@ -7,3 +7,7 @@ container()->bind('Router', function() {
 container()->bind('Compiler', function() {
     return new Kernel\Compiler\Compiler();
 });
+
+container()->bind('Dotenv', function() {
+    return new Dotenv\Dotenv(__DIR__.'/../');
+});
