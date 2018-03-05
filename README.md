@@ -3,26 +3,26 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
-#### - Totally Agile Design.
+#### - Total Agile Design.
 #### - Box (Command Line Tool).
-#### - Docker Compose included.
-#### - DataBase Migration.
+#### - Deployable with docker.
+#### - DataBase Migration (phinx).
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
 #### - Router.
 #### - Authentication.
 #### - Middlewares.
 #### - Mutual Templating Engines (Blade & Pug):
-#### - Model.
+#### - Built-in Model.
 #### - Visitors Statistics Recorder.
 #### - Request handler & validator.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
-#### - Helper functions.
+#### - Built-in functions (Helpers).
 
 # Documentation:  
 
-# Installing: 
+## Installing:
 
 Using Composer:
 ```
@@ -106,13 +106,13 @@ Authentication will validate your users login automatically
 #### Login:
 ```php
   use Authenticator\Auth;
-  
+
   if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword)) {
     echo 'success';
   }
-  
+
   // in case of second field required to validate for example e-mail & user-name:
-  
+
   if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword, 'email' => $inputEmail])) {
     echo 'success';
   }
@@ -124,7 +124,7 @@ Authentication will validate your users login automatically
     echo 'success';
   }
   // in case you want to check a user value from database row:
-  
+
   if (Auth::check(['name' => 'someone'])
   {
     echo " i'm someone";
@@ -244,7 +244,7 @@ contaienr()->MyClass->someMethod();
 ```
 
 #### IOC Service Provider:
-Service provider located in ```App/ServicePoroviders/IOCProvider.php``` 
+Service provider located in ```App/ServicePoroviders/IOCProvider.php```
 It contains classes short-names to make di-container easier to use:
 
 ```php
@@ -264,7 +264,7 @@ trait ServiceProvider
 
 
 #### The global $container:
-the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container, 
+the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container,
 
 this way you will be able to create an object once and use it many times
 
@@ -392,9 +392,9 @@ container();
 ## Box (Command Line Tool):
 Box is a command line tool to create Controllers, models & middlewares templates
 for example:
-``` 
+```
 php box Controller TestC
-// or 
+// or
 php box Model TestC
 // or
 php box Middleware TestC
