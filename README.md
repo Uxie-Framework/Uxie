@@ -41,7 +41,7 @@ GET, POST, PUT, PATCH, DELETE
 To use PUT, PATCH, DELETE methods your form method must be 'POST'
 inside the form you must put:
 ```<input type='hidden' name='_method' value="PUT'>```
-csrf_method('PUT') will echo this automatically. 
+csrf_method('PUT') will echo this automatically.
 
 #### Basic routes examples:
 ```php
@@ -261,7 +261,7 @@ contaienr()->MyClass->someMethod();
 
 #### IOC Service Provider:
 
-Service provider located in ```App/Services.php``` 
+Service provider located in ```App/Services.php```
 It contains aliases and sevices that should be loaded when the application start:
 
 ```php
@@ -282,7 +282,7 @@ It contains aliases and sevices that should be loaded when the application start
 
 #### The global $container:
 
-the ```container()```function is global in the framework (can be used every where, it contains all the objects created by the IOC container), 
+the ```container()```function is global in the framework (can be used every where, it contains all the objects created by the IOC container),
 
 
 
@@ -414,11 +414,18 @@ container();
 ## Box (Command Line Tool):
 Box is a command line tool to create Controllers, models & middlewares templates
 for example:
+
 ```
+// to create a controller:
 php box Controller TestC
-// or
+
+// to create resourceful controller
+php box Controller TestC -r
+
+// to create a Model
 php box Model TestC
-// or
+
+// to create a Middleware
 php box Middleware TestC
 ```
 
