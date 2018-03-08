@@ -3,7 +3,7 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
-#### - Total Agile Design.
+#### - Agile Design.
 #### - Box (Command Line Tool).
 #### - Deployable with docker.
 #### - DataBase Migration (phinx).
@@ -37,6 +37,11 @@ All routes are defined in : `App/Routes.php`
 
 #### Available Methods:
 GET, POST, PUT, PATCH, DELETE
+
+To use PUT, PATCH, DELETE methods your form method must be 'POST'
+inside the form you must put:
+```<input type='hidden' name='_method' value="PUT'>```
+csrf_method('PUT') will echo this automatically. 
 
 #### Basic routes examples:
 ```php
@@ -79,7 +84,7 @@ $this->get('profile/{$name}/update', 'Controller@update');
 ```
 in Controller :
 ```php
-public function method($name)
+public function update($name)
 {
     echo $name;
 }
@@ -93,7 +98,7 @@ in routes file :
 in UserController.php :
 ```php
 ...
-use App\Http\Request as Request;
+use Request\Request as Request;
 ...
 public function store(Request $request)
 {
@@ -146,7 +151,7 @@ To access user data stored in database for example age, email or anything else :
   $email = Auth::user()->email;
 ```
 
-
+## Middlewares
 to use middlewares you need to add middleware() method to your route call
 example:
 
@@ -161,13 +166,13 @@ All middlewares are defined in './Middlewares' folder.
 
 
 
-A middleware must contain a static method 'start': (the application will execute start() to use the middleware)
+A middleware must contain a construct method:
 ```php
 namespace Middleware;
 
 class Middlewaretest
 {
-    public static function start()
+    public function __construct()
     {
         echo 'test middleware';
     }
@@ -195,11 +200,22 @@ $this->get('user', 'controller@method')->middleware('auth');
 // 'collection' example:
 $this->get('link', 'controller@method')->middleware('collection');
 ```
+## Security ( against SQL injection, XSS, CSRF):
+
+#### SQL injection:
+Uxie is secured against both first and second order sql injection attacks.
+
+#### XSS:
+Both Uxie templating engine escape html+js when printing data.
+
+#### CSRF:
+Uxie comes with built in feature that protect against CSRF when using ('POST','PATCH','PUT','DELETE') methods,
+So every form should contain: csrf_field()
 
 ## Mutual Templating Engine (Blade & Pug):
 
 #### Important Notes:
-- All view must be inside Views folder.
+- All views must be inside 'App/Views' folder.
 
 #### How to use it:
 Use helper function view(string $view, array $variables):  
@@ -244,34 +260,37 @@ contaienr()->MyClass->someMethod();
 ```
 
 #### IOC Service Provider:
-Service provider located in ```App/ServicePoroviders/IOCProvider.php```
-It contains classes short-names to make di-container easier to use:
+
+Service provider located in ```App/Services.php``` 
+It contains aliases and sevices that should be loaded when the application start:
 
 ```php
-trait ServiceProvider
-{
-    private $serviceProviders = [
-        'Router'     => \Router\Router::class,
-        'Kernel'     => \Kernel\Kernel::class,
-        'Launcher'   => \Kernel\Launcher::class,
-        'Middleware' => \App\Middleware\Middleware::class,
-        'Dotenv'     => \Dotenv\Dotenv::class,
-        'Blade'      => \Jenssegers\Blade\Blade::class,
-        'Pug'        => \Pug\Pug::class,
-    ];
-}
+        'ServiceLocators' => [
+            'Router'     => \Router\Router::class,
+            'Kernel'     => \Kernel\Kernel::class,
+            'Compiler'   => \Kernel\Compiler\Compiler::class,
+            'Middleware' => \App\Middleware\Middleware::class,
+            'Dotenv'     => \Dotenv\Dotenv::class,
+            'Auth'       => \Authenticator\Auth::class,
+        ],
+
+        'ServiceProviders' => [
+            Jenssegers\Blade\Blade::class,
+        ],
 ```
 
 
 #### The global $container:
-the ```$container ```variable is global in the framework (can be used every where, it contains all the objects created by the IOC container,
 
-this way you will be able to create an object once and use it many times
+the ```container()```function is global in the framework (can be used every where, it contains all the objects created by the IOC container), 
+
+
 
 ```php
-global $container;
-$container->build('someclass');
-$container->get('someClass')->someMethod();
+
+container()->build('someclass');
+container()->get('someClass')->someMethod();
+
 ```
 
 ## Uxie Model:
@@ -302,7 +321,7 @@ It's a built-in middleware that record each user data and store it in a database
 Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
 ## Request handler & validator:
-It's a built-in handler a validator for `POST` inputs:
+It's a built-in Request handler :
 
 ```php
 // you must add 'csrf_field()' to the HTML form to protect against CSRF
@@ -312,7 +331,7 @@ public function store(Request $request)
 }
 ```
 
-### Validation:
+#### Validation:
 Available validation methods : required(), length($min, $max), email(), isip(), isint(), isfloat(), url().
 To validate POST inputs:
 ```php
@@ -335,10 +354,10 @@ the above example will return error messages in this form:
     ]
 ]
 ```
-All Error messages teamplates are defined in 'App/ServiceProviders/ValidationErrorsProvider.php' to make theme so easy to modify.
+All Error messages teamplates are defined in multiple 'resources/languages/validation.php' to make theme so easy to modify.
 
 ## Exception handler:
-`Uxie` comes with a built-in exceptions automatic handler that will handle thrown exceptions / errors automatically.  
+`Uxie` comes with a built-in exceptions handler that will handle thrown exceptions / errors automatically.  
 
 ## Errors logger:
 All errors/exceptions thrown during runtime will be logged in `log/All_errors.log` with information about error such as file, line, code and error-Message.  
@@ -385,6 +404,9 @@ csrf_field();
 csrf_token();
 // returns csrf token value
 
+method_field(string $method);
+// echo something like <input type='hidden' name='_method' value="$method'>
+
 container();
 // returns the global IOC container
 ```
@@ -401,7 +423,9 @@ php box Middleware TestC
 ```
 
 ## DataBase Migration:
-it's based on phinx migration to create a migration pass this command:
+All migration files located in '/Migrations'
+
+It's based on phinx migration to create a migration pass this command:
 ```
 php phinx create MyMigration
 ```
