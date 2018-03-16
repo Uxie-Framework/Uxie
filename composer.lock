@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1113fa5ca9990dabfebf63af3b58a966",
+    "content-hash": "32583689bec3ea6795233fe78059a106",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -194,7 +194,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.6.9",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -238,7 +238,7 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.6.9",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
@@ -282,7 +282,7 @@
         },
         {
             "name": "illuminate/events",
-            "version": "v5.6.9",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -327,7 +327,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.6.9",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -378,30 +378,30 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.6.9",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "c74e5a0a4cdd599f65a615398041cc1be19cc86f"
+                "reference": "f0776f5bbfeeb9d4c4cac8f64d96f8f0cbe4f3f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/c74e5a0a4cdd599f65a615398041cc1be19cc86f",
-                "reference": "c74e5a0a4cdd599f65a615398041cc1be19cc86f",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/f0776f5bbfeeb9d4c4cac8f64d96f8f0cbe4f3f7",
+                "reference": "f0776f5bbfeeb9d4c4cac8f64d96f8f0cbe4f3f7",
                 "shasum": ""
             },
             "require": {
                 "doctrine/inflector": "~1.1",
                 "ext-mbstring": "*",
                 "illuminate/contracts": "5.6.*",
-                "nesbot/carbon": "^1.20",
+                "nesbot/carbon": "^1.24.1",
                 "php": "^7.1.3"
             },
             "conflict": {
                 "tightenco/collect": "<5.5.33"
             },
             "suggest": {
-                "illuminate/filesystem": "Required to use the composer class (5.2.*).",
+                "illuminate/filesystem": "Required to use the composer class (5.6.*).",
                 "symfony/process": "Required to use the composer class (~4.0).",
                 "symfony/var-dumper": "Required to use the dd function (~4.0)."
             },
@@ -431,11 +431,11 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-03-04T15:11:54+00:00"
+            "time": "2018-03-14T12:56:14+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v5.6.9",
+            "version": "v5.6.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
@@ -768,20 +768,20 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.23.0",
+            "version": "1.24.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65"
+                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
-                "reference": "4a874a39b2b00d7e0146cd46fab6f47c41ce9e65",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bba6c6e410c6b4317e37a9474aeaa753808c3875",
+                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
+                "php": ">=5.3.9",
                 "symfony/translation": "~2.6 || ~3.0 || ~4.0"
             },
             "require-dev": {
@@ -817,7 +817,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-02-28T09:22:05+00:00"
+            "time": "2018-03-10T10:10:14+00:00"
         },
         {
             "name": "nodejs-php-fallback/nodejs-php-fallback",
@@ -3068,27 +3068,36 @@
             "time": "2017-04-07T12:08:54+00:00"
         },
         {
-            "name": "uxie/authenticator",
-            "version": "v0.2.2",
+            "name": "uxie/framework",
+            "version": "v0.1.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Uxie-Framework/Authenticator.git",
-                "reference": "b472443e69cbb93dd9e3e800c688f0bb74fce9cf"
+                "url": "https://github.com/Uxie-Framework/framework.git",
+                "reference": "ee542118deab15800f03d90ae727459c72472aab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Authenticator/zipball/b472443e69cbb93dd9e3e800c688f0bb74fce9cf",
-                "reference": "b472443e69cbb93dd9e3e800c688f0bb74fce9cf",
+                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/ee542118deab15800f03d90ae727459c72472aab",
+                "reference": "ee542118deab15800f03d90ae727459c72472aab",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0",
-                "uxie/model": ">=0.2"
+                "php": ">=7.2"
             },
-            "type": "library",
+            "type": "framework",
             "autoload": {
+                "files": [
+                    "Services/Helpers/helpers.php"
+                ],
                 "psr-4": {
-                    "Authenticator\\": "src/"
+                    "Authenticator\\": "Authenticator/",
+                    "Box\\": "Box/",
+                    "Kernel\\": "Kernel",
+                    "Model\\": "Model",
+                    "Request\\": "Request-Handler/",
+                    "Router\\": "Router",
+                    "Services\\": "Services/",
+                    "Validator\\": "Validator"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -3097,90 +3106,18 @@
             ],
             "authors": [
                 {
-                    "name": "Mohamed Amine",
+                    "name": "M.Amine Cheribet",
                     "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
+                    "homepage": "https://github.com/MohamedAmine-C/Uxie",
+                    "role": "Owner"
                 }
             ],
-            "description": "Uxie Framework Authenticator",
-            "time": "2018-02-09T16:30:17+00:00"
-        },
-        {
-            "name": "uxie/box",
-            "version": "v0.2.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Box.git",
-                "reference": "34f3da9354ec99b75b0ddeee577c1f2c45f87fa9"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Box/zipball/34f3da9354ec99b75b0ddeee577c1f2c45f87fa9",
-                "reference": "34f3da9354ec99b75b0ddeee577c1f2c45f87fa9",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Box\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
+            "description": "Uxie framework core",
+            "keywords": [
+                "framework",
+                "uxie"
             ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie CLI",
-            "time": "2018-03-05T12:03:20+00:00"
-        },
-        {
-            "name": "uxie/kernel",
-            "version": "v0.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Kernel.git",
-                "reference": "3b3f05e733b94b144289cd04680f748cf8bb6059"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Kernel/zipball/3b3f05e733b94b144289cd04680f748cf8bb6059",
-                "reference": "3b3f05e733b94b144289cd04680f748cf8bb6059",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Kernel\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie Framework Kernel",
-            "time": "2018-03-04T22:41:40+00:00"
+            "time": "2018-03-10T21:52:43+00:00"
         },
         {
             "name": "uxie/model",
@@ -3221,126 +3158,6 @@
             "time": "2018-02-05T23:59:13+00:00"
         },
         {
-            "name": "uxie/request-handler",
-            "version": "v0.4.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Request-Handler.git",
-                "reference": "6003ef15a1a59dd3b768374abe119ece5af00fb7"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Request-Handler/zipball/6003ef15a1a59dd3b768374abe119ece5af00fb7",
-                "reference": "6003ef15a1a59dd3b768374abe119ece5af00fb7",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0",
-                "uxie/validator": ">=0.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Request\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie Framework Request Handler",
-            "time": "2018-03-04T19:29:21+00:00"
-        },
-        {
-            "name": "uxie/router",
-            "version": "v0.6.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Router.git",
-                "reference": "fd4d2a1317a35db357a4283046b63d426e8c44ec"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Router/zipball/fd4d2a1317a35db357a4283046b63d426e8c44ec",
-                "reference": "fd4d2a1317a35db357a4283046b63d426e8c44ec",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2",
-                "phpunit/phpunit": ">=6.0",
-                "uxie/request-handler": ">=0.3.5"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Router\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie Framework Router",
-            "time": "2018-03-04T19:23:05+00:00"
-        },
-        {
-            "name": "uxie/services",
-            "version": "0.1.5",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Services.git",
-                "reference": "edfd234a5e7a4ffcbc19f8acfa55208c599dea21"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Services/zipball/edfd234a5e7a4ffcbc19f8acfa55208c599dea21",
-                "reference": "edfd234a5e7a4ffcbc19f8acfa55208c599dea21",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.2"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "src/Helpers/helpers.php"
-                ],
-                "psr-4": {
-                    "Services\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie Framework Services",
-            "time": "2018-03-08T12:42:59+00:00"
-        },
-        {
             "name": "uxie/statistics",
             "version": "v0.2.2",
             "source": {
@@ -3379,44 +3196,6 @@
             ],
             "description": "Uxie Framework Visits Recorder",
             "time": "2018-02-05T18:37:38+00:00"
-        },
-        {
-            "name": "uxie/validator",
-            "version": "v0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Validator.git",
-                "reference": "5b9b58da8de33e962c729a3e1bfc96f78d005434"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Validator/zipball/5b9b58da8de33e962c729a3e1bfc96f78d005434",
-                "reference": "5b9b58da8de33e962c729a3e1bfc96f78d005434",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Validator\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie Request Validator",
-            "time": "2018-02-28T20:59:45+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3526,7 +3305,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2"
+        "php": ">=7.1.6"
     },
     "platform-dev": []
 }
