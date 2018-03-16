@@ -8,8 +8,8 @@ class Csrf
 
     public function __construct()
     {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $this->token = $_POST['_token'] ?? null;
+        if (container()->Request->getMethod() !== 'GET') {
+            $this->token = container()->Request->_token ?? null;
             $this->validateToken();
         }
     }

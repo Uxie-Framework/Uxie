@@ -6,16 +6,9 @@
     "license":     "MIT",
 
     "require": {
-        "php":                         ">=7.2",
-        "uxie/router":                 ">=0.6.3",
-        "uxie/model":                  ">=0.2",
+        "php":                         ">=7.1.6",
+        "uxie/framework":              ">=0.0.3",
         "uxie/statistics":             ">=0.2",
-        "uxie/request-handler":        ">=0.4.1",
-        "uxie/validator":              ">=0.2",
-        "uxie/kernel":                 ">=0.2.3",
-        "uxie/authenticator":          ">=0.2",
-        "uxie/box":                    ">=0.2.2",
-        "uxie/services":               ">=0.1.5",
         "vlucas/phpdotenv":            ">=2.4",
         "mohamed-amine/file-uploader": ">=1.1",
         "mohamed-amine/ioc-container": ">=0.4",
