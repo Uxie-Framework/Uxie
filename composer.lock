@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "32583689bec3ea6795233fe78059a106",
+    "content-hash": "f10d151f3a0c67769b6c82877dbfab1e",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -3069,16 +3069,16 @@
         },
         {
             "name": "uxie/framework",
-            "version": "v0.1.0",
+            "version": "v0.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/framework.git",
-                "reference": "ee542118deab15800f03d90ae727459c72472aab"
+                "reference": "07d76a7b0a8155c0aea5ccea104a6fddb439fd2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/ee542118deab15800f03d90ae727459c72472aab",
-                "reference": "ee542118deab15800f03d90ae727459c72472aab",
+                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/07d76a7b0a8155c0aea5ccea104a6fddb439fd2e",
+                "reference": "07d76a7b0a8155c0aea5ccea104a6fddb439fd2e",
                 "shasum": ""
             },
             "require": {
@@ -3117,63 +3117,28 @@
                 "framework",
                 "uxie"
             ],
-            "time": "2018-03-10T21:52:43+00:00"
-        },
-        {
-            "name": "uxie/model",
-            "version": "v0.2.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Uxie-Framework/Model.git",
-                "reference": "d2c5bf309058eea0af5878c90d2472fecc6ad5cd"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Model/zipball/d2c5bf309058eea0af5878c90d2472fecc6ad5cd",
-                "reference": "d2c5bf309058eea0af5878c90d2472fecc6ad5cd",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Model\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Mohamed Amine",
-                    "email": "MohamedAmine1c@gmail.com",
-                    "homepage": "https://github.com/MohamedAmine1c",
-                    "role": "owner"
-                }
-            ],
-            "description": "Uxie Framework Model",
-            "time": "2018-02-05T23:59:13+00:00"
+            "time": "2018-03-16T17:24:23+00:00"
         },
         {
             "name": "uxie/statistics",
-            "version": "v0.2.2",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Statistics.git",
-                "reference": "029641bf9a9a0b96c4c6fc0c303b2621b8b87c41"
+                "reference": "1548ce60fc3f247780bfeb0a0cddfa227c76f1ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/029641bf9a9a0b96c4c6fc0c303b2621b8b87c41",
-                "reference": "029641bf9a9a0b96c4c6fc0c303b2621b8b87c41",
+                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/1548ce60fc3f247780bfeb0a0cddfa227c76f1ef",
+                "reference": "1548ce60fc3f247780bfeb0a0cddfa227c76f1ef",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.0",
-                "uxie/model": ">=0.2"
+                "uxie/framework": "^0.1.1"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.0"
             },
             "type": "library",
             "autoload": {
@@ -3195,7 +3160,7 @@
                 }
             ],
             "description": "Uxie Framework Visits Recorder",
-            "time": "2018-02-05T18:37:38+00:00"
+            "time": "2018-03-19T17:57:12+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3301,7 +3266,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "uxie/statistics": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

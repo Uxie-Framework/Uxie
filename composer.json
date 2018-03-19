@@ -8,7 +8,7 @@
     "require": {
         "php":                         ">=7.1.6",
         "uxie/framework":              ">=0.0.3",
-        "uxie/statistics":             ">=0.2",
+        "uxie/statistics":             "dev-master",
         "vlucas/phpdotenv":            ">=2.4",
         "mohamed-amine/file-uploader": ">=1.1",
         "mohamed-amine/ioc-container": ">=0.4",
