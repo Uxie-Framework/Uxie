@@ -9,7 +9,7 @@ Uxie is a PHP MVC Framework.
 #### - DataBase Migration (phinx).
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
-#### - Router.
+#### - Router (REST).
 #### - Authentication.
 #### - Middlewares.
 #### - Mutual Templating Engines (Blade & Pug):
