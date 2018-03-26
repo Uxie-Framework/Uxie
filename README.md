@@ -3,22 +3,22 @@ Uxie is a PHP MVC Framework.
 
 # Features:
 #### - Perfect MVC environment.
-#### - Agile Design.
 #### - Box (Command Line Tool).
 #### - Deployable with docker.
 #### - DataBase Migration (phinx).
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
-#### - Router.
+#### - Router (REST).
 #### - Authentication.
 #### - Middlewares.
 #### - Mutual Templating Engines (Blade & Pug):
-#### - Built-in Model.
-#### - Visitors Statistics Recorder.
+#### - ORM Model.
+#### - Visitors Data Recorder.
 #### - Request handler & validator.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
 #### - Built-in functions (Helpers).
+#### - Multi langauge support
 
 # Documentation:  
 
@@ -441,3 +441,33 @@ To Migrate existing migration files:
 ```
 php phinx migrate
 ```
+
+## Multi langauge support
+
+You can find all languages files in 'resources/languages'
+#### How to modify and add languages :
+for example to edit validation messages you need to modify 'resources/languages/validations.php' :
+```php
+'default' => [
+        'length'   => '$$ Length must be bettwen $$ and $$',
+        'required' => '$$ Is Required',
+        'email'    => '$$ Must be a valide Email',
+        'url'      => '$$ Must be a valide URL',
+        'isint'    => '$$ Must be of type integer',
+        'isfloat'  => '$$ Must be of type float',
+        'isip'     => '$$ Must be a valide IP',
+    ],
+
+    'french' => [
+        'length'   => '$$ Doit etre entre $$ et $$',
+        'required' => '$$ Est un Champ obligatoire',
+        'email'    => '$$ Doit etre un e-mail',
+        'url'      => '$$ Doit etre un URL valide',
+        'isint'    => '$$ Doit etre de type entier',
+        'isfloat'  => '$$ Doit etre de type float',
+        'isip'     => '$$ Doit etre un IP valide',
+    ],
+```
+#### How to set a language to be used :
+To set a language use 'setLanguage(string $langauge)' function
+If you don't set a language 'default' will be used
