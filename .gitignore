@@ -1,12 +1,6 @@
 /vendor
 .env
-composer.phar
 log/
-/.idea
-/.vscode
-.vscode
-.phpintel
-.DS_Store
 cache/blade/*.php
 cache/pug/*.php
 cache/pug/*.txt
