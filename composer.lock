@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "f10d151f3a0c67769b6c82877dbfab1e",
+    "content-hash": "f5a85d3f8675fc55729b27333b286a07",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -194,7 +194,7 @@
         },
         {
             "name": "illuminate/container",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
@@ -238,16 +238,16 @@
         },
         {
             "name": "illuminate/contracts",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "00a8296c63b6429eb8705d2700c2436ea193c553"
+                "reference": "965b814964cc4649cd7e933bba2ae3eeb11f2927"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/00a8296c63b6429eb8705d2700c2436ea193c553",
-                "reference": "00a8296c63b6429eb8705d2700c2436ea193c553",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/965b814964cc4649cd7e933bba2ae3eeb11f2927",
+                "reference": "965b814964cc4649cd7e933bba2ae3eeb11f2927",
                 "shasum": ""
             },
             "require": {
@@ -278,11 +278,11 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "https://laravel.com",
-            "time": "2018-02-20T16:46:51+00:00"
+            "time": "2018-03-25T12:54:46+00:00"
         },
         {
             "name": "illuminate/events",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/events.git",
@@ -327,7 +327,7 @@
         },
         {
             "name": "illuminate/filesystem",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/filesystem.git",
@@ -378,16 +378,16 @@
         },
         {
             "name": "illuminate/support",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/support.git",
-                "reference": "f0776f5bbfeeb9d4c4cac8f64d96f8f0cbe4f3f7"
+                "reference": "e3a5340a8ebdd9cf758ecf0cc77726165bb8468b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/support/zipball/f0776f5bbfeeb9d4c4cac8f64d96f8f0cbe4f3f7",
-                "reference": "f0776f5bbfeeb9d4c4cac8f64d96f8f0cbe4f3f7",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/e3a5340a8ebdd9cf758ecf0cc77726165bb8468b",
+                "reference": "e3a5340a8ebdd9cf758ecf0cc77726165bb8468b",
                 "shasum": ""
             },
             "require": {
@@ -431,20 +431,20 @@
             ],
             "description": "The Illuminate Support package.",
             "homepage": "https://laravel.com",
-            "time": "2018-03-14T12:56:14+00:00"
+            "time": "2018-03-26T01:32:36+00:00"
         },
         {
             "name": "illuminate/view",
-            "version": "v5.6.12",
+            "version": "v5.6.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/view.git",
-                "reference": "2c6db84a5cf122bfe8b0721000df811f0b820c62"
+                "reference": "b8e02d248dbe553949d01148c604eeb9d8c56801"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/view/zipball/2c6db84a5cf122bfe8b0721000df811f0b820c62",
-                "reference": "2c6db84a5cf122bfe8b0721000df811f0b820c62",
+                "url": "https://api.github.com/repos/illuminate/view/zipball/b8e02d248dbe553949d01148c604eeb9d8c56801",
+                "reference": "b8e02d248dbe553949d01148c604eeb9d8c56801",
                 "shasum": ""
             },
             "require": {
@@ -479,7 +479,7 @@
             ],
             "description": "The Illuminate View package.",
             "homepage": "https://laravel.com",
-            "time": "2018-03-05T14:05:53+00:00"
+            "time": "2018-03-24T14:44:34+00:00"
         },
         {
             "name": "intervention/image",
@@ -685,20 +685,21 @@
         },
         {
             "name": "mohamed-amine/ioc-container",
-            "version": "v0.4",
+            "version": "v0.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MohamedAmine-C/IOC-Container.git",
-                "reference": "569214ac4a4178b5f6220dcabe70a25705cd9b52"
+                "reference": "01855e814fbd70d1c8f4b0f9dbc11e66245ab315"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/569214ac4a4178b5f6220dcabe70a25705cd9b52",
-                "reference": "569214ac4a4178b5f6220dcabe70a25705cd9b52",
+                "url": "https://api.github.com/repos/MohamedAmine-C/IOC-Container/zipball/01855e814fbd70d1c8f4b0f9dbc11e66245ab315",
+                "reference": "01855e814fbd70d1c8f4b0f9dbc11e66245ab315",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0"
+                "php": ">=7.1.6",
+                "phpunit/phpunit": ">=6.0"
             },
             "type": "library",
             "autoload": {
@@ -719,7 +720,7 @@
                 }
             ],
             "description": "Inversion of control container",
-            "time": "2018-02-28T21:14:43+00:00"
+            "time": "2018-03-22T21:45:14+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -768,16 +769,16 @@
         },
         {
             "name": "nesbot/carbon",
-            "version": "1.24.2",
+            "version": "1.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/briannesbitt/Carbon.git",
-                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875"
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/bba6c6e410c6b4317e37a9474aeaa753808c3875",
-                "reference": "bba6c6e410c6b4317e37a9474aeaa753808c3875",
+                "url": "https://api.github.com/repos/briannesbitt/Carbon/zipball/cbcf13da0b531767e39eb86e9687f5deba9857b4",
+                "reference": "cbcf13da0b531767e39eb86e9687f5deba9857b4",
                 "shasum": ""
             },
             "require": {
@@ -817,7 +818,7 @@
                 "datetime",
                 "time"
             ],
-            "time": "2018-03-10T10:10:14+00:00"
+            "time": "2018-03-19T15:50:49+00:00"
         },
         {
             "name": "nodejs-php-fallback/nodejs-php-fallback",
@@ -1432,16 +1433,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "7.0.2",
+            "version": "7.0.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9"
+                "reference": "536f4d853c12d8189963435088e8ff7c0daeab2e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
-                "reference": "e2f8aa21bc54b6ba218bdd4f9e0dac1e9bc3b4e9",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/536f4d853c12d8189963435088e8ff7c0daeab2e",
+                "reference": "536f4d853c12d8189963435088e8ff7c0daeab2e",
                 "shasum": ""
             },
             "require": {
@@ -1455,7 +1456,7 @@
                 "phar-io/version": "^1.0",
                 "php": "^7.1",
                 "phpspec/prophecy": "^1.7",
-                "phpunit/php-code-coverage": "^6.0",
+                "phpunit/php-code-coverage": "^6.0.1",
                 "phpunit/php-file-iterator": "^1.4.3",
                 "phpunit/php-text-template": "^1.2.1",
                 "phpunit/php-timer": "^2.0",
@@ -1508,7 +1509,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2018-02-26T07:03:12+00:00"
+            "time": "2018-03-26T07:36:48+00:00"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -3069,20 +3070,21 @@
         },
         {
             "name": "uxie/framework",
-            "version": "v0.1.1",
+            "version": "v0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/framework.git",
-                "reference": "07d76a7b0a8155c0aea5ccea104a6fddb439fd2e"
+                "reference": "af28df653ddb96cb0af73bac5159238265f262bb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/07d76a7b0a8155c0aea5ccea104a6fddb439fd2e",
-                "reference": "07d76a7b0a8155c0aea5ccea104a6fddb439fd2e",
+                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/af28df653ddb96cb0af73bac5159238265f262bb",
+                "reference": "af28df653ddb96cb0af73bac5159238265f262bb",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.2"
+                "php": ">=7.1.6",
+                "phpunit/phpunit": ">=6.0"
             },
             "type": "framework",
             "autoload": {
@@ -3117,25 +3119,24 @@
                 "framework",
                 "uxie"
             ],
-            "time": "2018-03-16T17:24:23+00:00"
+            "time": "2018-03-26T15:07:12+00:00"
         },
         {
             "name": "uxie/statistics",
-            "version": "dev-master",
+            "version": "v0.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/Statistics.git",
-                "reference": "1548ce60fc3f247780bfeb0a0cddfa227c76f1ef"
+                "reference": "9759697d91966cb7794a3a8c673ca0f98dd6b3d2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/1548ce60fc3f247780bfeb0a0cddfa227c76f1ef",
-                "reference": "1548ce60fc3f247780bfeb0a0cddfa227c76f1ef",
+                "url": "https://api.github.com/repos/Uxie-Framework/Statistics/zipball/9759697d91966cb7794a3a8c673ca0f98dd6b3d2",
+                "reference": "9759697d91966cb7794a3a8c673ca0f98dd6b3d2",
                 "shasum": ""
             },
             "require": {
-                "php": ">=7.0",
-                "uxie/framework": "^0.1.1"
+                "php": ">=7.0"
             },
             "require-dev": {
                 "phpunit/phpunit": "^7.0"
@@ -3160,7 +3161,7 @@
                 }
             ],
             "description": "Uxie Framework Visits Recorder",
-            "time": "2018-03-19T17:57:12+00:00"
+            "time": "2018-03-26T15:40:43+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -3266,9 +3267,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "uxie/statistics": 20
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

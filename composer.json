@@ -7,11 +7,11 @@
 
     "require": {
         "php":                         ">=7.1.6",
-        "uxie/framework":              ">=0.0.3",
-        "uxie/statistics":             "dev-master",
+        "uxie/framework":              ">=0.2.0",
+        "uxie/statistics":             ">=0.3.1",
         "vlucas/phpdotenv":            ">=2.4",
         "mohamed-amine/file-uploader": ">=1.1",
-        "mohamed-amine/ioc-container": ">=0.4",
+        "mohamed-amine/ioc-container": ">=0.5",
         "intervention/image":          ">=2.4",
         "jenssegers/blade":            ">=1.1",
         "pug-php/pug":                 "^2.7.4",
