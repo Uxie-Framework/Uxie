@@ -8,18 +8,16 @@
 // import composer autoloader
 require_once __DIR__.'/../vendor/autoload.php';
 
-use IOC\IOC;
-
 // create IOC container
-$container = IOC::container();
+IOC\IOC::createContainer();
 
 // preapring for starting application
-$container->build('Kernel\Kernel');
+container()->build('Kernel\Kernel');
 
-$container->Kernel->prepare();
+container()->Kernel->prepare();
 
 // start the application
-$container->Kernel->start();
+container()->Kernel->start();
 
 // stop the application
-$container->Kernel->stop();
+container()->Kernel->stop();
