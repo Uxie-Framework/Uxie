@@ -6,11 +6,10 @@
 return
     [
         'paths' => [
-            'migrations' => 'Migrations',
+            'migrations' => 'database/migrations',
         ],
         'environments' =>
             [
-
                 'default_migration_table' => 'phinxlog',
                 'production' =>
                     [
