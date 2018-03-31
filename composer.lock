@@ -3074,21 +3074,21 @@
         },
         {
             "name": "uxie/framework",
-            "version": "v0.2.0",
+            "version": "v0.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Uxie-Framework/framework.git",
-                "reference": "af28df653ddb96cb0af73bac5159238265f262bb"
+                "reference": "1d8cc93a66ad8b94d821db2a6e1c649eedafe3b6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/af28df653ddb96cb0af73bac5159238265f262bb",
-                "reference": "af28df653ddb96cb0af73bac5159238265f262bb",
+                "url": "https://api.github.com/repos/Uxie-Framework/framework/zipball/1d8cc93a66ad8b94d821db2a6e1c649eedafe3b6",
+                "reference": "1d8cc93a66ad8b94d821db2a6e1c649eedafe3b6",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.1.6",
-                "phpunit/phpunit": ">=6.0"
+                "phpunit/phpunit": "^6.0"
             },
             "type": "framework",
             "autoload": {
@@ -3123,7 +3123,7 @@
                 "framework",
                 "uxie"
             ],
-            "time": "2018-03-26T15:07:12+00:00"
+            "time": "2018-03-31T13:51:51+00:00"
         },
         {
             "name": "uxie/statistics",
