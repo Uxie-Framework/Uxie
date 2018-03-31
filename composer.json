@@ -5,20 +5,6 @@
     "type":        "framework",
     "license":     "MIT",
 
-    "require": {
-        "php":                         ">=7.1.6",
-        "uxie/framework":              ">=0.2.0",
-        "uxie/statistics":             ">=0.3.1",
-        "vlucas/phpdotenv":            ">=2.4",
-        "mohamed-amine/file-uploader": ">=1.1",
-        "mohamed-amine/ioc-container": ">=0.5",
-        "intervention/image":          ">=2.4",
-        "jenssegers/blade":            ">=1.1",
-        "pug-php/pug":                 "^2.7.4",
-        "phpunit/phpunit":             ">=6.0",
-        "robmorgan/phinx":             ">=0.9"
-    },
-
     "authors": [
         {
             "name":     "M.Amine Cheribet",
@@ -28,15 +14,37 @@
         }
     ],
 
+    "require": {
+        "php":                         ">=7.1.6",
+        "uxie/framework":              ">=0.2.0",
+        "uxie/statistics":             "^0.3",
+        "vlucas/phpdotenv":            "^2.4",
+        "mohamed-amine/file-uploader": "^3.0.0",
+        "mohamed-amine/ioc-container": "^0.5",
+        "intervention/image":          "^2.4",
+        "jenssegers/blade":            "^1.1",
+        "pug-php/pug":                 "^2.7.4",
+        "phpunit/phpunit":             "^6.0",
+        "robmorgan/phinx":             "^0.9"
+    },
+
     "autoload": {
     "psr-4": {
-      "App\\":              "App/",
-      "Middleware\\":       "App/Middlewares/",
-      "Controller\\":       "App/Controllers/",
-      "Model\\":            "App/Models/"
+      "App\\":        "App/",
+      "Middleware\\": "App/Middlewares/",
+      "Controller\\": "App/Controllers/",
+      "Model\\":      "App/Models/",
+      "Services\\":   "APP/Services/"
     }
   },
   "scripts": {
     "post-install-cmd": "php -r \"copy('.env.example', '.env');\""
-  }
+},
+
+  "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
