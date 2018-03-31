@@ -1,8 +1,10 @@
 <?php
-
+    /**
+ 	 * English (en) is the default language
+	 */
 return [
 
-    'default' => [
+    'en' => [
         'length'   => '$$ Length must be bettwen $$ and $$',
         'required' => '$$ Is Required',
         'email'    => '$$ Must be a valide Email',
@@ -12,7 +14,7 @@ return [
         'isip'     => '$$ Must be a valide IP',
     ],
 
-    'french' => [
+    'fr' => [
         'length'   => '$$ Doit etre entre $$ et $$',
         'required' => '$$ Est un Champ obligatoire',
         'email'    => '$$ Doit etre un e-mail',
