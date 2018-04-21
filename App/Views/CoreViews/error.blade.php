@@ -6,7 +6,7 @@
     <style media="screen">
       * {
           text-align: center;
-          font-family: slim;
+          font-family: regular;
           font-size: 110%;
       }
       body {

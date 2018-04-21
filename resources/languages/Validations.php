@@ -12,6 +12,8 @@ return [
         'isint'    => '$$ Must be of type integer',
         'isfloat'  => '$$ Must be of type float',
         'isip'     => '$$ Must be a valide IP',
+        'unique'   => '$$ entred already exist',
+        'equals'   => '$$ is not equal to $$',
     ],
 
     'fr' => [
@@ -22,6 +24,8 @@ return [
         'isint'    => '$$ Doit etre de type entier',
         'isfloat'  => '$$ Doit etre de type float',
         'isip'     => '$$ Doit etre un IP valide',
+        'unique'   => '$$ deja exist',
+        'equals'   => "$$ N'est pas egal a $$",
     ],
 
 ];

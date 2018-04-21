@@ -1,0 +1,45 @@
+@import variables
+@font-face
+    font-family: regular
+    src:         url(files/fonts/regular.ttf)
+@font-face
+    font-family: hand
+    src:         url(files/fonts/hand.ttf)
+@font-face
+    font-family: grand-hotel
+    src:         url(files/fonts/grand-hotel.otf)
+
+=button($width : 60%, $height: 30px, $font-size: 100%, $radius: 5px, $background: $medium-green, $text-color: $white)
+    border-radius:    $radius
+    background-color: $background
+    color:            $text-color
+    width:            $width
+    height:           $height
+    font-size:        $font-size
+    display:          block
+    border:           none
+    &:hover
+        cursor: pointer
+        opacity: 0.8
+
+=text-input($width: 70%, $height: 30px, $border-width: 1px, $border-color: $medium-green, $focus-color: $blue1, $box-shadow: $blue2)
+    border:        $border-width solid $border-color
+    width:         $width
+    height:        $height
+    border-radius: 3px
+    padding-left:  5px
+    &:focus
+        outline:    none
+        transition: 300ms
+        border:     $border-width solid $focus-color
+        box-shadow: 0 0 3px $box-shadow
+
+
+=textarea($border-color: $medium_green, $focus-color: $blue1, $box-shadow: $blue2)
+    outline: none
+    border:  1px solid $border-color
+    &:focus
+        outline:    none
+        transition: 300ms
+        border:     1px solid $border-color
+        box-shadow: 0 0 5px $box-shadow

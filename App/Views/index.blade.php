@@ -3,10 +3,11 @@
     <head>
         <meta charset="utf-8">
         <title>Welcome</title>
-        <link rel="stylesheet" href="/style/main.css">
+        <link rel="stylesheet" href="/css/main.css">
         <style type='text/css'>
             .welcome {
-                font-family: slim;
+                font-family: hand;
+                font-size: 400%;
                 text-align: center;
                 margin-top: 40vh;
             }
