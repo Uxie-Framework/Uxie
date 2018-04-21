@@ -8,6 +8,9 @@ return
         'paths' => [
             'migrations' => 'database/migrations',
         ],
+        'templates' => [
+            'file' => 'database/migrations/template.txt'
+        ],
         'environments' =>
             [
                 'default_migration_table' => 'phinxlog',
