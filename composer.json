@@ -16,7 +16,7 @@
 
     "require": {
         "php":                         ">=7.1.6",
-        "uxie/framework":              ">=0.2.0",
+        "uxie/framework":              "^0.2.1",
         "uxie/statistics":             "^0.3",
         "vlucas/phpdotenv":            "^2.4",
         "mohamed-amine/file-uploader": "^3.0.0",
@@ -34,7 +34,7 @@
       "Middleware\\": "App/Middlewares/",
       "Controller\\": "App/Controllers/",
       "Model\\":      "App/Models/",
-      "Services\\":   "APP/Services/"
+      "Service\\":    "APP/Services/"
     }
   },
   "scripts": {
@@ -42,9 +42,9 @@
 },
 
   "config": {
-        "sort-packages": true,
+        "sort-packages":       true,
         "optimize-autoloader": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable":     true
 }
