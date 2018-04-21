@@ -18,7 +18,7 @@ Uxie is a PHP MVC Framework.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
 #### - Built-in functions (Helpers).
-#### - Multi langauge support
+#### - Multi langauge support.
 
 # Documentation:  
 
@@ -300,7 +300,10 @@ use Model/Model;
 ```
 Insert data:
 ```php
-Model\table::insert(['column1', 'column2'], [value1, value2])->save();
+Model\table::insert([
+  'value1' => $value1,
+  'value2' => $value2,
+])->save();
 ```
 Retrieve data:  
 ```php
@@ -310,7 +313,15 @@ Retrieve single row:
 ```php
 $user = Model\table::find('name', 'MyName');
 ```
-And plenty of other methods such as limit(), orderBy(), groupBy(), count(), update and delete.
+Soft delete :
+by default uxie migration add a softdelete column to the table
+softdelete method will change the value of softdelete column
+NOTE: select won't return any soft deleted rows
+```php
+  Model\table::delete()->where('id' , '=', $id)->save();
+```
+to hard delete a row use hardDelete method.
+plenty of other methods such as limit(), orderBy(), groupBy(), count(), update and delete.
 simple example:
 ```php
 Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
@@ -320,7 +331,7 @@ Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')
 It's a built-in middleware that record each user data and store it in a database table,
 Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
-## Request handler & validator:
+## Request & validator:
 It's a built-in Request handler :
 
 ```php
@@ -332,13 +343,15 @@ public function store(Request $request)
 ```
 
 #### Validation:
-Available validation methods : required(), length($min, $max), email(), isip(), isint(), isfloat(), url().
+Available validation methods : 
+required(), length($min, $max), email(), isip(), isint(), isfloat(), url(), unique($model, $column), equals($input, $value)
 To validate POST inputs:
 ```php
 public function store(Request $request)
 {
-  $errors[] = $request->validate($request->name, 'Name Field')->required()->length(10, 30)->getErrors();
-  $errors[] = $request->validate($request->email, 'Your Email')->required()->length(5, 40)->email()->getErrors();
+  $request->validate($request->name, 'Name Field')->required()->length(10, 30)->getErrors();
+  $request->validate($request->email, 'Your Email')->required()->length(5, 40)->email()->getErrors();
+  var_dump($request->getErrors());
 }
 ```
 the above example will return error messages in this form:
@@ -347,8 +360,6 @@ the above example will return error messages in this form:
     [
         'Name Field Length must be bettwen 10 and 30',
         'Name Field is Required',
-    ]
-    [
         'Your Email is not a valid email',
         'Your Email Length must be bettwen 5 and 40',
     ]
@@ -444,11 +455,12 @@ php phinx migrate
 
 ## Multi langauge support
 
-You can find all languages files in 'resources/languages'
+- All languages files in 'resources/languages'
+- By default uxie language is 'en' which means english
 #### How to modify and add languages :
-for example to edit validation messages you need to modify 'resources/languages/validations.php' :
+for example to edit validation messages you need to modify 'resources/languages/validations.php' ($$ represent the field name):
 ```php
-'default' => [
+'en' => [
         'length'   => '$$ Length must be bettwen $$ and $$',
         'required' => '$$ Is Required',
         'email'    => '$$ Must be a valide Email',
@@ -458,7 +470,7 @@ for example to edit validation messages you need to modify 'resources/languages/
         'isip'     => '$$ Must be a valide IP',
     ],
 
-    'french' => [
+    'fr' => [
         'length'   => '$$ Doit etre entre $$ et $$',
         'required' => '$$ Est un Champ obligatoire',
         'email'    => '$$ Doit etre un e-mail',
@@ -468,6 +480,25 @@ for example to edit validation messages you need to modify 'resources/languages/
         'isip'     => '$$ Doit etre un IP valide',
     ],
 ```
-#### How to set a language to be used :
-To set a language use 'setLanguage(string $langauge)' function
-If you don't set a language 'default' will be used
+#### How to set & get teh current language :
+To set a language use 'langauge(string $lang)' function
+example:
+```php
+  langauge('fr')
+```
+
+To get current language just use 'language()'
+```php
+  echo language();
+  // should echo 'en'
+```
+#### how to use translation :
+use translation(string $langFile) to get a language file content ($langFile is the file inside resources/langauges folder
+example:
+```php
+    $translation = translation('Validations');
+    var_dump($translation);
+    // this should dispaly an array:
+    // en => [ ....],
+    // fr => [ ....]
+```
