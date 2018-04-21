@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="/style/main.css">
         <style type='text/css'>
             .welcome {
-                font-family: slim;
+                font-family: regular;
                 text-align: center;
                 margin-top: 40vh;
             }
