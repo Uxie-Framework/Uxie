@@ -1,6 +1,6 @@
 <?php
 
-namespace Middleware;
+namespace Service;
 
 class Csrf
 {
