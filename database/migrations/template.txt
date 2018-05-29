@@ -31,7 +31,9 @@ class $className extends $baseClassName
         $table = $this->table('', ['id' => false, 'primary_key' => 'id']);
         $table
         ->addColumn('id', 'string', ['limit' => 30])
-        ->addColumn('softdelete', 'integer', ['limit' => 1])
+        ->addColumn('softdelete', 'boolean')
+        ->addColumn('created_at', 'datetime')
+        ->addColumn('deleted_at', 'datetime')
         ->create();
     }
 }
