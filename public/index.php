@@ -10,6 +10,11 @@ require_once __DIR__.'/../vendor/autoload.php';
 
 // create IOC container
 IOC\IOC::createContainer();
+// Load .env file
+container()->build('Dotenv\Dotenv', [__DIR__.'/../']);
+container()->Dotenv->load();
+// Load configuration
+require rootDir().'defaults.php';
 
 // preapring for starting application
 container()->build('Kernel\Kernel');
