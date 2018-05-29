@@ -2,7 +2,7 @@
   <head>
     <meta charset="utf-8">
     <title>Error</title>
-    <link rel="stylesheet" href="/style/main.css" charset="utf-8">
+    <link rel="stylesheet" href="/css/main.css" charset="utf-8">
     <style media="screen">
       * {
           text-align: center;

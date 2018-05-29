@@ -13,7 +13,7 @@ return [
     ],
 
     'ServiceProviders' => [
-        \Middleware\Csrf::class,
+        \Service\Csrf::class,
     ],
 
 ];
