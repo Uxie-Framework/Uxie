@@ -16,10 +16,10 @@
 
     "require": {
         "php":                         ">=7.1.6",
-        "uxie/framework":              "^0.2.1",
+        "uxie/framework":              "^0.8.0",
         "uxie/statistics":             "^0.3",
         "vlucas/phpdotenv":            "^2.4",
-        "mohamed-amine/file-uploader": "^3.0.0",
+        "mohamed-amine/file-uploader": "^3.0",
         "mohamed-amine/ioc-container": "^0.5",
         "intervention/image":          "^2.4",
         "jenssegers/blade":            "^1.1",
