@@ -1,0 +1,9 @@
+<?php
+
+require_once 'vendor/autoload.php';
+
+error_reporting(0);
+
+array_shift($argv);
+
+new Box\Box(...$argv);

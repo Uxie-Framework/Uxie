@@ -1,0 +1,110 @@
+@font-face {
+  font-family: regular;
+  src: url(files/fonts/regular.ttf); }
+@font-face {
+  font-family: hand;
+  src: url(files/fonts/hand.ttf); }
+@font-face {
+  font-family: grand-hotel;
+  src: url(files/fonts/grand-hotel.otf); }
+.display {
+  display: none; }
+
+.transparent-header {
+  width: 100%;
+  height: 8vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  background-color: transparent; }
+
+.colored-header {
+  width: 100%;
+  height: 8vh;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  background-color: #1f232d; }
+
+.header a {
+  text-decoration: none;
+  color: white; }
+.header .logo {
+  min-width: 10%;
+  height: 100%;
+  line-height: 8vh;
+  text-align: center;
+  font-family: grand-hotel;
+  font-size: 250%;
+  color: white;
+  float: left; }
+.header .elements {
+  float: right;
+  height: 100%;
+  width: 10%;
+  border-radius: 5px; }
+  .header .elements div {
+    text-align: center;
+    width: 80%;
+    margin: auto;
+    height: 8vh;
+    line-height: 8vh;
+    color: white;
+    font-family: regular;
+    font-size: 110%; }
+  .header .elements:hover * {
+    cursor: pointer;
+    color: #cccccc;
+    transition: 300ms; }
+.header .login-form {
+  font-family: regular;
+  font-size: 110%;
+  position: fixed;
+  top: 8vh;
+  right: 2%;
+  background-color: white;
+  padding: 2% 3% 1% 3%;
+  box-shadow: 0 0 10px gray; }
+  .header .login-form input[type=text], .header .login-form input[type=password] {
+    border: 1px solid #3adda2;
+    width: 110%;
+    height: 30px;
+    border-radius: 3px;
+    padding-left: 5px; }
+    .header .login-form input[type=text]:focus, .header .login-form input[type=password]:focus {
+      outline: none;
+      transition: 300ms;
+      border: 1px solid #22cff4;
+      box-shadow: 0 0 3px #15afcb; }
+  .header .login-form input[type=submit] {
+    border-radius: 5px;
+    background-color: #3adda2;
+    color: white;
+    width: 60%;
+    height: 30px;
+    font-size: 90%;
+    display: block;
+    border: none;
+    margin: 15px auto; }
+    .header .login-form input[type=submit]:hover {
+      cursor: pointer;
+      opacity: 0.8; }
+  .header .login-form .subscribe-toggle {
+    text-align: center;
+    margin: auto;
+    display: block;
+    width: 100%;
+    color: blue;
+    font-size: 80%; }
+    .header .login-form .subscribe-toggle:hover {
+      cursor: pointer; }
+
+html {
+  margin: 0;
+  padding: 10; }
+
+body {
+  margin: 0;
+  padding: 0; }

@@ -1,42 +1,50 @@
 {
-    "name": "uxie/uxie",
-    "description": "Uxie a light mvc Micro-Framework",
-    "keywords": ["framework", "uxie"],
-    "type": "framework",
-    "license": "MIT",
-
-    "require": {
-        "php": ">=7.0",
-        "uxie/router": "^0.1",
-        "uxie/model": "^0.1",
-        "vlucas/phpdotenv": "^2.4",
-        "mohamed-amine/file-uploader": "^1.1",
-        "intervention/image": "^2.4",
-        "jenssegers/blade": "^1.1",
-        "phpunit/phpunit": "^6.0"
-    },
+    "name":        "uxie/uxie",
+    "description": "Uxie a light MVC Framework",
+    "keywords":    ["framework", "uxie"],
+    "type":        "framework",
+    "license":     "MIT",
 
     "authors": [
         {
-            "name": "Mohamed Amine",
-            "email": "MohamedAmine1c@gmail.com",
+            "name":     "M.Amine Cheribet",
+            "email":    "MohamedAmine1c@gmail.com",
             "homepage": "https://github.com/MohamedAmine-C/Uxie",
-            "role": "Developer"
+            "role":     "Owner"
         }
     ],
 
+    "require": {
+        "php":                         ">=7.1.6",
+        "uxie/framework":              "^0.8.0",
+        "uxie/statistics":             "^0.3",
+        "vlucas/phpdotenv":            "^2.4",
+        "mohamed-amine/file-uploader": "^3.0",
+        "mohamed-amine/ioc-container": "^0.5",
+        "intervention/image":          "^2.4",
+        "jenssegers/blade":            "^1.1",
+        "pug-php/pug":                 "^2.7.4",
+        "phpunit/phpunit":             "^6.0",
+        "robmorgan/phinx":             "^0.9"
+    },
+
     "autoload": {
-        "files": [
-            "app/helpers/url.php",
-            "app/helpers/storage.php"
-        ],
     "psr-4": {
-      "App\\":"App/",
-      "Middleware\\":"Middleware/",
-      "Controller\\":"Controllers/",
-      "Model\\":"Models/",
-      "Kernel\\":"Kernel/",
-      "Web\\":"web/"
+      "App\\":        "App/",
+      "Middleware\\": "App/Middlewares/",
+      "Controller\\": "App/Controllers/",
+      "Model\\":      "App/Models/",
+      "Service\\":    "APP/Services/"
     }
-  }
+  },
+  "scripts": {
+    "post-install-cmd": "php -r \"copy('.env.example', '.env');\""
+},
+
+  "config": {
+        "sort-packages":       true,
+        "optimize-autoloader": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable":     true
 }

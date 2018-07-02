@@ -1,32 +1,28 @@
 <?php
 /**
- * Uxie - A PHP Micro-Framework.
+ * Uxie - A PHP Framework.
  *
- * @author   Cheribet Mohamed Amine <MohamedAmine1c@gmail.com>
+ * @author M.Amine Cheribet <MohamedAmine1c@gmail.com>
  */
 
 // import composer autoloader
-require_once '../vendor/autoload.php';
+require_once __DIR__.'/../vendor/autoload.php';
 
-// use phpdotenv namespace in the vendor folder
-use Dotenv\Dotenv;
-use Kernel\Kernel;
+// create IOC container
+IOC\IOC::createContainer();
+// Load .env file
+container()->build('Dotenv\Dotenv', [__DIR__.'/../']);
+container()->Dotenv->load();
+// Load configuration
+require rootDir().'defaults.php';
 
-// specify the filename to use (.env in the root folder)
-$dotenv = new Dotenv('../');
-// load the .env file
-$dotenv->load();
+// preapring for starting application
+container()->build('Kernel\Kernel');
 
-//import default settings
-require_once '../defaults.php';
+container()->Kernel->prepare();
 
-//preapring for launching application
-$Kernel = new Kernel();
+// start the application
+container()->Kernel->start();
 
-$Kernel->prepare();
-
-// launching application
-$Kernel->start();
-
-// stop application
-$Kernel->stop();
+// stop the application
+container()->Kernel->stop();
