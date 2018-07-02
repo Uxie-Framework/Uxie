@@ -45,42 +45,42 @@ csrf_method('PUT') will echo this automatically.
 
 #### Basic routes examples:
 ```php
-$this->get('', function() {
+$route->get('', function() {
   view('index');
 });
 // passing variables
-$this->get('user/{$name}', function($name) {
+$route->get('user/{$name}', function($name) {
   view('welcom', ['name' => $name]);
 });
 
-$this->put('update', Controller@update);
+$route->put('update', 'Controller@update');
 
-$this->patch('update', Controller@update);
+$route->patch('update', 'Controller@update');
 
-$this->delete('delete', Controller@delete');
+$route->delete('delete', 'Controller@delete');
 ```
 #### Execute methods from a controller:
 ```php
-$this->post('test', 'Controller@method');
+$route->post('test', 'Controller@method');
 ```
 
 #### Resource method which contains: (index, create, store, show, edit, update and delete) same as [Laravel](https://github.com/laravel/framework/blob/5.5/src/Illuminate/Routing/Router.php#L294).  
 ```php
-$this->resource('user', 'UserController');
+$route->resource('user', 'UserController');
 ```
 #### Add a collection of routes with a prefix:
 ```php
-$this->group('user', function() {
-    $this->get('profile', function() {
+$route->group('user', function($route) {
+    $route->get('profile', function() {
         echo 'Profile';
     });
-    $this->post('store', 'Controller@method');
+    $route->post('store', 'Controller@method');
 });
 ```  
 #### Passing data via URL:
 in routes file :
 ```php
-$this->get('profile/{$name}/update', 'Controller@update');
+$route->get('profile/{$name}/update', 'Controller@update');
 ```
 in Controller :
 ```php
@@ -93,7 +93,7 @@ public function update($name)
 #### How to use $_POST values (this can apply to PUT PATCH DELETE methods also):
 in routes file :
 ```php
- $this->post('user/store', 'UserController@store');
+ $route->post('user/store', 'UserController@store');
 ```
 in UserController.php :
 ```php
@@ -156,11 +156,11 @@ to use middlewares you need to add middleware() method to your route call
 example:
 
 ```php
-$this->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
+$route->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
 ```
 you can add a late middleware just add true argument to middleware() method:
 ```php
-  $this->get('profile', 'controller@index')->middleware('MiddlewareTest, true);
+  $route->get('profile', 'controller@index')->middleware('MiddlewareTest, true);
 ```
 All middlewares are defined in './Middlewares' folder.
 
@@ -195,10 +195,10 @@ private $middlewaresProvider = [
 To use collections and short names:
 ```php
 // 'auth' short name example:
-$this->get('user', 'controller@method')->middleware('auth');
+$route->get('user', 'controller@method')->middleware('auth');
 
 // 'collection' example:
-$this->get('link', 'controller@method')->middleware('collection');
+$route->get('link', 'controller@method')->middleware('collection');
 ```
 ## Security ( against SQL injection, XSS, CSRF):
 
@@ -289,7 +289,7 @@ the ```container()```function is global in the framework (can be used every wher
 ```php
 
 container()->build('someclass');
-container()->get('someClass')->someMethod();
+container()->someClass->someMethod();
 
 ```
 
@@ -321,7 +321,7 @@ NOTE: select won't return any soft deleted rows
   Model\table::delete()->where('id' , '=', $id)->save();
 ```
 to hard delete a row use hardDelete method.
-plenty of other methods such as limit(), orderBy(), groupBy(), count(), update and delete.
+plenty of other methods such as limit(), orderBy(), groupBy(), count(), join, update and delete.
 simple example:
 ```php
 Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
@@ -349,8 +349,8 @@ To validate POST inputs:
 ```php
 public function store(Request $request)
 {
-  $request->validate($request->name, 'Name Field')->required()->length(10, 30)->getErrors();
-  $request->validate($request->email, 'Your Email')->required()->length(5, 40)->email()->getErrors();
+  $request->validate($request->name, 'Name Field')->required()->length(10, 30);
+  $request->validate($request->email, 'Your Email')->required()->length(5, 40)->email();
   var_dump($request->getErrors());
 }
 ```
@@ -460,7 +460,7 @@ php phinx migrate
 #### How to modify and add languages :
 for example to edit validation messages you need to modify 'resources/languages/validations.php' ($$ represent the field name):
 ```php
-'en' => [
+    'english' => [
         'length'   => '$$ Length must be bettwen $$ and $$',
         'required' => '$$ Is Required',
         'email'    => '$$ Must be a valide Email',
@@ -470,7 +470,7 @@ for example to edit validation messages you need to modify 'resources/languages/
         'isip'     => '$$ Must be a valide IP',
     ],
 
-    'fr' => [
+    'francais' => [
         'length'   => '$$ Doit etre entre $$ et $$',
         'required' => '$$ Est un Champ obligatoire',
         'email'    => '$$ Doit etre un e-mail',
@@ -481,16 +481,18 @@ for example to edit validation messages you need to modify 'resources/languages/
     ],
 ```
 #### How to set & get teh current language :
+Uxie default language is 'english'
 To set a language use 'langauge(string $lang)' function
 example:
 ```php
-  langauge('fr')
+  // this will set language to 'francais'
+  langauge('francais')
 ```
 
 To get current language just use 'language()'
 ```php
   echo language();
-  // should echo 'en'
+  // should echo 'english'
 ```
 #### how to use translation :
 use translation(string $langFile) to get a language file content ($langFile is the file inside resources/langauges folder
@@ -499,6 +501,6 @@ example:
     $translation = translation('Validations');
     var_dump($translation);
     // this should dispaly an array:
-    // en => [ ....],
-    // fr => [ ....]
+    // 'english'  => [ ....],
+    // 'francais' => [ ....]
 ```
