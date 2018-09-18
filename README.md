@@ -77,7 +77,8 @@ $route->group('user', function($route) {
     $route->post('store', 'Controller@method');
 });
 ```  
-#### Passing data via URL:
+#### URL parameters :
+:
 in routes file :
 ```php
 $route->get('profile/{$name}/update', 'Controller@update');
