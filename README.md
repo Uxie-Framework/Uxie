@@ -45,7 +45,10 @@ csrf_method('PUT') will echo this automatically.
 
 #### Basic routes examples:
 ```php
-$route->get('', function() {
+$route->any('/', function() {
+  view('index');
+});
+$route->get('/', function() {
   view('index');
 });
 // passing variables
