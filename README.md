@@ -48,6 +48,7 @@ csrf_method('PUT') will echo this automatically.
 $route->any('/', function() {
   view('index');
 });
+
 $route->get('/', function() {
   view('index');
 });
@@ -61,6 +62,22 @@ $route->put('update', 'Controller@update');
 $route->patch('update', 'Controller@update');
 
 $route->delete('delete', 'Controller@delete');
+
+// the default method will execute when no route could be matched
+$route->default(function () {
+  return view('index');
+});
+```
+
+### Using a front-end SPA framework:
+if you are using uxie with a front-end framework you will need to return always the same html file
+to do this in uxie router you can use the default method:
+```php
+
+// this method will be used in case no other route could be matched
+$route->default(function() {
+  return view('index');
+}),\;
 ```
 #### Execute methods from a controller:
 ```php
