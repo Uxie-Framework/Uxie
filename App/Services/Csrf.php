@@ -8,7 +8,7 @@ class Csrf
 
     public function __construct()
     {
-        if (container()->Request->getMethod() !== 'GET') {
+        if (container()->Request->method() !== 'GET') {
             $this->token = container()->Request->_token ?? null;
             $this->validateToken();
         }

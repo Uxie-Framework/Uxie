@@ -5,14 +5,18 @@
  *
  */
 
-container()->bind('Compiler', function() {
+container()->bind('Compiler', function () {
     return new Kernel\Compiler\Compiler();
 });
 
-container()->bind('Request', function() {
+container()->bind('Request', function () {
     return new Request\Request();
 });
 
-container()->bind('Router', function() {
+container()->bind('Response', function () {
+    return new Response\Response();
+});
+
+container()->bind('Router', function () {
     return new Router\Router();
 });
