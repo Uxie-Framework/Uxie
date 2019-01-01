@@ -9,7 +9,7 @@ class Csrf
     public function __construct()
     {
         if (container()->Request->method() !== 'GET') {
-            $this->token = container()->Request->_token ?? null;
+            $this->token = container()->Request->body->_token ?? null;
             $this->validateToken();
         }
     }
