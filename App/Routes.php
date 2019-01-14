@@ -1,5 +1,6 @@
 <?php
 
-$this->get('/', function () {
-    view('index');
+$this->get('/', function ($request, $response) {
+    $response->view('index')->send();
+    $response->end();
 });
