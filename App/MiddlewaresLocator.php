@@ -9,5 +9,4 @@
 
 return [
     'statistics' => \Middleware\Statistics::class,
-    'csrf'       => \Middleware\Csrf::class,
 ];
