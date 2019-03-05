@@ -78,8 +78,8 @@ The request object holds all data about the recieved http request.
 ##### Request methods :
 
 ```php
-$request->url()                         // return the full url
-$request->path()                        // return the request path
+$request->url(): string                 // return the full url
+$request->path(): string                // return the request path
 $request->cookie(string $name): string  // get cookie value
 $request->session(string $name): string // get session value
 $request->ip(): string                  // get the request ip
@@ -96,7 +96,7 @@ echo $request->params->name;
 echo $request->body->name
 ```
 ### Response Object :
-
+```php
 $response->write(string $text): void                       // add text to response
 $response->status(int $status): void                       // set response status
 $response->json(array $array, int $options = null): void   // add json data to the response body
@@ -113,7 +113,7 @@ $response->unsetAllsessions(): void                        // unset all sessions
 $response->back(): void                                    // redircect back to the previous url
 $response->refresh(): void                                 // refresh current url
 $response->redirect(string $url): void                     // redirect to a given url
-
+```
 ### Using a front-end SPA framework:
 if you are using uxie with a front-end framework you will need to return always the same html file
 to do this in uxie you can use the default method:
@@ -250,13 +250,12 @@ To use Middlewares and short names you must first register the shortname in App/
 return [
     'statistics' => \Middleware\Statistics::class,
 ];
-
 ```
 #### How To assign a middleware to a route
 ```php
 // 'statistics' short name example:
 $route->get('user', 'controller@method')->middleware('statistics');
-
+```
 ## Security ( against SQL injection, XSS, CSRF):
 
 #### SQL injection:
@@ -271,7 +270,7 @@ So every form should contain: csrf_field()
 
 ```php
     <form ...>
-        csrf_file();
+        csrf_field();
         <input ...>
     </form>
 ```
