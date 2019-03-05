@@ -449,7 +449,7 @@ container();
 ```
 
 ## Box (Command Line Tool):
-Box is a command line tool to create Controllers, models & middlewares templates
+Box is a command line tool to create Controllers, Repositories, models & middlewares templates
 for example:
 
 ```
@@ -461,6 +461,9 @@ php box Controller TestC -r
 
 // to create a Model
 php box Model TestC
+
+// to create Repository
+php box Repository RepoName ModelName
 
 // to create a Middleware
 php box Middleware TestC
