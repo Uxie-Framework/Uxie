@@ -34,6 +34,7 @@
       "Middleware\\": "App/Middlewares/",
       "Controller\\": "App/Controllers/",
       "Model\\":      "App/Models/",
+      "Repository\\": "App/Repositories/",
       "Service\\":    "APP/Services/"
     }
   },
