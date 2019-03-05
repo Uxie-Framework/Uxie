@@ -1,15 +1,17 @@
 <?php
-
 namespace Service;
+
+use Request\Request as Request;
+use Response\Response as Response;
 
 class Csrf
 {
     private $token;
 
-    public function __construct()
+    public function __construct(Request $request, Response $response)
     {
-        if (container()->Request->method() !== 'GET') {
-            $this->token = container()->Request->body->_token ?? null;
+        if ($request->method() !== 'GET') {
+            $this->token = $request->body->_token ?? null;
             $this->validateToken();
         }
     }
