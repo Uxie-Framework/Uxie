@@ -6,19 +6,17 @@ use Response\Response as Response;
 
 class Csrf
 {
-    private $token;
-
     public function __construct(Request $request, Response $response)
     {
         if ($request->method() !== 'GET') {
-            $this->token = $request->body->_token ?? null;
-            $this->validateToken();
+            $token = $request->body->_token ?? null;
+            $this->validateToken($token);
         }
     }
 
-    private function validateToken()
+    private function validateToken(string $token)
     {
-        if (!is_null($this->token) && $this->token === session('_token')) {
+        if (!is_null($token) && $token === session('_token')) {
             return true;
         }
 
