@@ -402,11 +402,14 @@ Available validation methods :
 required(), length($min, $max), email(), isip(), isint(), isfloat(), url(), unique($model, $column), equals($input, $value)
 To validate POST inputs:
 ```php
-public function store(Request $request, Response $response)
+use Validate\Validate as Validate;
+
+public function validateInput(Request $request, Response $response)
 {
-  $request->validate($request->body->name, 'Name Field')->required()->length(10, 30);
-  $request->validate($request->body->email, 'Your Email')->required()->length(5, 40)->email();
-  var_dump($request->getErrors());
+    $validate = Validate();
+    $validate($request->body->name, 'Name Field')->required()->length(10, 30);
+    $validate($request->body->email, 'Your Email')->required()->length(5, 40)->email();
+    var_dump($validate->getErrors());
 }
 ```
 the above example will return error messages in this form:
