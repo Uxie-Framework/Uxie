@@ -35,7 +35,7 @@
       "Controller\\": "App/Controllers/",
       "Model\\":      "App/Models/",
       "Repository\\": "App/Repositories/",
-      "Service\\":    "APP/Services/"
+      "Service\\":    "App/Services/"
     }
   },
   "scripts": {
