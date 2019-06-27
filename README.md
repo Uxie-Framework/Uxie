@@ -14,11 +14,10 @@ Uxie is a PHP MVC Framework.
 #### - Mutual Templating Engines (Blade & Pug):
 #### - ORM Model.
 #### - Visitors Data Recorder.
-#### - Request handler & validator.
+#### - Request & Response Handlers.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
 #### - Built-in functions (Helpers).
-#### - Multi langauge support.
 
 # Documentation:  
 
@@ -38,12 +37,12 @@ All routes are defined in : `App/Routes.php`
 #### Available Methods:
 GET, POST, PUT, PATCH, DELETE
 
-To use PUT, PATCH, DELETE methods your form method must be 'POST'
-inside the form you must put `csrf_method()`:
-```php
+To use PUT, PATCH, DELETE methods your HTML <form> method must be 'POST'
+inside the form you must put `csrf_method(string $method)`,
+csrf_method('PUT') will echo this automatically:
+  ```php
 <input type='hidden' name='_method' value="PUT'>
 ```
-csrf_method('PUT') will echo this automatically.
 
 #### Basic routes examples:
 ```php
@@ -65,7 +64,7 @@ $route->patch('update', 'Controller@update');
 
 $route->delete('delete', 'Controller@delete');
 
-// the default method will execute when no route could be matched
+// the default method will be executed when no route could be matched
 $route->default(function (Request $request, Response $response) {
   $response->view('index');
 });
@@ -84,7 +83,6 @@ $request->cookie(string $name): string  // get cookie value
 $request->session(string $name): string // get session value
 $request->ip(): string                  // get the request ip
 $request->method(): string              // get method type
-$request->validat(string $input, string $field): Validate // return validate object to validate input
 
 ##### Request arguments:
 
@@ -92,7 +90,7 @@ $request->validat(string $input, string $field): Validate // return validate obj
 // example
 // localhost/{$name}
 echo $request->params->name;
-// body contain data passed by POST request
+// body contain data passed by POST (or any method other then GET) request
 echo $request->body->name
 ```
 ### Response Object :
@@ -171,6 +169,7 @@ public function store(Request $request, Response $response)
 ```
 ## Authentication:
 Authentication will validate your users login automatically
+Note : all passwords need to be hashed using Auth::Hash(string $password) before storing in the database.
 #### Login:
 ```php
   use Authenticator\Auth;
@@ -245,7 +244,7 @@ class Middlewaretest
 
 #### Middlewares locators:
 
-To use Middlewares and short names you must first register the shortname in App/MiddlewaresLocator:
+To use Middlewares and short names you must first register the shortname in App/MiddlewaresLocator.php:
 ```php
 return [
     'statistics' => \Middleware\Statistics::class,
@@ -266,7 +265,7 @@ Both Uxie templating engines (Blade + Pug) escape html+js when printing data.
 
 #### CSRF:
 Uxie comes with built in feature that protect against CSRF when using ('POST','PATCH','PUT','DELETE') methods,
-So every form should contain: csrf_field()
+So every HTML form should contain: csrf_field()
 
 ```php
     <form ...>
@@ -291,7 +290,7 @@ pugView(string $view, array $data);
 // to use Blade view use:
 bladeView(string $view, array $data);
 ```
-#### How to Chose wich Templating engine to use:
+#### How to select wich Templating engine to use:
 To change Templating engine you should edit .env file
 ```
 Engine = Blade
@@ -365,31 +364,34 @@ use Model/Model;
 ```
 Insert data:
 ```php
-Model\table::insert([
+Model\MyModel::insert([
   'value1' => $value1,
   'value2' => $value2,
 ])->save();
 ```
 Retrieve data:  
 ```php
-$data = Model\table::select()->where('name', '=', 'user')->limit(10)->get();
+$data = Model\MyModel::select()->where('name', '=', 'user')->limit(10)->get();
 ```
 Retrieve single row:
 ```php
-$user = Model\table::find('name', 'MyName');
+$user = Model\MyModel::find('name', 'MyName');
 ```
 Soft delete :
 by default uxie migration add a softdelete column to the table
 softdelete method will change the value of softdelete column
 NOTE: select won't return any soft deleted rows
 ```php
-  Model\table::delete()->where('id' , '=', $id)->save();
+  Model\MyModel::delete()->where('id' , '=', $id)->save();
 ```
-to hard delete a row use hardDelete method.
-plenty of other methods such as limit(), orderBy(), groupBy(), count(), join, update and delete.
+to hard delete a row use hardDelete method:
+```php
+  Model\MyModel::hardDelete()->where('id' , '=', $id)->save();
+```
+There is also plenty of other methods such as limit(), orderBy(), groupBy(), count(), join, update and delete.
 simple example:
 ```php
-Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
+Model\MyModel::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
 ```
 
 ## Visitors Statistics:
@@ -398,32 +400,50 @@ Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
 
 #### Validation:
+How to use it:
+```php
+use Validator\Validator as Validator;
+
+Validator::start();
+```
 Available validation methods :
-required(), length($min, $max), email(), isip(), isint(), isfloat(), url(), unique($model, $column), equals($input, $value)
+```php
+$validator = Validator::start();
+$validator->required(string $input, string $errorMsg)
+$validator->length(string $input, int $min, int $max, string $errorMsg)
+$validator->email(string $input, string $errorMsg)
+$validator->isip(string $input, string $errorMsg)
+$validator->isint(string $input, string $errorMsg)
+$validator->isfloat(float $input, string $errorMsg)
+$validator->url(string $input, string $errorMsg)
+$validator->unique(string $input, string $model, string $column, string $errorMsg)
+$validator->equals(string $input,mixed $value, string $errorMsg)
+```
 To validate POST inputs:
 ```php
-use Validate\Validate as Validate;
+use Validator\Validator as Validator;
 
-public function validateInput(Request $request, Response $response)
+public function someMethod(Request $request, Response $response)
 {
-    $validate = Validate();
-    $validate($request->body->name, 'Name Field')->required()->length(10, 30);
-    $validate($request->body->email, 'Your Email')->required()->length(5, 40)->email();
-    var_dump($validate->getErrors());
+    $validator = Validator::start()
+    ->length($request->body->name, 4, 10, 'Failed validation Msg')
+    ->required($request->body->name, 'Failed validation Msg')
+    ->unique($request->body->name, 'User', 'name', 'Failed validation Msg')
+    ->validate();
+    
+    var_dump($validator->getErrors());
 }
 ```
 the above example will return error messages in this form:
 ```php
-[
+
     [
-        'Name Field Length must be bettwen 10 and 30',
-        'Name Field is Required',
-        'Your Email is not a valid email',
-        'Your Email Length must be bettwen 5 and 40',
+        'Failed validation Msg',
+        'Failed validation Msg',
+        'Failed validation Msg',
     ]
-]
+
 ```
-All Error messages teamplates are defined in multiple 'resources/languages/validation.php' to make theme so easy to modify.
 
 ## Exception handler:
 `Uxie` comes with a built-in exceptions handler that will handle thrown exceptions / errors automatically.  
@@ -492,38 +512,38 @@ php phinx migrate
 #### How to modify and add languages :
 for example to edit validation messages you need to modify 'resources/languages/validations.php' ($$ represent the field name):
 ```php
-    'english' => [
-        'length'   => '$$ Length must be bettwen $$ and $$',
-        'required' => '$$ Is Required',
-        'email'    => '$$ Must be a valide Email',
-        'url'      => '$$ Must be a valide URL',
-        'isint'    => '$$ Must be of type integer',
-        'isfloat'  => '$$ Must be of type float',
-        'isip'     => '$$ Must be a valide IP',
+    'en' => [
+        'length'   => ' Length must be bettwen',
+        'required' => ' Is Required',
+        'email'    => ' Must be a valide Email',
+        'url'      => ' Must be a valide URL',
+        'isint'    => ' Must be of type integer',
+        'isfloat'  => ' Must be of type float',
+        'isip'     => ' Must be a valide IP',
     ],
 
-    'francais' => [
-        'length'   => '$$ Doit etre entre $$ et $$',
-        'required' => '$$ Est un Champ obligatoire',
-        'email'    => '$$ Doit etre un e-mail',
-        'url'      => '$$ Doit etre un URL valide',
-        'isint'    => '$$ Doit etre de type entier',
-        'isfloat'  => '$$ Doit etre de type float',
-        'isip'     => '$$ Doit etre un IP valide',
+    'fr' => [
+        'length'   => ' Doit etre entre $$ et ',
+        'required' => ' Est un Champ obligatoire',
+        'email'    => ' Doit etre un e-mail',
+        'url'      => ' Doit etre un URL valide',
+        'isint'    => ' Doit etre de type entier',
+        'isfloat'  => ' Doit etre de type float',
+        'isip'     => ' Doit etre un IP valide',
     ],
 ```
 #### How to set & get teh current language :
 Uxie default language is 'english'
-To set a language use 'langauge(string $lang)' function
+To set a language use 'setLangauge(string $lang)' function
 example:
 ```php
   // this will set language to 'francais'
-  langauge('francais')
+  setLanguage('fr')
 ```
 
 To get current language just use 'language()'
 ```php
-  echo language();
+  echo getLanguage();
   // should echo 'english'
 ```
 #### how to use translation :
