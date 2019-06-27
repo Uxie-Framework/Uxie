@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Created Services that are critical to our application.
+ * Create Services that are critical to our application.
  *
  */
 
@@ -15,6 +15,14 @@ container()->bind('Request', function () {
 
 container()->bind('Response', function () {
     return new Response\Response();
+});
+
+container()->bind('Session', function () {
+    return new Session\Session();
+});
+
+container()->bind('Cookie', function () {
+    return new Cookie\Cookie();
 });
 
 container()->bind('Router', function () {
