@@ -4,7 +4,6 @@ Uxie is a PHP MVC Framework.
 # Features:
 #### - Perfect MVC environment.
 #### - Box (Command Line Tool).
-#### - Deployable with docker.
 #### - DataBase Migration (phinx).
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
@@ -26,10 +25,6 @@ Uxie is a PHP MVC Framework.
 Using Composer:
 ```
   composer create-project uxie/uxie <path>
-```
-Using Docker:
-```
-  Docker-compose up --build
 ```
 ## Routing:
 All routes are defined in : `App/Routes.php`
@@ -430,7 +425,7 @@ public function someMethod(Request $request, Response $response)
     ->required($request->body->name, 'Failed validation Msg')
     ->unique($request->body->name, 'User', 'name', 'Failed validation Msg')
     ->validate();
-    
+
     var_dump($validator->getErrors());
 }
 ```
