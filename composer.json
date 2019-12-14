@@ -32,6 +32,7 @@
       "App\\":        "App/",
       "Middleware\\": "App/Middlewares/",
       "Controller\\": "App/Controllers/",
+      "Filter\\":     "App/Controllers/Filters/",
       "Model\\":      "App/Models/",
       "Repository\\": "App/Repositories/",
       "Service\\":    "App/Services/"
