@@ -10,7 +10,7 @@ Uxie is a PHP MVC Framework.
 #### - Router (REST).
 #### - Authentication.
 #### - Middlewares.
-#### - Mutual Templating Engines (Blade & Pug):
+#### - Templating Engine (Blade):
 #### - ORM Model.
 #### - Visitors Data Recorder.
 #### - Request & Response Handlers.
@@ -256,7 +256,7 @@ $route->get('user', 'controller@method')->middleware('statistics');
 Uxie is secured against both first and second order sql injection attacks.
 
 #### XSS:
-Both Uxie templating engines (Blade + Pug) escape html+js when printing data.
+Uxie templating engine (Blade) escape html+js when printing data.
 
 #### CSRF:
 Uxie comes with built in feature that protect against CSRF when using ('POST','PATCH','PUT','DELETE') methods,
@@ -267,30 +267,6 @@ So every HTML form should contain: csrf_field()
         csrf_field();
         <input ...>
     </form>
-```
-
-## Mutual Templating Engine (Blade & Pug):
-
-#### Important Notes:
-- All views must be inside 'App/Views' folder.
-
-#### How to use it:
-Use helper function view(string $view, array $variables):  
-```php
-view('YourView', ['data' => $data, 'name' => 'MyName']);
-
-// To use Pug view use:
-pugView(string $view, array $data);
-
-// to use Blade view use:
-bladeView(string $view, array $data);
-```
-#### How to select wich Templating engine to use:
-To change Templating engine you should edit .env file
-```
-Engine = Blade
-# or
-Engine = Pug
 ```
 
 ## IOC Container:
