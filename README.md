@@ -380,15 +380,16 @@ Validator::start();
 Available validation methods :
 ```php
 $validator = Validator::start();
-$validator->required(string $input, string $errorMsg)
-$validator->length(string $input, int $min, int $max, string $errorMsg)
-$validator->email(string $input, string $errorMsg)
-$validator->isip(string $input, string $errorMsg)
-$validator->isint(string $input, string $errorMsg)
-$validator->isfloat(float $input, string $errorMsg)
-$validator->url(string $input, string $errorMsg)
-$validator->unique(string $input, string $model, string $column, string $errorMsg)
-$validator->equals(string $input,mixed $value, string $errorMsg)
+$validator->setInput(string $input); // optional
+$validator->required([string $input], string $errorMsg)
+$validator->length([string $input], int $min, int $max, string $errorMsg)
+$validator->email([string $input], string $errorMsg)
+$validator->isip([string $input], string $errorMsg)
+$validator->isint([string $input], string $errorMsg)
+$validator->isfloat([string $input], string $errorMsg)
+$validator->url([string $input], string $errorMsg)
+$validator->unique([string $input], string $model, string $column, string $errorMsg)
+$validator->equals([string $input],mixed $value, string $errorMsg)
 ```
 To validate POST inputs:
 ```php
@@ -400,6 +401,14 @@ public function someMethod(Request $request, Response $response)
     ->length($request->body->name, 4, 10, 'Failed validation Msg')
     ->required($request->body->name, 'Failed validation Msg')
     ->unique($request->body->name, 'User', 'name', 'Failed validation Msg')
+    ->validate();
+
+    // Or
+    
+    $validator = Validator::start()->setInput($request->body->name)
+    ->length(4, 10, 'Failed validation Msg')
+    ->required('Failed validation Msg')
+    ->unique('User', 'name', 'Failed validation Msg')
     ->validate();
 
     var_dump($validator->getErrors());
