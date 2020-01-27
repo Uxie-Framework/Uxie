@@ -370,7 +370,7 @@ It's a built-in middleware that record each user data and store it in a database
 Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
 
-#### Validation:
+## Validation:
 How to use it:
 ```php
 use Validator\Validator as Validator;
@@ -403,7 +403,7 @@ public function someMethod(Request $request, Response $response)
     ->unique($request->body->name, 'User', 'name', 'Failed validation Msg')
     ->validate();
 
-    // Or
+    // Or using setInput method
     
     $validator = Validator::start()->setInput($request->body->name)
     ->length(4, 10, 'Failed validation Msg')
@@ -425,6 +425,48 @@ the above example will return error messages in this form:
 
 ```
 
+## Filters:
+Filters are meant to validate input from user.
+To create a new filter use Box :
+```
+php box filter LoginForm
+```
+this will create a new file in App/Filters something like :
+```php
+class LoginForm extends Validator implements Filterable
+{
+
+    public function __construct(Request $request)
+    {
+        //
+    }
+
+    public function check(): bool
+    {
+        if ($this->isValide()) {
+            return true;
+        }
+
+        return false;
+    }
+}
+```
+Notice that:
+filters extends validators so we can use all validators inside the class
+filters must have a check method which return if the validation is true (passed) or false (didn't pass).
+
+Let's validate login form by adding validations to the constructor : 
+```php
+  public function __construct(Request $request)
+    {
+        $this->setInput($request->body->email)
+        ->required('E-mail is required')
+        ->email('Your e-mail is not a valide e-mail)
+        ->setInput($request->body->password)
+        ->required('password is required')
+        ->validate();
+    }
+```
 ## Exception handler:
 `Uxie` comes with a built-in exceptions handler that will handle thrown exceptions / errors automatically.  
 
