@@ -1,6 +1,6 @@
 <?php
 
-namespace Filtereble;
+namespace Filter;
 
 interface Filterable
 {
