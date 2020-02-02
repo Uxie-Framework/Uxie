@@ -1,6 +1,6 @@
 <?php
 
-namespace Validator;
+namespace Filter;
 
 use Validate\Validator as Validator;
 use Filter\Filterable as Filterable;
@@ -10,8 +10,10 @@ class ExampleValidator extends Validator implements Filterable
 {
     public function __construct(Request $request)
     {
-        $this->setInput('name');
-        $this->required('Failed message')
+        parent::__construct();
+        $this
+        ->setInput('name')
+        ->required('Failed message')
         ->length(10, 20, 'length not authorized')
         ->validate();
     }
