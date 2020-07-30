@@ -340,6 +340,13 @@ Model\MyModel::insert([
   'value2' => $value2,
 ])->save();
 ```
+Update data:
+```php
+Model\MyModel::update([
+  'value1' => $newValue1,
+  'value2' => $newValue2,
+])->save();
+```
 Retrieve data:  
 ```php
 $data = Model\MyModel::select()->where('name', '=', 'user')->limit(10)->get();
