@@ -2,7 +2,7 @@
 
 namespace Filter;
 
-use Validate\Validator as Validator;
+use Validator\Validator as Validator;
 use Filter\Filterable as Filterable;
 use Request\Request as Request;
 
