@@ -8,6 +8,7 @@
  */
 
 return [
-    'statistics' => \Middleware\Statistics::class,
-    'csrf' => \Middleware\Csrf::class,
+    'statistics'   => \Middleware\Statistics::class,
+    'csrf'         => \Middleware\Csrf::class,
+    'nullifyInput' => \Middleware\NullifyInput::class,
 ];
