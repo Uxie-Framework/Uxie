@@ -2,7 +2,6 @@
 
 namespace Controller;
 
-use Controller\Controller as Controller;
 use Request\Request as Request;
 use Response\Response as Response;
 
