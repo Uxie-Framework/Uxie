@@ -11,7 +11,12 @@ require_once __DIR__.'/../vendor/autoload.php';
 // create IOC container
 IOC\IOC::createContainer();
 // Load .env file
-container()->build('Dotenv\Dotenv', __DIR__.'/../');
+// container()->build('Dotenv\Dotenv', [__DIR__ . '/../']);
+// container()->Dotenv->load();
+
+container()->bind('Dotenv', function () {
+    return Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+});
 container()->Dotenv->load();
 
 // Load configuration
