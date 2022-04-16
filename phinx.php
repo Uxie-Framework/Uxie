@@ -1,7 +1,8 @@
 <?php
 
 // load our environment files - used to store credentials & configuration
-(new Dotenv\Dotenv('./'))->load();
+$dotENV = Dotenv\Dotenv::createUnsafeImmutable(__DIR__ . '/../');
+$dotENV->load();
 
 return
     [

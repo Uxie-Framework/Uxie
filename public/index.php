@@ -15,7 +15,7 @@ IOC\IOC::createContainer();
 // container()->Dotenv->load();
 
 container()->bind('Dotenv', function () {
-    return Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+    return Dotenv\Dotenv::createUnsafeImmutable(__DIR__ . '/../');
 });
 container()->Dotenv->load();
 
