@@ -20,13 +20,13 @@ container()->Dotenv->load();
 // Load configuration
 require rootDir().'defaults.php';
 
-// preparing for starting application
+// Preparing for starting application
 container()->build('Kernel\Kernel');
 
 container()->Kernel->prepare();
 
-// start the application
+// Start the application
 container()->Kernel->start();
 
-// stop the application
+// Stop the application
 container()->Kernel->stop();
