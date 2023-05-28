@@ -40,7 +40,7 @@
   },
   "scripts": {
     "post-install-cmd": "php -r \"copy('.env.example', '.env');\""
-},
+  },
 
   "config": {
         "sort-packages":       true,
