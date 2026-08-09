@@ -4,3 +4,5 @@ log/
 cache/blade/*.php
 cache/pug/*.php
 cache/pug/*.txt
+
+.vscode/

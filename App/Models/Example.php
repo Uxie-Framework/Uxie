@@ -5,5 +5,5 @@ use Model\Model;
 
 class Example extends Model
 {
-    protected static $table = 'Example';
+    protected static $table = 'Examples';
 }

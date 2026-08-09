@@ -4,21 +4,19 @@ Uxie is a PHP MVC Framework.
 # Features:
 #### - Perfect MVC environment.
 #### - Box (Command Line Tool).
-#### - Deployable with docker.
 #### - DataBase Migration (phinx).
 #### - Security (secured against SQL injection, XSS, CSRF).
 #### - IOC (Inversion of control) Container.
 #### - Router (REST).
 #### - Authentication.
 #### - Middlewares.
-#### - Mutual Templating Engines (Blade & Pug):
+#### - Templating Engine (Blade):
 #### - ORM Model.
 #### - Visitors Data Recorder.
-#### - Request handler & validator.
+#### - Request & Response Handlers.
 #### - Automatic Exception handling.
 #### - Errors / Exceptions logger.
 #### - Built-in functions (Helpers).
-#### - Multi langauge support.
 
 # Documentation:  
 
@@ -28,29 +26,31 @@ Using Composer:
 ```
   composer create-project uxie/uxie <path>
 ```
-Using Docker:
-```
-  Docker-compose up --build
-```
 ## Routing:
 All routes are defined in : `App/Routes.php`
 
 #### Available Methods:
 GET, POST, PUT, PATCH, DELETE
 
-To use PUT, PATCH, DELETE methods your form method must be 'POST'
-inside the form you must put:
-```<input type='hidden' name='_method' value="PUT'>```
-csrf_method('PUT') will echo this automatically.
+To use PUT, PATCH, DELETE methods your HTML <form> method must be 'POST'
+inside the form you must put `csrf_method(string $method)`,
+csrf_method('PUT') will echo this automatically:
+  ```php
+<input type='hidden' name='_method' value="PUT'>
+```
 
 #### Basic routes examples:
 ```php
-$route->get('', function() {
-  view('index');
+$route->any('/', function(Request $request, Response $response) {
+  $response->view('index');
+});
+
+$route->get('/', function(Request $request, Response $response) {
+  $response->view('index');
 });
 // passing variables
-$route->get('user/{$name}', function($name) {
-  view('welcom', ['name' => $name]);
+$route->get('user/{$name}', function(Request $request, Response $response) {
+  $response->view('welcom', ['name' => $request->params->name]);
 });
 
 $route->put('update', 'Controller@update');
@@ -58,6 +58,64 @@ $route->put('update', 'Controller@update');
 $route->patch('update', 'Controller@update');
 
 $route->delete('delete', 'Controller@delete');
+
+// the default method will be executed when no route could be matched
+$route->default(function (Request $request, Response $response) {
+  $response->view('index');
+});
+```
+## Request & Response Objects :
+The request and response object are assigned to all functions, controllers, middlewares and services automatically (by default),
+
+### Request Object :
+The request object holds all data about the recieved http request.
+##### Request methods :
+
+```php
+$request->url(): string                 // return the full url
+$request->path(): string                // return the request path
+$request->cookie(string $name): string  // get cookie value
+$request->session(string $name): string // get session value
+$request->ip(): string                  // get the request ip
+$request->method(): string              // get method type
+
+##### Request arguments:
+
+// params contain data passed by url
+// example
+// localhost/{$name}
+echo $request->params->name;
+// body contain data passed by POST (or any method other then GET) request
+echo $request->body->name
+```
+### Response Object :
+```php
+$response->write(string $text): void                       // add text to response
+$response->status(int $status): void                       // set response status
+$response->json(array $array, int $options = null): void   // add json data to the response body
+$response->send(): void                                    // send response
+$response->end(): void                                     // end response
+$response->exception(string $message, int $code)           // throw exception
+$response->view(string $view): string                      // render a view
+$response->cookie(string $name, string $value, string $date): void // set cookie
+$response->unsetCookie(string $name): void                 // unset a cookie
+$response->unsetAllCookies(): void                         // unset all cookies
+$response->session(string $name, string $value): void      // set a session
+$response->unsetSession(string $name): void                // unset a session
+$response->unsetAllsessions(): void                        // unset all sessions
+$response->back(): void                                    // redircect back to the previous url
+$response->refresh(): void                                 // refresh current url
+$response->redirect(string $url): void                     // redirect to a given url
+```
+### Using a front-end SPA framework:
+if you are using uxie with a front-end framework you will need to return always the same html file
+to do this in uxie you can use the default method:
+```php
+
+// this method will be used in case no other route could be matched
+$route->default(function (Request $request, Response $response) {
+  $response->view('index');
+});
 ```
 #### Execute methods from a controller:
 ```php
@@ -71,22 +129,23 @@ $route->resource('user', 'UserController');
 #### Add a collection of routes with a prefix:
 ```php
 $route->group('user', function($route) {
-    $route->get('profile', function() {
-        echo 'Profile';
+    $route->get('profile', function(Request $request, Response $response) {
+        $response->write('Hello!')->send();
     });
     $route->post('store', 'Controller@method');
 });
-```  
-#### Passing data via URL:
+```
+#### URL parameters :
+:
 in routes file :
 ```php
 $route->get('profile/{$name}/update', 'Controller@update');
 ```
 in Controller :
 ```php
-public function update($name)
+public function update(Request $request, Response $response)
 {
-    echo $name;
+    $response->write($request->params->name)->send();
 }
 ```
 
@@ -97,42 +156,40 @@ in routes file :
 ```
 in UserController.php :
 ```php
-...
-use Request\Request as Request;
-...
-public function store(Request $request)
+public function store(Request $request, Response $response)
 {
-  $name = $request->name;
+  $name = $request->body->name;
   // equivalent to $_POST['name'];
 }
 ```
 ## Authentication:
 Authentication will validate your users login automatically
+Note : all passwords need to be hashed using Auth::Hash(string $password) before storing in the database.
 #### Login:
 ```php
   use Authenticator\Auth;
 
   if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword)) {
-    echo 'success';
+    // logged in
   }
 
   // in case of second field required to validate for example e-mail & user-name:
 
   if (Auth::attempt(['table', 'name' => $inputName, 'password' => $inputPassword, 'email' => $inputEmail])) {
-    echo 'success';
+    // logged in
   }
 ```
 #### Check if user loged in:
 ```php
   if (Auth::check())
   {
-    echo 'success';
+    // user is logged-in
   }
   // in case you want to check a user value from database row:
 
   if (Auth::check(['name' => 'someone'])
   {
-    echo " i'm someone";
+    echo "i'm someone";
   }
 ```
 #### Logout a user:
@@ -159,6 +216,7 @@ example:
 $route->get('profile/user', 'controller@show')->middleware('MiddlewereTest');
 ```
 you can add a late middleware just add true argument to middleware() method:
+(a late middleware is executed at the end of the application)
 ```php
   $route->get('profile', 'controller@index')->middleware('MiddlewareTest, true);
 ```
@@ -172,33 +230,25 @@ namespace Middleware;
 
 class Middlewaretest
 {
-    public function __construct()
+    public function __construct(Request $request, Response $response)
     {
-        echo 'test middleware';
+        $response->write('this is a middleware');
     }
 }
 ```
 
-#### Middleware collections & short names:
+#### Middlewares locators:
 
-To add a collection of middlewares or a short-name to a route you must define the collection in 'App/ServiceProviders/MiddlewaresProviders.php':
+To use Middlewares and short names you must first register the shortname in App/MiddlewaresLocator.php:
 ```php
-private $middlewaresProvider = [
-        'auth' => 'authenticateUsers',
-        'collection' => [
-            'myMiddleware',
-            'TestMiddleware',
-            'OtherMiddleware',
-        ];
-    ];
+return [
+    'statistics' => \Middleware\Statistics::class,
+];
 ```
-To use collections and short names:
+#### How To assign a middleware to a route
 ```php
-// 'auth' short name example:
-$route->get('user', 'controller@method')->middleware('auth');
-
-// 'collection' example:
-$route->get('link', 'controller@method')->middleware('collection');
+// 'statistics' short name example:
+$route->get('user', 'controller@method')->middleware('statistics');
 ```
 ## Security ( against SQL injection, XSS, CSRF):
 
@@ -206,34 +256,17 @@ $route->get('link', 'controller@method')->middleware('collection');
 Uxie is secured against both first and second order sql injection attacks.
 
 #### XSS:
-Both Uxie templating engine escape html+js when printing data.
+Uxie templating engine (Blade) escape html+js when printing data.
 
 #### CSRF:
 Uxie comes with built in feature that protect against CSRF when using ('POST','PATCH','PUT','DELETE') methods,
-So every form should contain: csrf_field()
+So every HTML form should contain: csrf_field()
 
-## Mutual Templating Engine (Blade & Pug):
-
-#### Important Notes:
-- All views must be inside 'App/Views' folder.
-
-#### How to use it:
-Use helper function view(string $view, array $variables):  
 ```php
-view('YourView', ['data' => $data, 'name' => 'MyName']);
-
-// To use Pug view use:
-pugView(string $view, array $data);
-
-// to use Blade view use:
-bladeView(string $view, array $data);
-```
-#### How to Chose wich Templating engine to use:
-To change Templating engine you should edit .env file
-```
-Engine = Blade
-# or
-Engine = Pug
+    <form ...>
+        csrf_field();
+        <input ...>
+    </form>
 ```
 
 ## IOC Container:
@@ -282,13 +315,15 @@ It contains aliases and sevices that should be loaded when the application start
 
 #### The global $container:
 
-the ```container()```function is global in the framework (can be used every where, it contains all the objects created by the IOC container),
+the ```container()```function is global in the framework (can be used everywhere, it contains all the objects created by the IOC container),
 
 
 
 ```php
-
+// create an instance
 container()->build('someclass');
+
+// access created instance
 container()->someClass->someMethod();
 
 ```
@@ -300,73 +335,145 @@ use Model/Model;
 ```
 Insert data:
 ```php
-Model\table::insert([
+Model\MyModel::insert([
   'value1' => $value1,
   'value2' => $value2,
 ])->save();
 ```
+Update data:
+```php
+Model\MyModel::update([
+  'value1' => $newValue1,
+  'value2' => $newValue2,
+])->save();
+```
 Retrieve data:  
 ```php
-$data = Model\table::select()->where('name', '=', 'user')->limit(10)->get();
+$data = Model\MyModel::select()->where('name', '=', 'user')->limit(10)->get();
 ```
 Retrieve single row:
 ```php
-$user = Model\table::find('name', 'MyName');
+$user = Model\MyModel::find('name', 'MyName');
 ```
 Soft delete :
 by default uxie migration add a softdelete column to the table
 softdelete method will change the value of softdelete column
 NOTE: select won't return any soft deleted rows
 ```php
-  Model\table::delete()->where('id' , '=', $id)->save();
+  Model\MyModel::delete()->where('id' , '=', $id)->save();
 ```
-to hard delete a row use hardDelete method.
-plenty of other methods such as limit(), orderBy(), groupBy(), count(), join, update and delete.
+to hard delete a row use hardDelete method:
+```php
+  Model\MyModel::hardDelete()->where('id' , '=', $id)->save();
+```
+There is also plenty of other methods such as limit(), orderBy(), groupBy(), count(), join, update and delete.
 simple example:
 ```php
-Model\table::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
+Model\MyModel::select()->where('name', '=', 'user')->or('name', '=', 'other-user')->orderBy('date')->get();
 ```
 
 ## Visitors Statistics:
 It's a built-in middleware that record each user data and store it in a database table,
 Data such as ip, browser, os, PreviousUrl, CurrentUrl, date, and memory usage
 
-## Request & validator:
-It's a built-in Request handler :
 
+## Validation:
+How to use it:
 ```php
-// you must add 'csrf_field()' to the HTML form to protect against CSRF
-public function store(Request $request)
-{
-  echo $request->name;  
-}
-```
+use Validator\Validator as Validator;
 
-#### Validation:
-Available validation methods : 
-required(), length($min, $max), email(), isip(), isint(), isfloat(), url(), unique($model, $column), equals($input, $value)
+Validator::start();
+```
+Available validation methods :
+```php
+$validator = Validator::start();
+$validator->setInput(string $input); // optional
+$validator->required([string $input], string $errorMsg)
+$validator->length([string $input], int $min, int $max, string $errorMsg)
+$validator->email([string $input], string $errorMsg)
+$validator->isip([string $input], string $errorMsg)
+$validator->isint([string $input], string $errorMsg)
+$validator->isfloat([string $input], string $errorMsg)
+$validator->url([string $input], string $errorMsg)
+$validator->unique([string $input], string $model, string $column, string $errorMsg)
+$validator->equals([string $input],mixed $value, string $errorMsg)
+```
 To validate POST inputs:
 ```php
-public function store(Request $request)
+use Validator\Validator as Validator;
+
+public function someMethod(Request $request, Response $response)
 {
-  $request->validate($request->name, 'Name Field')->required()->length(10, 30);
-  $request->validate($request->email, 'Your Email')->required()->length(5, 40)->email();
-  var_dump($request->getErrors());
+    $validator = Validator::start()
+    ->length($request->body->name, 4, 10, 'Failed validation Msg')
+    ->required($request->body->name, 'Failed validation Msg')
+    ->unique($request->body->name, 'User', 'name', 'Failed validation Msg')
+    ->validate();
+
+    // Or using setInput method
+    
+    $validator = Validator::start()->setInput($request->body->name)
+    ->length(4, 10, 'Failed validation Msg')
+    ->required('Failed validation Msg')
+    ->unique('User', 'name', 'Failed validation Msg')
+    ->validate();
+
+    var_dump($validator->getErrors());
 }
 ```
 the above example will return error messages in this form:
 ```php
-[
-    [
-        'Name Field Length must be bettwen 10 and 30',
-        'Name Field is Required',
-        'Your Email is not a valid email',
-        'Your Email Length must be bettwen 5 and 40',
-    ]
-]
-```
-All Error messages teamplates are defined in multiple 'resources/languages/validation.php' to make theme so easy to modify.
 
+    [
+        'Failed validation Msg',
+        'Failed validation Msg',
+        'Failed validation Msg',
+    ]
+
+```
+
+## Filters:
+Filters are meant to validate input from user.
+To create a new filter use Box :
+```
+php box filter LoginForm
+```
+this will create a new file in App/Filters something like :
+```php
+class LoginForm extends Validator implements Filterable
+{
+
+    public function __construct(Request $request)
+    {
+        //
+    }
+
+    public function check(): bool
+    {
+        if ($this->isValide()) {
+            return true;
+        }
+
+        return false;
+    }
+}
+```
+Notice that:
+filters extends validators so we can use all validators inside the class
+filters must have a check method which return if the validation is true (passed) or false (didn't pass).
+
+Let's validate login form by adding validations to the constructor : 
+```php
+  public function __construct(Request $request)
+    {
+        $this->setInput($request->body->email)
+        ->required('E-mail is required')
+        ->email('Your e-mail is not a valide e-mail)
+        ->setInput($request->body->password)
+        ->required('password is required')
+        ->validate();
+    }
+```
 ## Exception handler:
 `Uxie` comes with a built-in exceptions handler that will handle thrown exceptions / errors automatically.  
 
@@ -374,40 +481,11 @@ All Error messages teamplates are defined in multiple 'resources/languages/valid
 All errors/exceptions thrown during runtime will be logged in `log/All_errors.log` with information about error such as file, line, code and error-Message.  
 
 ## Helpers:
-Helpers are functions available to use everywhere inside the framework such as `view()`, `session()`, `redirect()`, `route()`, `url()`.  
-All function are listed in `App/helpers`.
+Helpers are functions available to use everywhere inside the framework such as `csrf_field()`, `csrf_token()`, `container()`.  
+All function are listed in `framework/helpers/helpers.php`.
 
 examples:
 ```php
-url('profile/user');
-// returns http(s)://domain.com/profile/user
-
-route('profile/user');
-// redirect to http(s)://domain.com/profile/user
-
-redirect('https://google.com');
-// redirects to url entred (google.com)
-
-view('my-view', ['variable' => $variable, 'name' => 'amine']);
-// show a view with passed variables
-
-session('id');
-// returns $_SESSION['id']
-
-session('id', '87669');
-// set new session ( $_SESSION['id'] = '87669'
-
-unsetSession('id');
-// delete session
-
-cookie('name', 'amine', time()+3600);
-// set new cookie
-
-cookie('name', 'amine');
-//set new cookie without-time
-
-cookie('name');
-// returns cookie $_COOKIE['name'];
 
 csrf_field();
 // echo something like this <input type='hidden' name='_token' value='l2465431sd534sd'>
@@ -423,7 +501,7 @@ container();
 ```
 
 ## Box (Command Line Tool):
-Box is a command line tool to create Controllers, models & middlewares templates
+Box is a command line tool to create Controllers, Repositories, models & middlewares templates
 for example:
 
 ```
@@ -435,6 +513,9 @@ php box Controller TestC -r
 
 // to create a Model
 php box Model TestC
+
+// to create Repository
+php box Repository RepoName ModelName
 
 // to create a Middleware
 php box Middleware TestC
@@ -460,38 +541,38 @@ php phinx migrate
 #### How to modify and add languages :
 for example to edit validation messages you need to modify 'resources/languages/validations.php' ($$ represent the field name):
 ```php
-    'english' => [
-        'length'   => '$$ Length must be bettwen $$ and $$',
-        'required' => '$$ Is Required',
-        'email'    => '$$ Must be a valide Email',
-        'url'      => '$$ Must be a valide URL',
-        'isint'    => '$$ Must be of type integer',
-        'isfloat'  => '$$ Must be of type float',
-        'isip'     => '$$ Must be a valide IP',
+    'en' => [
+        'length'   => ' Length must be bettwen',
+        'required' => ' Is Required',
+        'email'    => ' Must be a valide Email',
+        'url'      => ' Must be a valide URL',
+        'isint'    => ' Must be of type integer',
+        'isfloat'  => ' Must be of type float',
+        'isip'     => ' Must be a valide IP',
     ],
 
-    'francais' => [
-        'length'   => '$$ Doit etre entre $$ et $$',
-        'required' => '$$ Est un Champ obligatoire',
-        'email'    => '$$ Doit etre un e-mail',
-        'url'      => '$$ Doit etre un URL valide',
-        'isint'    => '$$ Doit etre de type entier',
-        'isfloat'  => '$$ Doit etre de type float',
-        'isip'     => '$$ Doit etre un IP valide',
+    'fr' => [
+        'length'   => ' Doit etre entre $$ et ',
+        'required' => ' Est un Champ obligatoire',
+        'email'    => ' Doit etre un e-mail',
+        'url'      => ' Doit etre un URL valide',
+        'isint'    => ' Doit etre de type entier',
+        'isfloat'  => ' Doit etre de type float',
+        'isip'     => ' Doit etre un IP valide',
     ],
 ```
 #### How to set & get teh current language :
 Uxie default language is 'english'
-To set a language use 'langauge(string $lang)' function
+To set a language use 'setLangauge(string $lang)' function
 example:
 ```php
   // this will set language to 'francais'
-  langauge('francais')
+  setLanguage('fr')
 ```
 
 To get current language just use 'language()'
 ```php
-  echo language();
+  echo getLanguage();
   // should echo 'english'
 ```
 #### how to use translation :

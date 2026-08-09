@@ -1,30 +1,29 @@
 {
     "name":        "uxie/uxie",
     "description": "Uxie a light MVC Framework",
-    "keywords":    ["framework", "uxie"],
+    "keywords":    ["framework", "uxie", "mvc"],
     "type":        "framework",
     "license":     "MIT",
 
     "authors": [
         {
-            "name":     "M.Amine Cheribet",
-            "email":    "MohamedAmine1c@gmail.com",
-            "homepage": "https://github.com/MohamedAmine-C/Uxie",
+            "name":     "Amin Cheribet",
+            "email":    "Cheribet.amine@gmail.com",
+            "homepage": "https://github.com/Uxie-Framework",
             "role":     "Owner"
         }
     ],
 
     "require": {
-        "php":                         ">=7.1.6",
-        "uxie/framework":              "^0.8.0",
-        "uxie/statistics":             "^0.3",
-        "vlucas/phpdotenv":            "^2.4",
-        "mohamed-amine/file-uploader": "^2.0",
-        "mohamed-amine/ioc-container": "^0.5",
-        "intervention/image":          "^2.4",
-        "jenssegers/blade":            "^1.1",
-        "pug-php/pug":                 "^2.7.4",
-        "phpunit/phpunit":             "^6.0",
+        "php":                         "^8.3",
+        "uxie/framework":              "^0.9.2",
+        "uxie/statistics":             "^0.4.0",
+        "vlucas/phpdotenv":            "^5.6",
+        "mohamed-amine/file-uploader": "^4.0",
+        "mohamed-amine/ioc-container": "^0.8",
+        "intervention/image":          "^3.6",
+        "jenssegers/blade":            "^2.0",
+        "phpunit/phpunit":             "^11.1",
         "robmorgan/phinx":             "^0.9"
     },
 
@@ -33,13 +32,15 @@
       "App\\":        "App/",
       "Middleware\\": "App/Middlewares/",
       "Controller\\": "App/Controllers/",
+      "Filter\\":     "App/Filters/",
       "Model\\":      "App/Models/",
-      "Service\\":    "APP/Services/"
+      "Repository\\": "App/Repositories/",
+      "Service\\":    "App/Services/"
     }
   },
   "scripts": {
     "post-install-cmd": "php -r \"copy('.env.example', '.env');\""
-},
+  },
 
   "config": {
         "sort-packages":       true,

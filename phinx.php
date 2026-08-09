@@ -1,7 +1,8 @@
 <?php
 
 // load our environment files - used to store credentials & configuration
-(new Dotenv\Dotenv('./'))->load();
+$dotENV = Dotenv\Dotenv::createUnsafeImmutable(__DIR__);
+$dotENV->load();
 
 return
     [
@@ -21,7 +22,7 @@ return
                         'name'      => getenv('DB_NAME'),
                         'user'      => getenv('DB_USER'),
                         'pass'      => getenv('DB_PASS'),
-                        'port'      => 3306,
+                        'port'      => getenv('DB_PORT'),
                         'charset'   => 'utf8',
                         'collation' => 'utf8_unicode_ci',
                     ],
