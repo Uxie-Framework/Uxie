@@ -1,7 +1,10 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Middleware;
 
-use Request\Request as Request;
+use Request\Handler\Request as Request;
 use Response\Response as Response;
 
 class Csrf
@@ -14,12 +17,12 @@ class Csrf
         }
     }
 
-    private function validateToken(string $token)
+    private function validateToken(?string $token): bool
     {
-        if (!is_null($token) && $token === getSession('_token')) {
+        if ($token !== null && $token === getSession('_token')) {
             return true;
         }
 
-        throw new \Exception("No CSRF token detected (use csrf_field() function)", 28);
+        throw new \Exception('No CSRF token detected (use csrf_field() function)', 28);
     }
 }
