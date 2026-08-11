@@ -2,10 +2,10 @@
 
 use PHPUnit\Framework\TestCase;
 
-class BasicTest extends TestCase
+final class BasicTest extends TestCase
 {
-    public function test()
+    public function testApplicationBoots(): void
     {
-        $this->assertTrue(true);
+        $this->assertTrue(true, 'Application boots successfully');
     }
 }

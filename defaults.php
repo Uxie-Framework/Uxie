@@ -1,10 +1,12 @@
 <?php
 
-ob_start();
-date_default_timezone_set(getenv('TIMEZONE'));
-error_reporting(getenv('ERROR_REPORTING'));
-ini_set('memory_limit', getenv('MEMORY_LIMIT'));
+declare(strict_types=1);
 
-set_exception_handler(function (Throwable $e) {
+ob_start();
+date_default_timezone_set((string) (getenv('TIMEZONE') ?: 'UTC'));
+error_reporting((int) (getenv('ERROR_REPORTING') ?: -1));
+ini_set('memory_limit', (string) (getenv('MEMORY_LIMIT') ?: '128M'));
+
+set_exception_handler(function (Throwable $e): void {
     container()->ErrorHandler->handle($e);
 });
