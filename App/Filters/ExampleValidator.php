@@ -6,7 +6,7 @@ namespace Filter;
 
 use Validator\Validator as Validator;
 use Filter\Filterable as Filterable;
-use Request\Handler\Request as Request;
+use Request\Request as Request;
 
 class ExampleValidator extends Validator implements Filterable
 {

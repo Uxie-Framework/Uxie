@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Middleware;
 
-use Request\Handler\Request as Request;
+use Request\Request as Request;
 use Response\Response as Response;
 
 class NullifyInput
@@ -24,7 +24,7 @@ class NullifyInput
         foreach ($this->request->params->getArray() as $key => $value) {
             $trimmed = trim((string) $value);
             if ($trimmed === '') {
-                container()->request->params->$key = null;
+                container()->Request->params->$key = null;
             }
         }
     }

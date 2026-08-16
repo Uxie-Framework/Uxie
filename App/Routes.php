@@ -1,6 +1,6 @@
 <?php
 
-use Request\Handler\Request as Request;
+use Request\Request as Request;
 use Response\Response as Response;
 
 $route->group('/', function ($route) {

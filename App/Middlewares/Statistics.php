@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Middleware;
 
-use Request\Handler\Request as Request;
+use Request\Request as Request;
 use Response\Response as Response;
 
 class Statistics

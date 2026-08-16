@@ -74,8 +74,8 @@ The request object holds all data about the recieved http request.
 ```php
 $request->url(): string                 // return the full url
 $request->path(): string                // return the request path
-$request->cookie(string $name): string  // get cookie value
-$request->session(string $name): string // get session value
+$request->cookie(string $name): mixed   // get cookie value
+$request->session(string $name): mixed  // get session value
 $request->ip(): string                  // get the request ip
 $request->method(): string              // get method type
 
