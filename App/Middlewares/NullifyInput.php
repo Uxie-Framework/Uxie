@@ -22,9 +22,8 @@ class NullifyInput
     private function nullify(): void
     {
         foreach ($this->request->params->getArray() as $key => $value) {
-            $trimmed = trim((string) $value);
-            if ($trimmed === '') {
-                container()->Request->params->$key = null;
+            if (trim((string) $value) === '') {
+                $this->request->params->$key = null;
             }
         }
     }
