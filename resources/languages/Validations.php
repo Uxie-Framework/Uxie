@@ -1,31 +1,34 @@
 <?php
-    /**
- 	 * English (en) is the default language
-	 */
+
+declare(strict_types=1);
+
+/**
+ * English (en) is the default language
+ */
 return [
 
     'en' => [
-        'length'   => '$$ Length must be bettwen $$ and $$',
+        'length'   => '$$ Length must be between $$ and $$',
         'required' => '$$ Is Required',
-        'email'    => '$$ Must be a valide Email',
-        'url'      => '$$ Must be a valide URL',
+        'email'    => '$$ Must be a valid Email',
+        'url'      => '$$ Must be a valid URL',
         'isint'    => '$$ Must be of type integer',
         'isfloat'  => '$$ Must be of type float',
-        'isip'     => '$$ Must be a valide IP',
-        'unique'   => '$$ entred already exist',
+        'isip'     => '$$ Must be a valid IP',
+        'unique'   => '$$ entered already exists',
         'equals'   => '$$ is not equal to $$',
     ],
 
     'fr' => [
-        'length'   => '$$ Doit etre entre $$ et $$',
+        'length'   => '$$ Doit être entre $$ et $$',
         'required' => '$$ Est un Champ obligatoire',
-        'email'    => '$$ Doit etre un e-mail',
-        'url'      => '$$ Doit etre un URL valide',
-        'isint'    => '$$ Doit etre de type entier',
-        'isfloat'  => '$$ Doit etre de type float',
-        'isip'     => '$$ Doit etre un IP valide',
-        'unique'   => '$$ deja exist',
-        'equals'   => "$$ N'est pas egal a $$",
+        'email'    => '$$ Doit être un e-mail',
+        'url'      => '$$ Doit être un URL valide',
+        'isint'    => '$$ Doit être de type entier',
+        'isfloat'  => '$$ Doit être de type float',
+        'isip'     => '$$ Doit être un IP valide',
+        'unique'   => '$$ déjà existant',
+        'equals'   => "$$ N'est pas égal à $$",
     ],
 
 ];

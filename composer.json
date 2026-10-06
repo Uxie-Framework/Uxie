@@ -15,7 +15,7 @@
     ],
 
     "require": {
-        "php":                         "^8.3",
+        "php":                         "^8.5",
         "uxie/framework":              "^0.9.2",
         "uxie/statistics":             "^0.4.0",
         "vlucas/phpdotenv":            "^5.6",

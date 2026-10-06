@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Middleware;
 
 use Request\Request as Request;
@@ -9,17 +12,20 @@ class Csrf
     public function __construct(Request $request, Response $response)
     {
         if ($request->method() !== 'GET') {
-            $token = $request->body->_token ?? null;
+            $body = $request->body ?? null;
+            $token = ($body && isset($body->_token)) ? $body->_token : null;
             $this->validateToken($token);
         }
     }
 
-    private function validateToken(string $token)
+    private function validateToken(?string $token): bool
     {
-        if (!is_null($token) && $token === getSession('_token')) {
+        $sessionToken = isset(container()->Session->_token) ? getSession('_token') : null;
+
+        if ($token !== null && $sessionToken !== null && $token === $sessionToken) {
             return true;
         }
 
-        throw new \Exception("No CSRF token detected (use csrf_field() function)", 28);
+        throw new \Exception('No CSRF token detected (use csrf_field() function)', 28);
     }
 }
